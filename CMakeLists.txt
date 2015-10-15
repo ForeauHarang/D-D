@@ -21,6 +21,7 @@ add_executable(
 	src/FIGHT_Personnage.hpp
 	src/MAP_VariablesGlobales.hpp
 	src/FIGHT_VariablesGlobales.hpp
+	src/RENDU_StaticTuile.hpp
 	
 	src/main.cpp
 	src/MAP_Carte.cpp
@@ -32,6 +33,7 @@ add_executable(
 	src/FIGHT_Carte.cpp	
 	src/FIGHT_Competence.cpp	
 	src/FIGHT_Personnage.cpp
+	src/RENDU_StaticTuile.cpp
 
 )
 

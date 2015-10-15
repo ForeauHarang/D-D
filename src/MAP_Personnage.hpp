@@ -16,7 +16,7 @@ class MAP_Personnage{
 		MAP_InventairePersonnage inventaire;	
 		std::string idPersonnage;
 		
-		public :
+	public :
 			
 			/*
 			 * constructeurs
