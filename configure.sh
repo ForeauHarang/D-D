@@ -2,7 +2,8 @@
 sfml_path=""
 OPTIND=1
 
-
+rm -r bin
+mkdir bin
 rm -r build
 mkdir build
 cd build/

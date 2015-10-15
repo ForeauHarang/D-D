@@ -9,7 +9,7 @@ endif()
 set(EXECUTABLE_OUTPUT_PATH ../bin)
 add_executable(
 	vandw
-
+	
 	src/MAP_Personnage.hpp
 	src/FIGHT_Carte.hpp
 	src/MAP_Carte.hpp

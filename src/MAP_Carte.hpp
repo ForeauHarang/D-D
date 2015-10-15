@@ -1,8 +1,8 @@
 #ifndef MAP_CARTE_HPP
 #define MAP_CARTE_HPP
 
-#include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
+#include "MAP_Personnage.hpp"
 #include "MAP_Quete.hpp"
 #include "MAP_Coffre.hpp"
 
