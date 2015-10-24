@@ -1,40 +1,41 @@
 #ifndef RENDU_ANIMATEDTUILE_HPP
 #define RENDU_ANIMATEDTUILE_HPP
 
-class AnimatedTuile{
+#include "RENDU_Tuile.hpp"
+
+class RENDU_AnimatedTuile : public RENDU_Tuile{{
 
 	public:
 		float taux;
-		const RENDU_Tuile* 
+		const RENDU_Tuile* tuile;
 		/*
 		 * Constructeur 
 		 */
-		StaticTuile(int x=0, int y=0, int largeur=0, int hauteur=0);
+		RENDU_AnimatedTuile(float taux=10);
 		
 		/*
 		 * Destructeur 
 		 */
-		~StaticTuile();
+		~RENDU_AnimatedTuile();
 		
 		/*
 		 * Getters
 		 */
-		int const getX();
-		int const getY();
-		int const getWidth();
-		int const getHeight();
+		float const getRate();
+		const RENDU_Tuile* const getTile(int64_t temps);
+		const RENDU_Tuile* const getTile(int i);
+		int const getTilecount();
 		
 		/*
 		 * Setters
 		 */
-		void setX(int x); 
-		void setY(int y);
-		void setWidth(int largeur);
-		void setHeight(int hauteur); 
+		void setRate(float taux); 
+		void setTile(int i, RENDU_Tuile* tuile);
 		
 		/*
 		 * Methodes
 		 */  
 		 bool const isAnimated() override;
+		 void addTile(RENDU_Tuile* tuile);
 };
 #endif

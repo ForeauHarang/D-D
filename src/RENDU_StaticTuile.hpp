@@ -1,7 +1,7 @@
-#ifndef RENDU_STATICTUILE_HPP
-#define RENDU_STATICTUILE_HPP
+#ifndef RENDU_StaticTuile_HPP
+#define RENDU_StaticTuile_HPP
 
-class StaticTuile{
+class RENDU_StaticTuile : public RENDU_Tuile{
 
 	protected:
 		int x;
@@ -13,12 +13,12 @@ class StaticTuile{
 		/*
 		 * Constructeur 
 		 */
-		StaticTuile(int x=0, int y=0, int largeur=0, int hauteur=0);
+		RENDU_StaticTuile(int x=0, int y=0, int largeur=0, int hauteur=0);
 		
 		/*
 		 * Destructeur 
 		 */
-		~StaticTuile();
+		~RENDU_StaticTuile();
 		
 		/*
 		 * Getters

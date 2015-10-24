@@ -1,9 +1,8 @@
-#ifndef RENDU_TUILE_HPP
-#define RENDU_TUILE_HPP
+#ifndef RENDU_Tuile_HPP
+#define RENDU_Tuile_HPP
 
-class RENDU_Tuile{
-		
-	public:
+class RENDU_Tuile {
+	public :
 		/*
 		 * Constructeur 
 		 */
@@ -16,8 +15,7 @@ class RENDU_Tuile{
 		
 		/*
 		 * Methodes
-		 */  
-		 virtual bool const isAnimated();
+		 */ 
+		bool const isAnimated();
 };
-#endif
-
+#endif;
