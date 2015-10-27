@@ -11,11 +11,11 @@ class RENDU_Tuile {
 		/*
 		 * Destructeur 
 		 */
-		~RENDU_Tuile();
+		virtual ~RENDU_Tuile();
 		
 		/*
 		 * Methodes
 		 */ 
-		bool const isAnimated();
+		virtual bool const isAnimated()=0;
 };
 #endif;
