@@ -6,6 +6,8 @@
 #include <vector>
 #include <cstdlib>
 
+#define NOMBRETUILES 50
+
 using std::string;
 
 enum ScenePlan { GRILLE_PLAN, ETAT_PLAN, DEBUG_PLAN };
