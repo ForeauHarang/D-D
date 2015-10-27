@@ -63,7 +63,6 @@ add_executable(
 	src/RENDU_Scene.cpp
 	src/RENDU_StaticTuile.cpp
 	src/RENDU_Surface.cpp
-	src/RENDU_Tuile.cpp
 	
 	src/ETAT_EtatObserver.cpp
 
