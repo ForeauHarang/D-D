@@ -130,6 +130,10 @@ bool FIGHT_Competence::isAvailable(){
 	return this->utilisable;
 }
 
+FIGHT_NomCompetence getSkillName(){
+	return this->competence;
+}
+
 /*
 * setteurs
 * */
