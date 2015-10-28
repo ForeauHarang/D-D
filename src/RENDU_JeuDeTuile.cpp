@@ -19,21 +19,82 @@ RENDU_JeuDeTuile::RENDU_JeuDeTuile(){
 /*
  * Getters
  */
-int const RENDU_JeuDeTuile::getCellWidth(){
+ 
+const char* const getImageFile(){
+	return "../res/images/IMAGE.JPEG";
+}
+
+const RENDU_Tuile* const getElementTile(const MAP_Carte* carteMap){
+	return *this->listeTuile[35];
+}
+
+const RENDU_Tuile* const getElementTile(const MAP_Personnage* personnageMap){
+	//enum Race { HUMAIN, LOUP_GAROU, VAMPIRE, MONSTRE };
+	
+	if(personnageMap.getRace()==HUMAIN) return *this->listeTuile[0];
+	if(personnageMap.getRace()==LOUP_GAROU) return *this->listeTuile[2];
+	if(personnageMap.getRace()==VAMPIRE) return *this->listeTuile[6];
+	if(personnageMap.getRace()==MONSTRE) return *this->listeTuile[3];
+	
+}
+
+const RENDU_Tuile* const getElementTile(const MAP_Coffre* coffreMap){
+	return *this->listeTuile[10];
+}
+
+const RENDU_Tuile* const getElementTile(const MAP_InventairePersonnage* inventairePersonnageMap){
+	return *this->listeTuile[37]; // a mettre
+}
+const RENDU_Tuile* const getElementTile(const MAP_ObjetInventaire* objetInventaireMap){
+//	enum NomObjet {PASDENOM, COUTEAU, PISTOLET, FUSIL, VETEMENT, KELVAR, POTION_SOIN,
+//		 POTION_MANA, POISON, LIVRE, POULET, BALLES_ARGENTS, SAC_SANG, PIEUX };
+	if(objetInventaireMap.getItemName()==PASDENOM) return *this->listeTuile[38];
+	if(objetInventaireMap.getItemName()==COUTEAU) return *this->listeTuile[16];
+	if(objetInventaireMap.getItemName()==PISTOLET) return *this->listeTuile[27];
+	if(objetInventaireMap.getItemName()==FUSIL) return *this->listeTuile[19];
+	if(objetInventaireMap.getItemName()==VETEMENT) return *this->listeTuile[23];//
+	if(objetInventaireMap.getItemName()==KELVAR) return *this->listeTuile[23];//
+	if(objetInventaireMap.getItemName()==POTION_SOIN) return *this->listeTuile[29];
+	if(objetInventaireMap.getItemName()==POTION_MANA) return *this->listeTuile[32];
+	if(objetInventaireMap.getItemName()==POISON) return *this->listeTuile[31];
+	if(objetInventaireMap.getItemName()==LIVRE) return *this->listeTuile[15];
+	if(objetInventaireMap.getItemName()==POULET) return *this->listeTuile[9];
+	if(objetInventaireMap.getItemName()==BALLES_ARGENTS) return *this->listeTuile[20];
+	if(objetInventaireMap.getItemName()==SAC_SANG) return *this->listeTuile[22];
+	if(objetInventaireMap.getItemName()==PIEUX) return *this->listeTuile[33];
+
+}
+
+const RENDU_Tuile* const getElementTile(const FIGHT_Carte* carteFight){
+	return *this->listeTuile[36];
+}
+
+const RENDU_Tuile* const getElementTile(const FIGHT_Personnage* personnageFight);
+const RENDU_Tuile* const getElementTile(const FIGHT_Competence* competenceFight);
+
+
+int const getCellWidth(int i);
+int const getCellHeight(int i);
+const RENDU_Tuile* const getIntTile(int i);
+ 
+int const RENDU_JeuDeTuile::getCellWidth(int i){
 	//TODO
 }
-int const RENDU_JeuDeTuile::getCellHeight(){
+int const RENDU_JeuDeTuile::getCellHeight(int i){
 	//TODO
 }
 const char* const RENDU_JeuDeTuile::getImageFile(){
 	//TODO
 }
+/*
 const RENDU_Tuile* const RENDU_JeuDeTuile::getElementTile(const ETAT::Element* e){
 	//TODO
 }
-const RENDU_Tuile* const RENDU_JeuDeTuile::getCharTile(char c){
+*/
+const RENDU_Tuile* const RENDU_JeuDeTuile::getIntTile(int i){
 	//TODO
 }
+
 
 /* Tableau de Tuiles :
 tabtuile[0] = humain1
@@ -73,5 +134,7 @@ tabtuile[33] = pieu
 tabtuile[34] = boule_de_feu_3
 tabtuile[35] = carte_map
 tabtuile[36] = carte_fight
+tabtuile[37] = inventairePersonnage
+tabtuile[38] = itemnull
 */
 
