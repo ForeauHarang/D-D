@@ -14,6 +14,7 @@
 #include "FIGHT_Carte.hpp"
 
 #include "RENDU_VariablesGlobales.hpp"
+#include "RENDU_Tuile.hpp"
 
 //#define NOMBRETUILES 50 (????) dans variableglobales
 
@@ -38,15 +39,15 @@ class RENDU_JeuDeTuile{
 		 */
 		
 		const char* const getImageFile();
-		const RENDU_Tuile* const getElementTile(const MAP_Carte* carteMap);
-		const RENDU_Tuile* const getElementTile(const MAP_Personnage* personnageMap);
-		const RENDU_Tuile* const getElementTile(const MAP_Coffre* coffreMap);
-		const RENDU_Tuile* const getElementTile(const MAP_InventairePersonnage* inventairePersonnageMap);
-		const RENDU_Tuile* const getElementTile(const MAP_ObjetInventaire* objetInventaireMap);
+		const RENDU_Tuile* const getElementTile( MAP_Carte carteMap);
+		const RENDU_Tuile* const getElementTile( MAP_Personnage personnageMap);
+		const RENDU_Tuile* const getElementTile( MAP_Coffre coffreMap);
+		const RENDU_Tuile* const getElementTile( MAP_InventairePersonnage inventairePersonnageMap);
+		const RENDU_Tuile* const getElementTile( MAP_ObjetInventaire objetInventaireMap);
 		
-		const RENDU_Tuile* const getElementTile(const FIGHT_Carte* carteFight);
-		const RENDU_Tuile* const getElementTile(const FIGHT_Personnage* personnageFight);
-		const RENDU_Tuile* const getElementTile(const FIGHT_Competence* competenceFight);
+		const RENDU_Tuile* const getElementTile( FIGHT_Carte carteFight);
+		const RENDU_Tuile* const getElementTile( FIGHT_Personnage personnageFight);
+		const RENDU_Tuile* const getElementTile( FIGHT_Competence competenceFight);
 		
 		int const getCellWidth(int i);
 		int const getCellHeight(int i);

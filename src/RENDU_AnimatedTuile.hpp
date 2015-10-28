@@ -3,7 +3,7 @@
 
 #include "RENDU_Tuile.hpp"
 
-class RENDU_AnimatedTuile : public RENDU_Tuile{{
+class RENDU_AnimatedTuile : public RENDU_Tuile{
 
 	public:
 		float taux;

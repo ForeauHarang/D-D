@@ -35,13 +35,13 @@ class RENDU_Plan{
 		 */
 		void setTileSet(const RENDU_JeuDeTuile* jeuDeTuile); 
 		void setSurface(RENDU_Surface* surface);
-		void setAnimation(int i, RENDU_Animation* a);
+		//void setAnimation(int i, RENDU_Animation* a);
 		
 		/*
 		 * Methodes
 		 */  
-		void printText(int x, int y, const char* msg, int spriteIdx, int w, int h);
-		void sync(int64_t temps);
-		void update(int64_t temps);
+		//void printText(int x, int y, const char* msg, int spriteIdx, int w, int h);
+		//void sync(int64_t temps);
+		//void update(int64_t temps);
 };
 #endif

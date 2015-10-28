@@ -24,20 +24,20 @@ add_executable(
 	src/FIGHT_Personnage.hpp
 	src/FIGHT_VariablesGlobales.hpp	
 	
-	src/RENDU_AnimatedTuile.hpp
-	src/RENDU_Animation.hpp
-	src/RENDU_DebugPlan.hpp
-	src/RENDU_EtatPlan.hpp
+#	src/RENDU_AnimatedTuile.hpp
+#	src/RENDU_Animation.hpp
+#	src/RENDU_DebugPlan.hpp
+#	src/RENDU_EtatPlan.hpp
 	src/RENDU_JeuDeTuile.hpp
-	src/RENDU_ListeElementPlan.hpp
-	src/RENDU_Plan.hpp
-	src/RENDU_Scene.hpp
+#	src/RENDU_ListeElementPlan.hpp
+#	src/RENDU_Plan.hpp
+#	src/RENDU_Scene.hpp
 	src/RENDU_StaticTuile.hpp
-	src/RENDU_Surface.hpp
+#	src/RENDU_Surface.hpp
 	src/RENDU_Tuile.hpp
 	src/RENDU_VariablesGlobales.hpp	
 	
-	src/ETAT_EtatObserver.hpp
+#	src/ETAT_EtatObserver.hpp
 	
 	
 	src/main.cpp
@@ -53,18 +53,18 @@ add_executable(
 	src/FIGHT_Competence.cpp	
 	src/FIGHT_Personnage.cpp	
 	
-	src/RENDU_AnimatedTuile.cpp
-	src/RENDU_Animation.cpp
-	src/RENDU_DebugPlan.cpp
-	src/RENDU_EtatPlan.cpp
+#	src/RENDU_AnimatedTuile.cpp
+#	src/RENDU_Animation.cpp
+#	src/RENDU_DebugPlan.cpp
+#	src/RENDU_EtatPlan.cpp
 	src/RENDU_JeuDeTuile.cpp
-	src/RENDU_ListeElementPlan.cpp
-	src/RENDU_Plan.cpp
-	src/RENDU_Scene.cpp
+#	src/RENDU_ListeElementPlan.cpp
+#	src/RENDU_Plan.cpp
+#	src/RENDU_Scene.cpp
 	src/RENDU_StaticTuile.cpp
-	src/RENDU_Surface.cpp
+#	src/RENDU_Surface.cpp
 	
-	src/ETAT_EtatObserver.cpp
+#	src/ETAT_EtatObserver.cpp
 
 
 )

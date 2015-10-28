@@ -15,6 +15,7 @@ else
 	echo "Using custom SFML location"
 	cmake .. -DSFML_ROOT=$sfml_path
 fi
+make
 cd ../bin
 ./vandw
 

@@ -130,7 +130,7 @@ bool FIGHT_Competence::isAvailable(){
 	return this->utilisable;
 }
 
-FIGHT_NomCompetence getSkillName(){
+FIGHT_NomCompetence FIGHT_Competence::getSkillName(){
 	return this->competence;
 }
 

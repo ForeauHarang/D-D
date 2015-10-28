@@ -11,14 +11,30 @@ class RENDU_Tuile {
 		/*
 		 * Destructeur 
 		 */
-		virtual ~RENDU_Tuile();
+		virtual ~RENDU_Tuile()=0;
 		
 		/*
 		 * Methodes
-		 */ 
+		 */
+		virtual int const getX()=0;
+		virtual int const getY()=0;
+		virtual int const getWidth()=0;
+		virtual int const getHeight()=0;
+		
+		/*
+		 * Setters
+		 */
+		virtual void setX(int x)=0; 
+		virtual void setY(int y)=0;
+		virtual void setWidth(int largeur)=0;
+		virtual void setHeight(int hauteur)=0; 
+		
+		/*
+		 * Methodes
+		 */	 
 		virtual bool const isAnimated()=0;
 };
-#endif;
+#endif
 
 /*
 * Tableau de Tuiles :
