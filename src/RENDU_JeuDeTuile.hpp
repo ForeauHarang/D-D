@@ -13,6 +13,8 @@
 #include "FIGHT_Competence.hpp"
 #include "FIGHT_Carte.hpp"
 
+#include "RENDU_VariablesGlobales.hpp"
+
 //#define NOMBRETUILES 50 (????) dans variableglobales
 
 class RENDU_JeuDeTuile{

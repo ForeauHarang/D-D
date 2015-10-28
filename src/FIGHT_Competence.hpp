@@ -35,7 +35,7 @@ class FIGHT_Competence{
 		int getShield();
 		int getManaCost();
 		bool isAvailable();
-		
+		FIGHT_NomCompetence getSkillName();
 		/*
 		* setteurs
 		* */
