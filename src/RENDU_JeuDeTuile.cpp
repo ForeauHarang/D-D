@@ -6,7 +6,48 @@
  * Constructeur 
  */
 RENDU_JeuDeTuile::RENDU_JeuDeTuile(){
-	listeTuile[0]= new RENDU_StaticTuile(0,0,32,32); // humain1 premiere image
+	//Pour les personnages, on prend celui de face (1er ligne, 2e colonne)
+	listeTuile[0]= new RENDU_StaticTuile(0,0,32,32); // humain1 
+	listeTuile[1]= new RENDU_StaticTuile(121,0,32,32); // humain2
+	listeTuile[2]= new RENDU_StaticTuile(214,0,32,32); // loup_garou
+	listeTuile[3]= new RENDU_StaticTuile(309,0,32,32); // monstre
+	listeTuile[4]= new RENDU_StaticTuile(401,0,32,32); // guerrier
+	listeTuile[5]= new RENDU_StaticTuile(497,0,32,32); // sorcier
+	listeTuile[6]= new RENDU_StaticTuile(590,0,32,32); // vampire
+	listeTuile[7]= new RENDU_StaticTuile(689,0,32,32); // voleur
+	listeTuile[8]= new RENDU_StaticTuile(1,144,28,27); // boule_de_feu_1
+	listeTuile[9]= new RENDU_StaticTuile(47,137,36,37); // poulet
+	listeTuile[10]= new RENDU_StaticTuile(88,133,44,34); // coffre
+	listeTuile[11]= new RENDU_StaticTuile(159,135,39,33); // montagne
+	listeTuile[12]= new RENDU_StaticTuile(204,135,41,30); // herbe
+	listeTuile[13]= new RENDU_StaticTuile(258,136,36,45); // livre
+	listeTuile[14]= new RENDU_StaticTuile(313,136,59,35); // poignard
+	listeTuile[15]= new RENDU_StaticTuile(392,133,52,42); // sable
+	listeTuile[16]= new RENDU_StaticTuile(458,135,38,40); // roche
+	listeTuile[17]= new RENDU_StaticTuile(507,140,64,31); // fusil
+	listeTuile[18]= new RENDU_StaticTuile(585,138,49,40); // balle_argent
+	listeTuile[19]= new RENDU_StaticTuile(651,135,48,51); // bouclier
+	listeTuile[20]= new RENDU_StaticTuile(707,134,46,57); // poche_de_sang
+	listeTuile[21]= new RENDU_StaticTuile(2,185,30,27); // boule_de_feu_2
+	listeTuile[22]= new RENDU_StaticTuile(57,190,76,50); // route
+	listeTuile[23]= new RENDU_StaticTuile(156,174,41,72); // chemin
+	listeTuile[24]= new RENDU_StaticTuile(204,185,46,62); // arbre
+	listeTuile[25]= new RENDU_StaticTuile(257,187,52,45); // pistolet
+	listeTuile[26]= new RENDU_StaticTuile(329,180,27,52); // potion_rose
+	listeTuile[27]= new RENDU_StaticTuile(371,135,31,49); // potion_rouge
+	listeTuile[28]= new RENDU_StaticTuile(411,180,32,51); // potion_jaune
+	listeTuile[29]= new RENDU_StaticTuile(451,178,32,53); // potion_verte
+	listeTuile[30]= new RENDU_StaticTuile(488,179,30,50); // potion_bleue
+	listeTuile[31]= new RENDU_StaticTuile(535,184,56,40); // pieu
+	listeTuile[32]= new RENDU_StaticTuile(609,200,33,36); // vetement
+	listeTuile[33]= new RENDU_StaticTuile(668,200,33,36); // griffe
+	listeTuile[34]= new RENDU_StaticTuile(2,235,31,31); // boule_de_feu_3
+	listeTuile[35]= new RENDU_StaticTuile(274,237,36,29); // morsure
+	listeTuile[36]= new RENDU_StaticTuile(232,238,34,34); // kevlar
+	listeTuile[37]= new RENDU_StaticTuile(0,277,847,616); // carte_MAP
+	listeTuile[38]= new RENDU_StaticTuile(0,905,842,522); // carte_FIGHT
+	listeTuile[39]= new RENDU_StaticTuile(6,1443,466,372); // inventaire
+	listeTuile[40]= new RENDU_StaticTuile(500,1455,1,1); // pixel_blanc
 }
 
 /*
