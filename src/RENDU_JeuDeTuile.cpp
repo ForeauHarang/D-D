@@ -6,7 +6,7 @@
  * Constructeur 
  */
 RENDU_JeuDeTuile::RENDU_JeuDeTuile(){
-	
+	listeTuile[0]= new RENDU_StaticTuile(0,0,32,32); // humain1 premiere image
 }
 
 /*
