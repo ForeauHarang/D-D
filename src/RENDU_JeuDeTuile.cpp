@@ -24,7 +24,7 @@ const char* const RENDU_JeuDeTuile::getImageFile(){
 	return "../res/images/IMAGE.JPEG";
 }
 
-const RENDU_Tuile* const RENDU_JeuDeTuile::getElementTile( MAP_Carte carteMap){
+const RENDU_Tuile* const RENDU_JeuDeTuile::getElementTile(MAP_Carte carteMap){
 	return this->listeTuile[37];
 }
 

@@ -1,9 +1,5 @@
 #include "RENDU_Scene.hpp"
 
-#include "RENDU_Surface.hpp"
-#include "RENDU_Plan.hpp" 
-#include "RENDU_VariablesGlobales.hpp"
-
 /* include état */
 
 		/*int hauteur;
@@ -15,7 +11,7 @@
  * Constructeur 
  */
 RENDU_Scene::RENDU_Scene(){
-	
+	RenderWindow window(VideoMode::getDesktopMode();
 }
 
 /*
