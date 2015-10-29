@@ -10,7 +10,9 @@
 
 class MAP_Coffre{
 	private :
-		int idCoffre; // nom du coffre + coordonnées : exemple : idCoffre=12345678; x = 12345678/10000 = 1234; y = 12345678%10000=5678
+		int idCoffre; 
+		int x;
+		int y;
 		NomObjet nomObjet;
 		TypeObjet typeObjet;
 		
@@ -20,7 +22,7 @@ class MAP_Coffre{
 		* constructeurs
 		* */
 		
-		MAP_Coffre(int, NomObjet, TypeObjet);
+		MAP_Coffre(int idCoffre,int x,int y, NomObjet, TypeObjet);
 		
 		/*
 		* destructeurs
@@ -35,10 +37,14 @@ class MAP_Coffre{
 		NomObjet getNameItem();
 		TypeObjet getTypeItem();
 		int getChestId();
+		int getX();
+		int getY();
 		
 		/*
 		* setteurs
 		* */
+		void setX(int x);
+		void setY(int y);
 		
 		/*
 		* autres méthodes

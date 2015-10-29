@@ -14,8 +14,10 @@ public :
 * constructeurs
 * */
 
-MAP_Coffre::MAP_Coffre(int idCoffre, NomObjet nomObjet, TypeObjet typeObjet){
+MAP_Coffre::MAP_Coffre(int idCoffre, int x=0, int y=0, NomObjet nomObjet, TypeObjet typeObjet){
 	this->idCoffre=idCoffre;
+	this->x=x;
+	this->y=y;
 	this->nomObjet=nomObjet;
 	this->typeObjet=typeObjet;
 
@@ -48,9 +50,25 @@ TypeObjet MAP_Coffre::getTypeItem(){
 int MAP_Coffre::getChestId(){
 	return this->idCoffre;
 }
+
+int MAP_Coffre::getX(){
+	return this->x;
+}
+
+int MAP_Coffre::getY(){
+	return this-<y;
+}
 /*
 * setteurs
 * */
+
+void MAP_Coffre::setX(int x){
+	this->x=x;
+}
+
+void MAP_Coffre::setY(int y){
+	this->y=y;
+}
 
 /*
 * autres méthodes
