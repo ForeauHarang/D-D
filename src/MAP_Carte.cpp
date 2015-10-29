@@ -111,7 +111,7 @@ void MAP_Carte::removeQuest(MAP_Quete quete){
 
 
 void MAP_Carte::addChest(MAP_Coffre coffre){
-	listeCoffres[nombreCoffres]=new MAP_Coffre(coffre.getChestId(), coffre.getNameItem(), coffre.getTypeItem());
+	listeCoffres[nombreCoffres]=new MAP_Coffre(coffre.getChestId(),coffre.getX(), coffre.getY(), coffre.getNameItem(), coffre.getTypeItem());
 	nombreCoffres++;
 }
 

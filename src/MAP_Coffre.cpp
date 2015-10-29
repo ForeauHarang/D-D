@@ -14,7 +14,7 @@ public :
 * constructeurs
 * */
 
-MAP_Coffre::MAP_Coffre(int idCoffre, int x=0, int y=0, NomObjet nomObjet, TypeObjet typeObjet){
+MAP_Coffre::MAP_Coffre(int idCoffre, int x=0, int y=0, NomObjet nomObjet=PASDENOM, TypeObjet typeObjet=PASDETYPE){
 	this->idCoffre=idCoffre;
 	this->x=x;
 	this->y=y;
@@ -56,7 +56,7 @@ int MAP_Coffre::getX(){
 }
 
 int MAP_Coffre::getY(){
-	return this-<y;
+	return this->y;
 }
 /*
 * setteurs

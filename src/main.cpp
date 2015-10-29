@@ -3,6 +3,7 @@
 #include "FIGHT_Carte.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+//using namespace sf;
 /*
 int main()
 {
@@ -17,10 +18,8 @@ int main()
 		
 int main(int argc, char* argv[]) {
 //	cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
-<<<<<<< HEAD
-/*
-	sf::Window screen(sf::VideoMode(800, 600), "W&V");
-=======
+	sf::RenderWindow screen(sf::VideoMode(800, 600), "W&V");
+
 
 	/*MAP_Carte carte1 = new MAP_Carte();
 	RENDU_Scene scene1 = new RENDU_Scene();
@@ -31,26 +30,31 @@ int main(int argc, char* argv[]) {
 	carte1.addChest(coffre1);
 	
 	scene1->plan[0].setCarteMap(carte1);*/
-	
+
 	/* Récupérer l'image */
-	sf::Image image;
-	Image.LoadFromFile("IMAGE.jpeg");
+	sf::Texture texture;
+	texture.loadFromFile("../res/images/IMAGE.jpg");
 	
 	/* Créer une partie de l'image */
 	sf::Sprite carte;
-	carte.setImage(image);
+	carte.setTexture(texture);
 	
 	/* Découper l'image */
-	carte.SetSubRect(sf::IntRect(0, 277, 847, 616));
-
-	sf::Window screen(sf::VideoMode(800, 600), "myproject");
->>>>>>> ac3c965e707f1846c155301e959e61165309bbff
-	bool running = true;
-	while (running) {
+	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));
+	
+		bool running = true;
+		while (running) {
+		screen.draw(carte);
 		screen.display();
 		
+		
+		
 		screen.clear();
-	}	 
-*/
+	}	
+	
+	//sf::Window screen(sf::VideoMode(800, 600), "myproject");
+	
+ 
+
 	return 67;
 }
