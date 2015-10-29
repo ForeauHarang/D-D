@@ -121,6 +121,8 @@ RENDU_JeuDeTuile.hpp
 /home/gabriel/projects/D-D/src/RENDU_JeuDeTuile.hpp
 
 /home/gabriel/projects/D-D/src/RENDU_JeuDeTuile.hpp
+RENDU_VariablesGlobales.hpp
+/home/gabriel/projects/D-D/src/RENDU_VariablesGlobales.hpp
 MAP_Carte.hpp
 /home/gabriel/projects/D-D/src/MAP_Carte.hpp
 MAP_InventairePersonnage.hpp
@@ -137,16 +139,22 @@ FIGHT_Competence.hpp
 /home/gabriel/projects/D-D/src/FIGHT_Competence.hpp
 FIGHT_Carte.hpp
 /home/gabriel/projects/D-D/src/FIGHT_Carte.hpp
-RENDU_VariablesGlobales.hpp
-/home/gabriel/projects/D-D/src/RENDU_VariablesGlobales.hpp
 RENDU_Tuile.hpp
 /home/gabriel/projects/D-D/src/RENDU_Tuile.hpp
+RENDU_StaticTuile.hpp
+/home/gabriel/projects/D-D/src/RENDU_StaticTuile.hpp
 
 /home/gabriel/projects/D-D/src/RENDU_StaticTuile.cpp
 RENDU_StaticTuile.hpp
 /home/gabriel/projects/D-D/src/RENDU_StaticTuile.hpp
 
 /home/gabriel/projects/D-D/src/RENDU_StaticTuile.hpp
+RENDU_VariablesGlobales.hpp
+/home/gabriel/projects/D-D/src/RENDU_VariablesGlobales.hpp
+RENDU_Tuile.hpp
+/home/gabriel/projects/D-D/src/RENDU_Tuile.hpp
+
+/home/gabriel/projects/D-D/src/RENDU_Tuile.cpp
 RENDU_Tuile.hpp
 /home/gabriel/projects/D-D/src/RENDU_Tuile.hpp
 
@@ -155,11 +163,17 @@ RENDU_Tuile.hpp
 /home/gabriel/projects/D-D/src/RENDU_VariablesGlobales.hpp
 string
 -
+iostream
+-
 fstream
 -
 vector
 -
 cstdlib
+-
+SFML/Graphics.hpp
+-
+SFML/Window.hpp
 -
 
 /home/gabriel/projects/D-D/src/main.cpp
@@ -170,5 +184,7 @@ MAP_Carte.hpp
 FIGHT_Carte.hpp
 /home/gabriel/projects/D-D/src/FIGHT_Carte.hpp
 SFML/Graphics.hpp
+-
+SFML/Window.hpp
 -
 

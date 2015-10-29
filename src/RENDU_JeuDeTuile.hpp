@@ -2,7 +2,7 @@
 #define RENDU_JeuDeTuile_HPP
 
 /* include ETAT */
-
+#include "RENDU_VariablesGlobales.hpp"
 #include "MAP_Carte.hpp"
 #include "MAP_InventairePersonnage.hpp"
 #include "MAP_Personnage.hpp"
@@ -13,10 +13,11 @@
 #include "FIGHT_Competence.hpp"
 #include "FIGHT_Carte.hpp"
 
-#include "RENDU_VariablesGlobales.hpp"
-#include "RENDU_Tuile.hpp"
 
-//#define NOMBRETUILES 50 (????) dans variableglobales
+#include "RENDU_Tuile.hpp"
+#include "RENDU_StaticTuile.hpp"
+
+
 
 class RENDU_JeuDeTuile{
 	private :

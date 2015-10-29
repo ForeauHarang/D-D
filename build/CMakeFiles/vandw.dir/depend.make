@@ -67,12 +67,17 @@ CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/MAP_Quete.hpp
 CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/MAP_VariablesGlobales.hpp
 CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/RENDU_JeuDeTuile.cpp
 CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/RENDU_JeuDeTuile.hpp
+CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/RENDU_StaticTuile.hpp
 CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/RENDU_Tuile.hpp
 CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o: ../src/RENDU_VariablesGlobales.hpp
 
 CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.o: ../src/RENDU_StaticTuile.cpp
 CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.o: ../src/RENDU_StaticTuile.hpp
 CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.o: ../src/RENDU_Tuile.hpp
+CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.o: ../src/RENDU_VariablesGlobales.hpp
+
+CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.o: ../src/RENDU_Tuile.cpp
+CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.o: ../src/RENDU_Tuile.hpp
 
 CMakeFiles/vandw.dir/src/main.cpp.o: ../src/FIGHT_Carte.hpp
 CMakeFiles/vandw.dir/src/main.cpp.o: ../src/FIGHT_Competence.hpp

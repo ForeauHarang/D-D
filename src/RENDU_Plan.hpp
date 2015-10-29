@@ -39,7 +39,13 @@ class RENDU_Plan{
 		
 		/*
 		 * Methodes
-		 */  
+		 * perso
+		 * Srpite sprite;
+		 * setpos = perso.x,y
+		 * sprite.loadfromfile(getelementtile(perso)
+		*/
+		
+		 
 		//void printText(int x, int y, const char* msg, int spriteIdx, int w, int h);
 		//void sync(int64_t temps);
 		//void update(int64_t temps);

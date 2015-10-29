@@ -15,6 +15,7 @@
 using std::string;
 
 enum ScenePlan { GRILLE_PLAN, ETAT_PLAN, DEBUG_PLAN };
-RenderWindow window;
+//RenderWindow window;
+
 
 #endif

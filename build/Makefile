@@ -379,6 +379,30 @@ src/RENDU_StaticTuile.cpp.s:
 	$(MAKE) -f CMakeFiles/vandw.dir/build.make CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.s
 .PHONY : src/RENDU_StaticTuile.cpp.s
 
+src/RENDU_Tuile.o: src/RENDU_Tuile.cpp.o
+.PHONY : src/RENDU_Tuile.o
+
+# target to build an object file
+src/RENDU_Tuile.cpp.o:
+	$(MAKE) -f CMakeFiles/vandw.dir/build.make CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.o
+.PHONY : src/RENDU_Tuile.cpp.o
+
+src/RENDU_Tuile.i: src/RENDU_Tuile.cpp.i
+.PHONY : src/RENDU_Tuile.i
+
+# target to preprocess a source file
+src/RENDU_Tuile.cpp.i:
+	$(MAKE) -f CMakeFiles/vandw.dir/build.make CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.i
+.PHONY : src/RENDU_Tuile.cpp.i
+
+src/RENDU_Tuile.s: src/RENDU_Tuile.cpp.s
+.PHONY : src/RENDU_Tuile.s
+
+# target to generate assembly for a file
+src/RENDU_Tuile.cpp.s:
+	$(MAKE) -f CMakeFiles/vandw.dir/build.make CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.s
+.PHONY : src/RENDU_Tuile.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -445,6 +469,9 @@ help:
 	@echo "... src/RENDU_StaticTuile.o"
 	@echo "... src/RENDU_StaticTuile.i"
 	@echo "... src/RENDU_StaticTuile.s"
+	@echo "... src/RENDU_Tuile.o"
+	@echo "... src/RENDU_Tuile.i"
+	@echo "... src/RENDU_Tuile.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

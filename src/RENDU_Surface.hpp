@@ -1,6 +1,8 @@
 #ifndef RENDU_Surface_HPP
 #define RENDU_Surface_HPP
 
+#include "RENDU_VariablesGlobales.hpp"
+
 class RENDU_Surface{
 		
 	public:
@@ -18,7 +20,7 @@ class RENDU_Surface{
 		/*
 		 * Methodes
 		 */  
-		void clear();// nettoie une fenetre
+		void clear(sf::Window window);// nettoie une fenetre
 		void loadTexture(const char* imageFile);
 		
 		/*

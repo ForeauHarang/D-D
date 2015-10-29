@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/vandw.dir/src/FIGHT_Personnage.cpp.o"
   "CMakeFiles/vandw.dir/src/RENDU_JeuDeTuile.cpp.o"
   "CMakeFiles/vandw.dir/src/RENDU_StaticTuile.cpp.o"
+  "CMakeFiles/vandw.dir/src/RENDU_Tuile.cpp.o"
   "../bin/vandw.pdb"
   "../bin/vandw"
 )

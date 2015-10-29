@@ -1,6 +1,7 @@
 #ifndef RENDU_StaticTuile_HPP
 #define RENDU_StaticTuile_HPP
 
+#include "RENDU_VariablesGlobales.hpp"
 #include "RENDU_Tuile.hpp"
 
 class RENDU_StaticTuile : public RENDU_Tuile{
@@ -10,7 +11,6 @@ class RENDU_StaticTuile : public RENDU_Tuile{
 		int y;
 		int hauteur;
 		int largeur;
-		
 	public:
 		/*
 		 * Constructeur 
@@ -26,7 +26,7 @@ class RENDU_StaticTuile : public RENDU_Tuile{
 		/*
 		 * Destructeur 
 		 */
-		~RENDU_StaticTuile();
+		~RENDU_StaticTuile(){}
 		
 		/*
 		 * Getters
