@@ -26,7 +26,7 @@ RENDU_Animation::RENDU_Animation(int i, int x, int y, const RENDU_Tuile* a){
 /*
  * Destructeur 
  */
-~RENDU_Animation::RENDU_Animation(){
+RENDU_Animation::~RENDU_Animation(){
 	
 }
 

@@ -14,7 +14,7 @@ RENDU_EtatPlan::RENDU_EtatPlan(){
 /*
  * Destructeur 
  */
-~RENDU_EtatPlan::RENDU_EtatPlan(){
+RENDU_EtatPlan::~RENDU_EtatPlan(){
 	
 }
 

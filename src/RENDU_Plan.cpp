@@ -1,9 +1,5 @@
 #include "RENDU_Scene.hpp"
 
-#include "RENDU_JeuDeTuile.hpp"
-#include "RENDU_Animation.hpp" 
-#include "RENDU_Surface.hpp"
-
 /*
 	//animations ?
 	const RENDU_JeuDeTuile* jeuDeTuile;
@@ -13,12 +9,16 @@
 /*
  * Constructeur 
  */
-RENDU_Plan::RENDU_Plan();
+RENDU_Plan::RENDU_Plan(){
+	
+}
 
 /*
  * Destructeur 
  */
-~RENDU_Plan::RENDU_Plan();
+RENDU_Plan::~RENDU_Plan(){
+	
+}
 
 /*
  * Getters
@@ -36,19 +36,11 @@ void RENDU_Plan::setTileSet(const RENDU_JeuDeTuile* jeuDeTuile){
 void RENDU_Plan::setSurface(RENDU_Surface* surface){
 	this->surface=surface;
 }
-void RENDU_Plan::setAnimation(int i, RENDU_Animation* a){
-	//TODO
-}
+//void RENDU_Plan::setAnimation(int i, RENDU_Animation* a){}
 
 /*
  * Methodes
  */  
-void RENDU_Plan::printText(int x, int y, const char* msg, int spriteIdx, int w, int h){
-	//TODO
-}
-void RENDU_Plan::sync(int64_t temps){
-	//TODO
-}
-void RENDU_Plan::update(int64_t temps){
-	//TODO
-}
+//void RENDU_Plan::printText(int x, int y, const char* msg, int spriteIdx, int w, int h){}
+//void RENDU_Plan::sync(int64_t temps){}
+//void RENDU_Plan::update(int64_t temps){}
