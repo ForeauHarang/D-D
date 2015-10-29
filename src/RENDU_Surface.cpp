@@ -10,7 +10,7 @@ RENDU_Surface::RENDU_Surface(){
 /*
  * Destructeur 
  */
-~RENDU_Surface::RENDU_Surface(){
+RENDU_Surface::~RENDU_Surface(){
 	
 }
 

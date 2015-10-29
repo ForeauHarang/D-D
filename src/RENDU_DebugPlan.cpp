@@ -14,7 +14,7 @@ RENDU_DebugPlan::RENDU_DebugPlan(){
 /*
  * Destructeur 
  */
-~RENDU_DebugPlan::RENDU_DebugPlan(){
+RENDU_DebugPlan::~RENDU_DebugPlan(){
 	
 }
 

@@ -8,7 +8,7 @@
 class RENDU_Plan{
 
 	private:
-		//animations ?
+		//animation
 	
 	protected:
 		const RENDU_JeuDeTuile* jeuDeTuile;

@@ -15,7 +15,7 @@ RENDU_AnimatedTuile::RENDU_AnimatedTuile(float taux=10){
 /*
  * Destructeur 
  */
-~RENDU_AnimatedTuile::RENDU_AnimatedTuile();
+RENDU_AnimatedTuile::~RENDU_AnimatedTuile();
 
 /*
  * Getters
