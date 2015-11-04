@@ -69,6 +69,8 @@ set(FIND_SFML_PATHS
     /usr/local
     /usr
     /usr/SFML
+    /usr/lsa
+    /usr/lsa/SFML
     /sw
     /opt/local
     /opt/csw
