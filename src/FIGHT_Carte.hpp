@@ -8,7 +8,7 @@ class FIGHT_Carte{
 	private : 
 		int nombreGentils;
 		int nombreMechants;
-		FIGHT_Personnage* listePersonnages[];
+		FIGHT_Personnage* listePersonnages[NBPERSO];
 		int nombreTotal;
 		
 		

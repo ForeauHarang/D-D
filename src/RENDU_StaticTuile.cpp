@@ -50,7 +50,7 @@ int const RENDU_StaticTuile::getWidth(){
 }
 
 int const RENDU_StaticTuile::getHeight(){
-	this->hauteur;
+	return this->hauteur;
 }
 
 /*

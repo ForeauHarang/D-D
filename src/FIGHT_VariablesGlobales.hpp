@@ -5,6 +5,7 @@
 #include <iostream>
 
 #define NOMBRECOMPETENCES 6
+#define NBPERSO 6
 
 using std::string;
 

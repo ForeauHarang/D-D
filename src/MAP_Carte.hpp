@@ -9,9 +9,9 @@
 class MAP_Carte{
 	private :
 		int idCarte;
-		MAP_Personnage* listePersonnages[];
-		MAP_Quete* listeQuetes[];
-		MAP_Coffre* listeCoffres[];
+		MAP_Personnage* listePersonnages[NBPERSO];
+		MAP_Quete* listeQuetes[NBQUETES];
+		MAP_Coffre* listeCoffres[NBCOFFRES];
 		int* listeElementsInfranchissables;
 		int nombrePersonnages;
 		int nombreQuetes;

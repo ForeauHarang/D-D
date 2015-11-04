@@ -8,7 +8,7 @@
 
 class FIGHT_Personnage{
 	private :
-		FIGHT_Competence* listeCompetences[]; // cf fin du header
+		FIGHT_Competence* listeCompetences[NOMBRECOMPETENCES]; // cf fin du header
 		int* caracteristiques; // cf fin du header
 		FIGHT_Race race;
 		FIGHT_Groupe groupe;

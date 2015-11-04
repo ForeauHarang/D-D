@@ -37,7 +37,7 @@ FIGHT_Carte::FIGHT_Carte(int nbGentils, int nbMechants, FIGHT_Personnage* tablea
 * */
 
 FIGHT_Carte::~FIGHT_Carte(){
-	delete[] listePersonnages[nombreTotal];
+	delete[] listePersonnages[NBPERSO];
 }
 
 /*

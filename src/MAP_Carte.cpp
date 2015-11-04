@@ -36,10 +36,10 @@ MAP_Carte::MAP_Carte(int idCarte){
 MAP_Carte::~MAP_Carte(){
 	int i=0;
 	MAP_Personnage* temp = 0;
-	delete[] listePersonnages[nombrePersonnages];
+	delete[] listePersonnages[NBPERSO];
 
-	delete[] listeQuetes[nombreQuetes];
-	delete[] listeCoffres[nombreCoffres];
+	delete[] listeQuetes[NBQUETES];
+	delete[] listeCoffres[NBCOFFRES];
 	
 }
 
