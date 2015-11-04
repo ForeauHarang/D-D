@@ -1,10 +1,10 @@
 #include "RENDU_StaticTuile.hpp"
 
 
-		/*int x;
-		int y;
-		int hauteur;
-		int largeur;*/
+/*int x;
+int y;
+int hauteur;
+int largeur;*/
 		
 /*
  * Constructeur 
