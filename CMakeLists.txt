@@ -7,6 +7,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ../bin)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lsfml-graphics -lsfml-window -lsfml-system")
 add_executable(
 	vandw
 		
@@ -39,6 +40,7 @@ add_executable(
 	
 #	src/ETAT_EtatObserver.hpp
 	
+	src/TileMap.hpp
 	
 	src/main.cpp
 	
@@ -64,6 +66,8 @@ add_executable(
 	src/RENDU_StaticTuile.cpp
 #	src/RENDU_Surface.cpp
 	src/RENDU_Tuile.cpp
+	
+	src/TileMap.cpp
 	
 #	src/ETAT_EtatObserver.cpp
 

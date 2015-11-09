@@ -7,7 +7,9 @@
 #include <vector>
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Window.hpp>
+#include <cstdio>
 
 
 #define NOMBRETUILES 41

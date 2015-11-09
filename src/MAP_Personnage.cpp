@@ -42,6 +42,7 @@ MAP_Personnage::MAP_Personnage(Race race, Profession profession, Groupe groupe, 
 	this->groupe=groupe;
 	this->inventaire=inventaire;
 	this->idPersonnage=nom;
+	
 }
 MAP_Personnage::MAP_Personnage(string nom){
 	int carac[NOMBRECARAC] ;
@@ -75,6 +76,13 @@ MAP_Personnage::~MAP_Personnage(){
  * getteurs
  * */
 
+int MAP_Personnage::getX(){
+	return this->caracteristiques[7];
+}
+int MAP_Personnage::getY(){
+	return this->caracteristiques[8];
+}
+
 int* MAP_Personnage::getCharacteristics(){
 	return this->caracteristiques;
 }
@@ -104,6 +112,12 @@ MAP_InventairePersonnage MAP_Personnage::getInventory(){
  
 void MAP_Personnage::set1characteristicto(int numeroCarac, int nouvelleValeur){
 	this->caracteristiques[numeroCarac]=nouvelleValeur;
+}
+void MAP_Personnage::setX(int x){
+	this->caracteristiques[7]=x;
+}
+void MAP_Personnage::setY(int y){
+	this->caracteristiques[8]=y;
 }
 
 /*

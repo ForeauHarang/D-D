@@ -35,7 +35,10 @@ class MAP_Personnage{
 			/*
 			 * getteurs
 			 * */
-		
+
+			int getX();
+			int getY();
+			
 			int* getCharacteristics();
 			Race getRace();
 			Profession getJob();
@@ -48,7 +51,8 @@ class MAP_Personnage{
 			 * */
 			 
 			void set1characteristicto(int numeroCarac, int nouvelleValeur);
-			
+			void setX(int x);
+			void setY(int y);
 			/*
 			 * autres méthodes
 			 * */

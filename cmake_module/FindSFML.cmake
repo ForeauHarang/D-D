@@ -69,13 +69,8 @@ set(FIND_SFML_PATHS
     /usr/local
     /usr
     /usr/SFML
-<<<<<<< HEAD
-	/usr/lsa
-	/usr/lsa/SFML
-=======
     /usr/lsa
     /usr/lsa/SFML
->>>>>>> e7c727f91c3b0ff57b080b22c9b31764967a6cea
     /sw
     /opt/local
     /opt/csw
