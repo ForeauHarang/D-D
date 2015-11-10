@@ -25,7 +25,7 @@ class MAP_Carte{
 		 * */
 		 
 		 MAP_Carte(int idCarte);
-		 
+		 MAP_Carte();
 		 /*
 		  * destructeurs
 		  * */
@@ -46,7 +46,7 @@ class MAP_Carte{
 		 * liste des setteurs
 		 * */
 		 
-		void addCharacter(MAP_Personnage);
+		void addCharacter(MAP_Personnage*);
 		void removeCharacter(MAP_Personnage);
 		
 		void addQuest(MAP_Quete);

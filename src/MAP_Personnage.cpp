@@ -16,51 +16,48 @@ private :
  * constructeurs
  * */
  
-MAP_Personnage::MAP_Personnage(int carac[NOMBRECARAC] , Race race, Profession profession, Groupe groupe, MAP_InventairePersonnage inventaire, string nom){
-	this->caracteristiques=carac;
+MAP_Personnage::MAP_Personnage(int carac[NOMBRECARAC] , Race race, Profession profession, Groupe groupe,string nom){// MAP_InventairePersonnage inventaire, string nom){
+
 	this->race=race;
 	this->profession=profession;
 	this->groupe=groupe;
-	this->inventaire=inventaire;
+	//this->inventaire=inventaire;
 	this->idPersonnage=nom;
 }
-MAP_Personnage::MAP_Personnage(Race race, Profession profession, Groupe groupe, MAP_InventairePersonnage inventaire, string nom){
-	int carac[NOMBRECARAC] ;
-	carac[0]=10;
-	carac[1]=10;
-	carac[2]=10;
-	carac[3]=1;
-	carac[4]=0;
-	carac[5]=100;
-	carac[6]=0;
-	carac[7]=0;
-	carac[8]=0;
+MAP_Personnage::MAP_Personnage(Race race, Profession profession, Groupe groupe,string nom){// MAP_InventairePersonnage inventaire, string nom){
+	caracteristiques[0]=10;
+	caracteristiques[1]=10;
+	caracteristiques[2]=10;
+	caracteristiques[3]=1;
+	caracteristiques[4]=0;
+	caracteristiques[5]=100;
+	caracteristiques[6]=0;
+	caracteristiques[7]=0;
+	caracteristiques[8]=0;
 	
-	this->caracteristiques=carac;
 	this->race=race;
 	this->profession=profession;
 	this->groupe=groupe;
-	this->inventaire=inventaire;
+	//this->inventaire=inventaire;
 	this->idPersonnage=nom;
 	
 }
 MAP_Personnage::MAP_Personnage(string nom){
-	int carac[NOMBRECARAC] ;
-	carac[0]=10;
-	carac[1]=10;
-	carac[2]=10;
-	carac[3]=1;
-	carac[4]=0;
-	carac[5]=100;
-	carac[6]=0;
-	carac[7]=0;
-	carac[8]=0;
+	caracteristiques[0]=10;
+	caracteristiques[1]=10;
+	caracteristiques[2]=10;
+	caracteristiques[3]=1;
+	caracteristiques[4]=0;
+	caracteristiques[5]=100;
+	caracteristiques[6]=0;
+	caracteristiques[7]=0;
+	caracteristiques[8]=0;
 	
-	this->caracteristiques=carac;
 	this->race=HUMAIN;
 	this->profession=SOLDAT;
 	this->groupe=NEUTRE;
 	this->idPersonnage=nom;
+	//this->inventaire=MAP_InventairePersonnage();
 	
 }
  
@@ -69,7 +66,7 @@ MAP_Personnage::MAP_Personnage(string nom){
  * */
   
 MAP_Personnage::~MAP_Personnage(){
-	this->inventaire.~MAP_InventairePersonnage();
+	//this->inventaire.~MAP_InventairePersonnage();
 }
 
 /*
@@ -102,10 +99,11 @@ Groupe MAP_Personnage::getGroup(){
 string MAP_Personnage::getCharacterId(){
 	return this->idPersonnage;
 }
+/*
 MAP_InventairePersonnage MAP_Personnage::getInventory(){
 	return this->inventaire;
 }
-
+*/
 /*
  * setteurs
  * */
@@ -123,7 +121,7 @@ void MAP_Personnage::setY(int y){
 /*
  * autres méthodes
  * */
-
+/*
 void MAP_Personnage::openInventory(){
 	this->inventaire.openInventory();
 }
@@ -132,3 +130,4 @@ void MAP_Personnage::closeInventory(){
 	this->inventaire.closeInventory();
 	
 }
+*/

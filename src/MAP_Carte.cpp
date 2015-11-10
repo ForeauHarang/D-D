@@ -28,7 +28,18 @@ MAP_Carte::MAP_Carte(int idCarte){
 	this->idCarte=idCarte;
 	
 }
-
+MAP_Carte::MAP_Carte(){
+	//string strtemp="none";
+	/*for (i=0;i<NOMBREPERSOMAX;i++){
+		this->listePersonnages[i]=new MAP_Personnage(strtemp);
+	}*/
+	this->nombrePersonnages=0;
+	this->nombreQuetes=0;
+	this->nombreCoffres=0;
+	this->nombreElementsInfranchissables=0;
+	this->idCarte=0;
+	
+}
 /*
  * destructeurs
  * */
@@ -67,8 +78,8 @@ int* MAP_Carte::getListImpassableElement(){
  * liste des setteurs
  * */
  
-void MAP_Carte::addCharacter(MAP_Personnage perso){
-	listePersonnages[nombrePersonnages]=new MAP_Personnage(perso.getCharacteristics(), perso.getRace(), perso.getJob(), perso.getGroup(), perso.getInventory(), perso.getCharacterId());
+void MAP_Carte::addCharacter(MAP_Personnage *perso){
+	listePersonnages[nombrePersonnages]=perso;//new MAP_Personnage(perso.getCharacteristics(), perso.getRace(), perso.getJob(), perso.getGroup(), perso.getCharacterId());//perso.getInventory(), perso.getCharacterId());
 	nombrePersonnages++;
 }
 

@@ -9,11 +9,11 @@
 
 class MAP_Personnage{
 	private :
-		int* caracteristiques; // cf fin du header
+		int caracteristiques[NOMBRECARAC]; // cf fin du header
 		Race race;
 		Profession profession;
 		Groupe groupe;
-		MAP_InventairePersonnage inventaire;	
+//		MAP_InventairePersonnage inventaire;	
 		std::string idPersonnage;
 		
 	public :
@@ -22,8 +22,8 @@ class MAP_Personnage{
 			 * constructeurs
 			 * */
 			 
-			MAP_Personnage(int[NOMBRECARAC], Race, Profession, Groupe, MAP_InventairePersonnage, string);
-			MAP_Personnage(Race, Profession, Groupe, MAP_InventairePersonnage, string);
+			MAP_Personnage(int[NOMBRECARAC], Race, Profession, Groupe,string);// MAP_InventairePersonnage, string);
+			MAP_Personnage(Race, Profession, Groupe,string);// MAP_InventairePersonnage, string);
 			MAP_Personnage(string);
 			 
 			/*
@@ -44,7 +44,7 @@ class MAP_Personnage{
 			Profession getJob();
 			Groupe getGroup();
 			string getCharacterId();
-			MAP_InventairePersonnage getInventory();
+//			MAP_InventairePersonnage getInventory();
 			
 			/*
 			 * setteurs

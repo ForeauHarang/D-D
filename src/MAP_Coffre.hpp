@@ -50,7 +50,7 @@ class MAP_Coffre{
 		* autres méthodes
 		* */
 		
-		void transfert(MAP_Personnage);
+		//void transfert(MAP_Personnage);
 		
 };
 

@@ -73,8 +73,9 @@ void MAP_Coffre::setY(int y){
 /*
 * autres méthodes
 * */
-
+/*
 void MAP_Coffre::transfert(MAP_Personnage personnage){
 	personnage.getInventory().addItemInBag(this->typeObjet,this->nomObjet);
 	this->~MAP_Coffre();
 }
+*/
