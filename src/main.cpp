@@ -226,13 +226,15 @@ void moteurJeu(){
 		}
 	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
 		
-		if(map1.getListCharacters()[0].getX()>48*TAILLEBLOC) map1.getListCharacters()[0].setX(48*TAILLEBLOC);// le personnage ne peut pas aller hors de l'ecran
+		if(map1.getListCharacters()[0].getX()>48*TAILLEBLOC) map1.getListCharacters()[0].setX(48*TAILLEBLOC);// le personnage ne peut pas aller hors de l'ecran //commandetemp = commande(deplacement, droite,persoPrincipal), addCommand(commandetemp)
 		if(map1.getListCharacters()[0].getX()<0) map1.getListCharacters()[0].setX(0); // le personnage ne peut pas aller hors de l'ecran
 		if(map1.getListCharacters()[0].getY()<0) map1.getListCharacters()[0].setY(0); // le personnage ne peut pas aller hors de l'ecran
 		if(map1.getListCharacters()[0].getY()>34*TAILLEBLOC) map1.getListCharacters()[0].setY(34*TAILLEBLOC); // le personnage ne peut pas aller hors de l'ecran
 		
 		//quitter la fenetre
 		
+		
+		// 				//commandCheck; if istrue => send engine; else delete // engine : exec commande
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
 			window.close();
 		}
