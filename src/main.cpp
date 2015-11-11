@@ -65,8 +65,8 @@ const int level[] =
 // on crée la tilemap avec le niveau précédemment défini
 TileMap map;
 
-	int id=1;
-	MAP_Carte map1 = MAP_Carte(id);
+int id=1;
+MAP_Carte map1 = MAP_Carte(id);
 
 void rendu();//MAP_Carte map1);
 void moteurJeu();
@@ -126,6 +126,8 @@ int main()
 //	return 67;
 //}
 
+bool windowOpen=true;
+
 int main()
 {
 	
@@ -164,7 +166,7 @@ int main()
 		rendu();//map1);
  //   }
 		moteurJeu();
-	
+		if(windowOpen==false) break;
 	}
     return 0;
 }
@@ -188,8 +190,6 @@ void rendu(){//MAP_Carte map1){
 	sf::Event event;
 //	while (window.pollEvent(event))
 //	{
-		if(event.type == sf::Event::Closed)
-			window.close();
 		
 		//perso.setPosition(persoPrincipal.getX(),persoPrincipal.getY());
 		
@@ -231,14 +231,21 @@ void moteurJeu(){
 		if(map1.getListCharacters()[0].getY()<0) map1.getListCharacters()[0].setY(0); // le personnage ne peut pas aller hors de l'ecran
 		if(map1.getListCharacters()[0].getY()>34*TAILLEBLOC) map1.getListCharacters()[0].setY(34*TAILLEBLOC); // le personnage ne peut pas aller hors de l'ecran
 		
-		//quitter la fenetre
-		
-		
 		// 				//commandCheck; if istrue => send engine; else delete // engine : exec commande
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ //quitter la fenetre
 			window.close();
+			windowOpen=false;
 		}
 		
 	}
 	
 }
+
+
+/*
+ * commande : 	Z : aller en haut
+ * 				Q : aller à gauche
+ * 				S : aller en bas
+ * 				D : aller à droite
+ * 				F : fermer la fenetre
+ */
