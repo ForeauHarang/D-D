@@ -136,8 +136,6 @@ int main()
 	MAP_Personnage persoPrincipal=MAP_Personnage(bob);//hum, sold, gentil, inventairePrincipal, bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
 	persoPrincipal.setX(300);
-	std::cout<<persoPrincipal.getX()<<std::endl;
-	//std::cout<<persoPrincipal->getX()<<std::endl;
 	persoPrincipal.setY(250);
 	map1.addCharacter(ptrpersoPrincipal);
 	/*
@@ -185,13 +183,15 @@ void rendu(){//MAP_Carte map1){
 	std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
 	
 	
-//	sf::Event event;
+	sf::Event event;
 //	while (window.pollEvent(event))
 //	{
-//		if(event.type == sf::Event::Closed)
-//			window.close();
+		if(event.type == sf::Event::Closed)
+			window.close();
 		
 		//perso.setPosition(persoPrincipal.getX(),persoPrincipal.getY());
+		
+		
 		perso.setPosition(x,y);
 //	}
 	    window.clear();
@@ -201,9 +201,16 @@ void rendu(){//MAP_Carte map1){
 }
 
 void moteurJeu(){
+
+	
 	bool ordre=true;
 	if(ordre){
-		map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+		
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
+		}
+	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
 		
 		if(map1.getListCharacters()[0].getX()>60) map1.getListCharacters()[0].setX(20); // le personnage bouge
 		
