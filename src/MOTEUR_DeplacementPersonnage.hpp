@@ -45,6 +45,6 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		 * Methodes
 		 */ 
 		 
-		 void apply();
+		 void apply() override;
 };
 #endif
