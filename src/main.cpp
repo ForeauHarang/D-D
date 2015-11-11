@@ -235,6 +235,8 @@ void moteurJeu(){
 			//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()+TAILLEBLOC);
 		}
 	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
+		if(actionDon) action.apply();
+		actionDon=false;
 		
 		if(map1.getListCharacters()[0].getX()>48*TAILLEBLOC) map1.getListCharacters()[0].setX(48*TAILLEBLOC);// le personnage ne peut pas aller hors de l'ecran //commandetemp = commande(deplacement, droite,persoPrincipal), addCommand(commandetemp)
 		if(map1.getListCharacters()[0].getX()<0) map1.getListCharacters()[0].setX(0); // le personnage ne peut pas aller hors de l'ecran
@@ -247,8 +249,7 @@ void moteurJeu(){
 			windowOpen=false;
 		}
 		
-		if(actionDon) action.apply();
-		actionDon=false;
+
 	}
 	
 }
