@@ -7,7 +7,13 @@
 #include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
 
+#include "MOTEUR_DeplacementPersonnage.hpp"
+
+
 #define TAILLEBLOC 16
+
+MOTEUR_DeplacementPersonnage action;
+bool actionDon = false;
 
 //on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
 int herbe0=96;
@@ -208,21 +214,25 @@ void moteurJeu(){
 	bool ordre=true;
 	if(ordre){
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		
+			action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,&(map1.getListCharacters()[0]));
+			actionDon=true;
     // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+TAILLEBLOC);
+			//map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+TAILLEBLOC);
 		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-		
+			action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,&(map1.getListCharacters()[0]));
+			actionDon=true;
     // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()-TAILLEBLOC);
+			//map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()-TAILLEBLOC);
 		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		
+			action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,&(map1.getListCharacters()[0]));
+			actionDon=true;
     // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
+			//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
 		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-		
+			action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,&(map1.getListCharacters()[0]));
+			actionDon=true;		
     // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()+TAILLEBLOC);
+			//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()+TAILLEBLOC);
 		}
 	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
 		
@@ -237,6 +247,8 @@ void moteurJeu(){
 			windowOpen=false;
 		}
 		
+		if(actionDon) action.apply();
+		actionDon=false;
 	}
 	
 }

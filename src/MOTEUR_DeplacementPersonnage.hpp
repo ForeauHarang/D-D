@@ -32,10 +32,10 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		/*
 		 * Getters
 		 */
-		int const getX();
-		int const getY();
-		int const getDX();
-		int const getDY();
+		int getX();
+		int getY();
+		int getDX();
+		int getDY();
 		
 		/*
 		 * Setters

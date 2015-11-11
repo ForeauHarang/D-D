@@ -40,6 +40,11 @@ add_executable(
 	
 #	src/ETAT_EtatObserver.hpp
 	
+	src/MOTEUR_Action.hpp
+	src/MOTEUR_DeplacementPersonnage.hpp
+	
+	
+	
 	src/TileMap.hpp
 	
 	src/main.cpp
@@ -70,6 +75,9 @@ add_executable(
 	src/TileMap.cpp
 	
 #	src/ETAT_EtatObserver.cpp
+
+	src/MOTEUR_Action.cpp
+	src/MOTEUR_DeplacementPersonnage.cpp
 
 
 )
