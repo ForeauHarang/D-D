@@ -7,6 +7,8 @@
 #include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
 
+#define TAILLEBLOC 16
+
 //on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
 int herbe0=96;
 int herbe1=97;
@@ -135,8 +137,8 @@ int main()
 	Groupe gentil=GENTIL;
 	MAP_Personnage persoPrincipal=MAP_Personnage(bob);//hum, sold, gentil, inventairePrincipal, bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
-	persoPrincipal.setX(300);
-	persoPrincipal.setY(250);
+	persoPrincipal.setX(15*TAILLEBLOC);
+	persoPrincipal.setY(15*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
 	/*
 	MAP_Carte carte1 = new MAP_Carte();
@@ -205,14 +207,35 @@ void moteurJeu(){
 	
 	bool ordre=true;
 	if(ordre){
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 		
     // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
+			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+TAILLEBLOC);
+		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
+		
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+			map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()-TAILLEBLOC);
+		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+		
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+			map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
+		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+		
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+			map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()+TAILLEBLOC);
 		}
 	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
 		
-		if(map1.getListCharacters()[0].getX()>60) map1.getListCharacters()[0].setX(20); // le personnage bouge
+		if(map1.getListCharacters()[0].getX()>48*TAILLEBLOC) map1.getListCharacters()[0].setX(48*TAILLEBLOC);// le personnage ne peut pas aller hors de l'ecran
+		if(map1.getListCharacters()[0].getX()<0) map1.getListCharacters()[0].setX(0); // le personnage ne peut pas aller hors de l'ecran
+		if(map1.getListCharacters()[0].getY()<0) map1.getListCharacters()[0].setY(0); // le personnage ne peut pas aller hors de l'ecran
+		if(map1.getListCharacters()[0].getY()>34*TAILLEBLOC) map1.getListCharacters()[0].setY(34*TAILLEBLOC); // le personnage ne peut pas aller hors de l'ecran
+		
+		//quitter la fenetre
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
+			window.close();
+		}
 		
 	}
 	
