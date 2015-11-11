@@ -6,6 +6,8 @@
 #include "TileMap.hpp"
 #include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
+
+//on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
 int herbe0=96;
 int herbe1=97;
 int terre2=100;
@@ -159,11 +161,9 @@ int main()
         // on gère les évènements
        
         //perso.setPosition(300,250);
-		persoPrincipal.setX(persoPrincipal.getX()+1);
-		
-		if(persoPrincipal.getX()>60) persoPrincipal.setX(20); // le personnage bouge
 		rendu();//map1);
  //   }
+		moteurJeu();
 	
 	}
     return 0;
@@ -201,7 +201,11 @@ void rendu(){//MAP_Carte map1){
 }
 
 void moteurJeu(){
-	if(1){
+	bool ordre=true;
+	if(ordre){
+		map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
+		
+		if(map1.getListCharacters()[0].getX()>60) map1.getListCharacters()[0].setX(20); // le personnage bouge
 		
 	}
 	
