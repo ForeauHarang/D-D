@@ -47,7 +47,8 @@ MAP_Carte::MAP_Carte(){
 MAP_Carte::~MAP_Carte(){
 	int i=0;
 	MAP_Personnage* temp = 0;
-	delete[] listePersonnages[NBPERSO];
+	while(listePersonnages.size() != 0)
+	delete listePersonnages[0];
 
 	delete[] listeQuetes[NBQUETES];
 	delete[] listeCoffres[NBCOFFRES];
@@ -58,8 +59,8 @@ MAP_Carte::~MAP_Carte(){
  * liste des getteurs
  * */
 
-MAP_Personnage* MAP_Carte::getListCharacters(){
-	return *this->listePersonnages;
+std::vector<MAP_Personnage*> MAP_Carte::getListCharacters(){
+	return this->listePersonnages;
 }
 
 MAP_Quete* MAP_Carte::getListQuests(){
@@ -79,14 +80,28 @@ int* MAP_Carte::getListImpassableElement(){
  * */
  
 void MAP_Carte::addCharacter(MAP_Personnage *perso){
-	listePersonnages[nombrePersonnages]=perso;//new MAP_Personnage(perso.getCharacteristics(), perso.getRace(), perso.getJob(), perso.getGroup(), perso.getCharacterId());//perso.getInventory(), perso.getCharacterId());
+	listePersonnages.push_back(perso);//new MAP_Personnage(perso.getCharacteristics(), perso.getRace(), perso.getJob(), perso.getGroup(), perso.getCharacterId());//perso.getInventory(), perso.getCharacterId());
 	nombrePersonnages++;
 }
 
 void MAP_Carte::removeCharacter(MAP_Personnage perso){
-	int i=0;
+	int i = listePersonnages.size();
 	int temp=0;
-	for(i=0;i<nombrePersonnages;i++){
+
+	std::vector<MAP_Personnage*> listePersonnagesTemp;
+
+	while (listePersonnages[listePersonnages.size()-1]->getCharacterId()!=perso.getCharacterId()) {
+		listePersonnagesTemp.push_back(listePersonnages[listePersonnages.size() - 1]);
+		listePersonnages.pop_back();
+	}
+
+	listePersonnages.pop_back();
+
+	while (listePersonnagesTemp.size()!=0) {
+		listePersonnages.push_back(listePersonnages[listePersonnagesTemp.size() - 1]);
+		listePersonnagesTemp.pop_back();
+	}
+	/*for(i=0;i<nombrePersonnages;i++){
 		if((*this->listePersonnages[i]).getCharacterId()==perso.getCharacterId()){
 			temp=i;
 		}
@@ -96,7 +111,7 @@ void MAP_Carte::removeCharacter(MAP_Personnage perso){
 	for(i=temp;i<nombrePersonnages;i++){
 		listePersonnages[i]=listePersonnages[i+1];
 	}
-	delete[] listePersonnages[nombrePersonnages+1];
+	delete[] listePersonnages[nombrePersonnages+1];*/
 }
 
 

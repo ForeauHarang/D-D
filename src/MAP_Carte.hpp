@@ -9,7 +9,8 @@
 class MAP_Carte{
 	private :
 		int idCarte;
-		MAP_Personnage* listePersonnages[NBPERSO];
+		//MAP_Personnage* listePersonnages[NBPERSO];
+		std::vector<MAP_Personnage*> listePersonnages;
 		MAP_Quete* listeQuetes[NBQUETES];
 		MAP_Coffre* listeCoffres[NBCOFFRES];
 		int* listeElementsInfranchissables;
@@ -19,7 +20,6 @@ class MAP_Carte{
 		int nombreElementsInfranchissables;
 	
 	public :
-	
 		/*
 		 * constructeurs
 		 * */
@@ -36,7 +36,7 @@ class MAP_Carte{
 		 * liste des getteurs
 		 * */
 		
-		MAP_Personnage* getListCharacters();
+		std::vector<MAP_Personnage*> getListCharacters();
 		MAP_Quete* getListQuests();
 		MAP_Coffre* getListChest();
 		int* getListImpassableElement();

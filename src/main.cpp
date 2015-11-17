@@ -1,9 +1,12 @@
 #include <iostream>
-#include "MAP_Carte.hpp"
-#include "FIGHT_Carte.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+
+#include "FIGHT_Carte.hpp"
+
 #include "TileMap.hpp"
+
+#include "MAP_Carte.hpp"
 #include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
 
@@ -15,10 +18,7 @@
 MOTEUR_DeplacementPersonnage action;
 bool actionDon = false;
 
-
 MOTEUR_ListeAction actions=MOTEUR_ListeAction();
-
-
 
 
 //on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
@@ -33,6 +33,7 @@ int water7=115;
 
 // on crée la fenêtre
 sf::RenderWindow window(sf::VideoMode(800, 600), "Tilemap");
+
 // on définit le niveau à l'aide de numéro de tuiles
 const int level[] =
 {
@@ -80,220 +81,197 @@ TileMap map;
 int id=1;
 MAP_Carte map1 = MAP_Carte(id);
 
-
-
-
 void rendu();//MAP_Carte map1);
 void moteurJeu();
-//using namespace sf;
-/*
-int main()
-{
-	std::cout << "Hello World!" << std::endl;
-	/*
-	 *  void initCarte();
-	 */
-/*	
-	MAP_Carte *TestCarte = new MAP_Carte(1);
-}	
-*/		
-		
-//int main(int argc, char* argv[]) {
-////	cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
-//	sf::RenderWindow screen(sf::VideoMode(800, 600), "W&V");
-
-
-	/*MAP_Carte carte1 = new MAP_Carte();
-	RENDU_Scene scene1 = new RENDU_Scene();
-	MAP_Personnage perso1 = new MAP_Personnage("Perso1");
-	MAP_Coffre coffre1 = new MAP_Coffre(1,820,550,COUTEAU, ARME);
-	
-	carte1.addCharacter(perso1);
-	carte1.addChest(coffre1);
-	
-	scene1->plan[0].setCarteMap(carte1);*/
-
-//	/* Récupérer l'image */
-//	sf::Texture texture;
-//	texture.loadFromFile("../res/images/IMAGE.jpg");
-//	
-//	/* Créer une partie de l'image */
-//	sf::Sprite carte;
-//	carte.setTexture(texture);
-	
-//	/* Découper l'image */
-//	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));
-	
-//		bool running = true;
-//		while (running) {
-//		screen.draw(carte);
-//		screen.display();
-//		
-//		
-//		
-//		screen.clear();
-//	}	
-	
-	//sf::Window screen(sf::VideoMode(800, 600), "myproject");
-	
- 
-
-//	return 67;
-//}
 
 bool windowOpen=true;
 
 int main()
 {
-	
-
+	//Personnage Principal - map1.getListCharacters()[0] - perso
     MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
 	std::string bob = "bob";
 	Race hum = HUMAIN;
 	Profession sold = SOLDAT;
 	Groupe gentil=GENTIL;
-	MAP_Personnage persoPrincipal=MAP_Personnage(bob);//hum, sold, gentil, inventairePrincipal, bob);
+	MAP_Personnage persoPrincipal = MAP_Personnage(bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
 	persoPrincipal.setX(15*TAILLEBLOC);
 	persoPrincipal.setY(15*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
+	map1.getListCharacters().push_back(ptrpersoPrincipal);
+
+	//Personnage 2 - map1.getListCharacters()[1] - perso2
+	MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
+	std::string bobMaman = "bobMaman";
+	Race hum2 = VAMPIRE;
+	Profession sold2 = SOLDAT;
+	Groupe gentil2 = GENTIL;
+	MAP_Personnage perso2 = MAP_Personnage(bobMaman);
+	MAP_Personnage* ptrperso2 = &perso2;
+	perso2.setX(30 * TAILLEBLOC); 
+	perso2.setY(30 * TAILLEBLOC); 
+	map1.addCharacter(ptrperso2);
+	map1.getListCharacters().push_back(ptrperso2);
+	
+	std::cout << "(" << map1.getListCharacters()[1]->getX() << "," << map1.getListCharacters()[1]->getY() << ")" << std::endl;
+	std::cout << "(" << map1.getListCharacters()[0]->getX() << "," << map1.getListCharacters()[0]->getY() << ")" << std::endl;
+
 	/*
 	MAP_Carte carte1 = new MAP_Carte();
 	RENDU_Scene scene1 = new RENDU_Scene();
 	MAP_Personnage perso1 = new MAP_Personnage("Perso1");
 	MAP_Coffre coffre1 = new MAP_Coffre(1,820,550,COUTEAU, ARME);
-	
 	carte1.addCharacter(perso1);
 	carte1.addChest(coffre1);
-	
 	scene1->plan[0].setCarteMap(carte1);*/
 
-
-	
 	while(1){
 	
     // on fait tourner la boucle principale
-//    while (window.isOpen())
-//    {
-        // on gère les évènements
-       
-        //perso.setPosition(300,250);
-		rendu();//map1);
- //   }
+	//	while (window.isOpen())
+    //{
+        // on gère les évènements       
+        //perso.setPosition(300,250);		
+    //}
+		rendu();
 		moteurJeu();
+		
 		if(windowOpen==false) break;
 	}
     return 0;
 }
 
-void rendu(){//MAP_Carte map1){
-	int x=map1.getListCharacters()[0].getX();
-	int y=map1.getListCharacters()[0].getY();
-    //MAP_Personnage persoPrincipal=map1.getListCharacters()[0];
-    //	/* Récupérer l'image */
+void rendu(){
+	int x=map1.getListCharacters()[0]->getX();
+	int y=map1.getListCharacters()[0]->getY();
+
+	int x2 = map1.getListCharacters()[1]->getX();
+	int y2 = map1.getListCharacters()[1]->getY();
+
+  	/* Récupérer l'image pour le personnage */
 	sf::Texture texture;
-	texture.loadFromFile("../res/images/IMAGE.jpg");
+	texture.loadFromFile("../res/images/vampire.png");
 	
-//	/* Créer une partie de l'image */
+	/* Créer l'image pour le premier personnage */
 	sf::Sprite perso;
 	perso.setTexture(texture);
 	perso.setTextureRect(sf::IntRect(0, 32, 32, 32));	
-		if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(16, 16), level, 67, 36))
-	std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
-	
+	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(16, 16), level, 67, 36))
+		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
+
+	/* Créer l'image pour le deuxième personnage */
+	sf::Sprite perso2;
+	perso2.setTexture(texture);
+	perso2.setTextureRect(sf::IntRect(0, 32, 32, 32));
 	
 	sf::Event event;
 //	while (window.pollEvent(event))
-//	{
-		
+//	{		
 		//perso.setPosition(persoPrincipal.getX(),persoPrincipal.getY());
 		
-		
 		perso.setPosition(x,y);
+		perso2.setPosition(x2, y2);
 //	}
 	    window.clear();
         window.draw(map);
         window.draw(perso);
+		window.draw(perso2);
         window.display();
 }
 
 void moteurJeu(){
 
-	
-	bool ordre=true;
-	if(ordre){
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-			action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,&(map1.getListCharacters()[0]));
-			actionDon=true;
-			
-			actions.addAction(&action);
-			// check if action is true
-			if(map1.getListCharacters()[0].getX()<48*TAILLEBLOC) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
-				actions.setPermissionTrue(actions.getActionNumber());
-				//std::cout<<actions.getPermissionFromList(actions.getActionNumber())<<std::endl;
-			
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			//map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+TAILLEBLOC);
-		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-			action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,&(map1.getListCharacters()[0]));
-			actionDon=true;
-			
-			actions.addAction(&action);
-			// check if action is true
-			if(map1.getListCharacters()[0].getX()>0)
-				actions.setPermissionTrue(actions.getActionNumber());			
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
+		actionDon=true;	
+		actions.addAction(&action);
 
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			//map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()-TAILLEBLOC);
-		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-			action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,&(map1.getListCharacters()[0]));
-			actionDon=true;
+		// check if action is true
+		if(map1.getListCharacters()[0]->getX()<48*TAILLEBLOC) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
+			actions.setPermissionTrue(actions.getActionNumber());
+			//std::cout<<actions.getPermissionFromList(actions.getActionNumber())<<std::endl;
 			
-			actions.addAction(&action);
-			// check if action is true
-			if(map1.getListCharacters()[0].getY()>0)
-				actions.setPermissionTrue(actions.getActionNumber());
-			
-			
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
-		}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,&(map1.getListCharacters()[0]));
-			actionDon=true;		
-			
-			actions.addAction(&action);
-			// check if action is true
-			if(map1.getListCharacters()[0].getY()<34*TAILLEBLOC)
-				actions.setPermissionTrue(actions.getActionNumber());			
-			
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-			//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()+TAILLEBLOC);
-		}
-	//	map1.getListCharacters()[0].setX(map1.getListCharacters()[0].getX()+1);
-		
-		/*
-		if(actionDon) action.apply();
-		actionDon=false;
-		*/
-		
-		actions.apply();
-		
-		/*
-		if(map1.getListCharacters()[0].getX()>48*TAILLEBLOC) map1.getListCharacters()[0].setX(48*TAILLEBLOC);// le personnage ne peut pas aller hors de l'ecran //commandetemp = commande(deplacement, droite,persoPrincipal), addCommand(commandetemp)
-		if(map1.getListCharacters()[0].getX()<0) map1.getListCharacters()[0].setX(0); // le personnage ne peut pas aller hors de l'ecran
-		if(map1.getListCharacters()[0].getY()<0) map1.getListCharacters()[0].setY(0); // le personnage ne peut pas aller hors de l'ecran
-		if(map1.getListCharacters()[0].getY()>34*TAILLEBLOC) map1.getListCharacters()[0].setY(34*TAILLEBLOC); // le personnage ne peut pas aller hors de l'ecran
-		*/
-		// 				//commandCheck; if istrue => send engine; else delete // engine : exec commande
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ //quitter la fenetre
-			window.close();
-			windowOpen=false;
-		}
-		
+		// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
+		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
+		actionDon=true;	
+		actions.addAction(&action);
 
+		// check if action is true
+		if(map1.getListCharacters()[0]->getX()>0)
+			actions.setPermissionTrue(actions.getActionNumber());			
+
+		// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
+		actionDon=true;			
+		actions.addAction(&action);
+
+		// check if action is true
+		if(map1.getListCharacters()[0]->getY()>0)
+			actions.setPermissionTrue(actions.getActionNumber());
+			
+			
+	// la touche "flèche gauche" est enfoncée : on bouge le personnage
+		//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
+	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
+		actionDon=true;					
+		actions.addAction(&action);
+
+		// check if action is true
+		if(map1.getListCharacters()[0]->getY()<34*TAILLEBLOC)
+			actions.setPermissionTrue(actions.getActionNumber());			
+			
+	}
+
+	if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
+		if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
+			action = MOTEUR_DeplacementPersonnage(TAILLEBLOC, 0, (map1.getListCharacters()[1]));
+			std::cout << "vers la droite" << std::endl;
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+		}
+		else {
+			action = MOTEUR_DeplacementPersonnage(-TAILLEBLOC, 0, (map1.getListCharacters()[1]));
+			std::cout << "vers la gauche" << std::endl;
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+
+		}
+	}
+	else if (map1.getListCharacters()[1]->getY() != map1.getListCharacters()[0]->getY()) {
+		if (map1.getListCharacters()[1]->getY() < map1.getListCharacters()[0]->getY()) {
+			action = MOTEUR_DeplacementPersonnage(0, TAILLEBLOC, (map1.getListCharacters()[1]));
+			std::cout << "vers le bas" << std::endl;
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+		}
+		else {
+			action = MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC, (map1.getListCharacters()[1]));
+			std::cout << "vers le haut" << std::endl;
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+		}
+	}
+		
+	actions.apply();
+		
+	//commandCheck; if istrue => send engine; else delete 
+	// engine : exec commande
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ //quitter la fenetre
+		window.close();
+		windowOpen=false;
 	}
 	
 }
+
+
+
+
+
+
 
 
 /*
@@ -303,3 +281,59 @@ void moteurJeu(){
  * 				D : aller à droite
  * 				F : fermer la fenetre
  */
+
+ //using namespace sf;
+ /*
+ int main()
+ {
+ std::cout << "Hello World!" << std::endl;
+ /*
+ *  void initCarte();
+ */
+ /*
+ MAP_Carte *TestCarte = new MAP_Carte(1);
+ }
+ */
+
+ //int main(int argc, char* argv[]) {
+ ////	cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
+ //	sf::RenderWindow screen(sf::VideoMode(800, 600), "W&V");
+
+
+ /*MAP_Carte carte1 = new MAP_Carte();
+ RENDU_Scene scene1 = new RENDU_Scene();
+ MAP_Personnage perso1 = new MAP_Personnage("Perso1");
+ MAP_Coffre coffre1 = new MAP_Coffre(1,820,550,COUTEAU, ARME);
+
+ carte1.addCharacter(perso1);
+ carte1.addChest(coffre1);
+
+ scene1->plan[0].setCarteMap(carte1);*/
+
+ //	/* Récupérer l'image */
+ //	sf::Texture texture;
+ //	texture.loadFromFile("../res/images/IMAGE.jpg");
+ //	
+ //	/* Créer une partie de l'image */
+ //	sf::Sprite carte;
+ //	carte.setTexture(texture);
+
+ //	/* Découper l'image */
+ //	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));
+
+ //		bool running = true;
+ //		while (running) {
+ //		screen.draw(carte);
+ //		screen.display();
+ //		
+ //		
+ //		
+ //		screen.clear();
+ //	}	
+
+ //sf::Window screen(sf::VideoMode(800, 600), "myproject");
+
+
+
+ //	return 67;
+ //}
