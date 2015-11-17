@@ -114,9 +114,6 @@ int main()
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
 	
-	std::cout << "(" << map1.getListCharacters()[1]->getX() << "," << map1.getListCharacters()[1]->getY() << ")" << std::endl;
-	std::cout << "(" << map1.getListCharacters()[0]->getX() << "," << map1.getListCharacters()[0]->getY() << ")" << std::endl;
-
 	/*
 	MAP_Carte carte1 = new MAP_Carte();
 	RENDU_Scene scene1 = new RENDU_Scene();
@@ -149,21 +146,29 @@ void rendu(){
 	int x2 = map1.getListCharacters()[1]->getX();
 	int y2 = map1.getListCharacters()[1]->getY();
 
-  	/* Récupérer l'image pour le personnage */
-	sf::Texture texture;
-	texture.loadFromFile("../res/images/vampire.png");
+  	/* Récupérer l'image pour le personnage principal */
+	sf::Texture texturePrincipale;
+	texturePrincipale.loadFromFile("../res/images/vampire.png");
 	
 	/* Créer l'image pour le premier personnage */
 	sf::Sprite perso;
-	perso.setTexture(texture);
-	perso.setTextureRect(sf::IntRect(0, 32, 32, 32));	
-	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(16, 16), level, 67, 36))
-		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
+	perso.setTexture(texturePrincipale);
+	perso.setTextureRect(sf::IntRect(0, 32, 32, 32));
+
+	/* Récupérer l'image pour le deuxième personnage */
+	sf::Texture texture2;
+	texture2.loadFromFile("../res/images/loup-garou.png");
 
 	/* Créer l'image pour le deuxième personnage */
 	sf::Sprite perso2;
-	perso2.setTexture(texture);
+	perso2.setTexture(texture2);
 	perso2.setTextureRect(sf::IntRect(0, 32, 32, 32));
+
+	//Chagement de la map
+	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(16, 16), level, 67, 36))
+		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
+
+
 	
 	sf::Event event;
 //	while (window.pollEvent(event))
@@ -237,13 +242,13 @@ void moteurJeu(){
 	if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
 		if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
 			action = MOTEUR_DeplacementPersonnage(TAILLEBLOC, 0, (map1.getListCharacters()[1]));
-			std::cout << "vers la droite" << std::endl;
+			//std::cout << "vers la droite" << std::endl;
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 		}
 		else {
 			action = MOTEUR_DeplacementPersonnage(-TAILLEBLOC, 0, (map1.getListCharacters()[1]));
-			std::cout << "vers la gauche" << std::endl;
+			//std::cout << "vers la gauche" << std::endl;
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 
@@ -252,13 +257,13 @@ void moteurJeu(){
 	else if (map1.getListCharacters()[1]->getY() != map1.getListCharacters()[0]->getY()) {
 		if (map1.getListCharacters()[1]->getY() < map1.getListCharacters()[0]->getY()) {
 			action = MOTEUR_DeplacementPersonnage(0, TAILLEBLOC, (map1.getListCharacters()[1]));
-			std::cout << "vers le bas" << std::endl;
+			//std::cout << "vers le bas" << std::endl;
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 		}
 		else {
 			action = MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC, (map1.getListCharacters()[1]));
-			std::cout << "vers le haut" << std::endl;
+			//std::cout << "vers le haut" << std::endl;
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 		}
