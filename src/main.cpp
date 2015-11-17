@@ -182,6 +182,14 @@ void rendu(){
 
 void moteurJeu(){
 
+	/*
+	* commande : 	Z : aller en haut
+	* 				Q : aller à gauche
+	* 				S : aller en bas
+	* 				D : aller à droite
+	* 				F : fermer la fenetre
+	*/
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actionDon=true;	
@@ -223,9 +231,9 @@ void moteurJeu(){
 		// check if action is true
 		if(map1.getListCharacters()[0]->getY()<34*TAILLEBLOC)
 			actions.setPermissionTrue(actions.getActionNumber());			
-			
 	}
 
+	// Permet de déplacer le perso2 vers le persoPrincipal
 	if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
 		if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
 			action = MOTEUR_DeplacementPersonnage(TAILLEBLOC, 0, (map1.getListCharacters()[1]));
@@ -258,9 +266,8 @@ void moteurJeu(){
 		
 	actions.apply();
 		
-	//commandCheck; if istrue => send engine; else delete 
-	// engine : exec commande
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ //quitter la fenetre
+	//quitter la fenetre
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ 
 		window.close();
 		windowOpen=false;
 	}
@@ -268,36 +275,6 @@ void moteurJeu(){
 }
 
 
-
-
-
-
-
-
-/*
- * commande : 	Z : aller en haut
- * 				Q : aller à gauche
- * 				S : aller en bas
- * 				D : aller à droite
- * 				F : fermer la fenetre
- */
-
- //using namespace sf;
- /*
- int main()
- {
- std::cout << "Hello World!" << std::endl;
- /*
- *  void initCarte();
- */
- /*
- MAP_Carte *TestCarte = new MAP_Carte(1);
- }
- */
-
- //int main(int argc, char* argv[]) {
- ////	cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
- //	sf::RenderWindow screen(sf::VideoMode(800, 600), "W&V");
 
 
  /*MAP_Carte carte1 = new MAP_Carte();
@@ -310,30 +287,6 @@ void moteurJeu(){
 
  scene1->plan[0].setCarteMap(carte1);*/
 
- //	/* Récupérer l'image */
- //	sf::Texture texture;
- //	texture.loadFromFile("../res/images/IMAGE.jpg");
- //	
- //	/* Créer une partie de l'image */
- //	sf::Sprite carte;
- //	carte.setTexture(texture);
 
- //	/* Découper l'image */
- //	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));
-
- //		bool running = true;
- //		while (running) {
- //		screen.draw(carte);
- //		screen.display();
- //		
- //		
- //		
- //		screen.clear();
- //	}	
-
- //sf::Window screen(sf::VideoMode(800, 600), "myproject");
-
-
-
- //	return 67;
- //}
+ 	/*// Découper l'image 
+ 	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));*/
