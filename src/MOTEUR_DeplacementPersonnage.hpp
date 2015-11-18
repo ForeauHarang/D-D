@@ -37,6 +37,7 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		int getDX();
 		int getDY();
 		
+		MAP_Personnage* getCharacterPtr();
 		/*
 		 * Setters
 		 */

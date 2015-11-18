@@ -19,7 +19,9 @@ int MOTEUR_DeplacementPersonnage::getDX(){
 int MOTEUR_DeplacementPersonnage::getDY(){
 	return this->dy;
 }
-
+MAP_Personnage* MOTEUR_DeplacementPersonnage::getCharacterPtr(){
+	return this->ptrperso;
+}
 
 void MOTEUR_DeplacementPersonnage::apply(){
 	ptrperso->setX(ptrperso->getX()+dx);

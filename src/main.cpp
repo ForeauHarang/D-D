@@ -13,14 +13,14 @@
 #include "MOTEUR_DeplacementPersonnage.hpp"
 #include "MOTEUR_ListeAction.hpp"
 
-#define TAILLEBLOC 16
+#define TAILLEBLOC 32
 
 MOTEUR_DeplacementPersonnage action;
 bool actionDon = false;
 
 MOTEUR_ListeAction actions=MOTEUR_ListeAction();
 
-
+	
 //on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
 int herbe0=9;
 int herbe1=54;//Arbres
@@ -96,8 +96,8 @@ int main()
 	Groupe gentil=GENTIL;
 	MAP_Personnage persoPrincipal = MAP_Personnage(bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
-	persoPrincipal.setX(15*TAILLEBLOC);
-	persoPrincipal.setY(15*TAILLEBLOC);
+	persoPrincipal.setX(5*TAILLEBLOC);
+	persoPrincipal.setY(5*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
 
@@ -109,8 +109,8 @@ int main()
 	Groupe gentil2 = GENTIL;
 	MAP_Personnage perso2 = MAP_Personnage(bobMaman);
 	MAP_Personnage* ptrperso2 = &perso2;
-	perso2.setX(30 * TAILLEBLOC); 
-	perso2.setY(30 * TAILLEBLOC); 
+	perso2.setX(15 * TAILLEBLOC); 
+	perso2.setY(15 * TAILLEBLOC); 
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
 	
@@ -153,7 +153,7 @@ void rendu(){
 	/* Créer l'image pour le premier personnage */
 	sf::Sprite perso;
 	perso.setTexture(texturePrincipale);
-	perso.setTextureRect(sf::IntRect(0, 32, 32, 32));
+	perso.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
 
 	/* Récupérer l'image pour le deuxième personnage */
 	sf::Texture texture2;
@@ -162,10 +162,10 @@ void rendu(){
 	/* Créer l'image pour le deuxième personnage */
 	sf::Sprite perso2;
 	perso2.setTexture(texture2);
-	perso2.setTextureRect(sf::IntRect(0, 32, 32, 32));
+	perso2.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
 
 	//Chagement de la map
-	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(32, 32), level, 67, 23))
+	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), level, 67, 23))
 		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
 
 
@@ -185,29 +185,30 @@ void rendu(){
         window.display();
 }
 
+
 void moteurJeu(){
-
-	/*
-	* commande : 	Z : aller en haut
-	* 				Q : aller à gauche
-	* 				S : aller en bas
-	* 				D : aller à droite
-	* 				F : fermer la fenetre
-	*/
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
+	int X1=0;
+	int X2=0;
+	int Y1=0;
+	int Y2=0;
+	
+	int dx=0;
+	int dy=0;
+	
+	int signe=0;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
 		actionDon=true;	
 		actions.addAction(&action);
 
 		// check if action is true
-		if(map1.getListCharacters()[0]->getX()<48*TAILLEBLOC) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
+		if(map1.getListCharacters()[0]->getX()<41*TAILLEBLOC) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
 			actions.setPermissionTrue(actions.getActionNumber());
 			//std::cout<<actions.getPermissionFromList(actions.getActionNumber())<<std::endl;
 			
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
+		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
 		actionDon=true;	
 		actions.addAction(&action);
 
@@ -217,7 +218,7 @@ void moteurJeu(){
 
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
+		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC / 2,(map1.getListCharacters()[0]));
 		actionDon=true;			
 		actions.addAction(&action);
 
@@ -234,40 +235,106 @@ void moteurJeu(){
 		actions.addAction(&action);
 
 		// check if action is true
-		if(map1.getListCharacters()[0]->getY()<34*TAILLEBLOC)
-			actions.setPermissionTrue(actions.getActionNumber());			
-	}
+		if(map1.getListCharacters()[0]->getY()<21*TAILLEBLOC)
+			actions.setPermissionTrue(actions.getActionNumber());
+		else actions.setPermissionFalse(actions.getActionNumber());
+					
+	}else{
+		
 
-	// Permet de déplacer le perso2 vers le persoPrincipal
-	if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
-		if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
-			action = MOTEUR_DeplacementPersonnage(TAILLEBLOC, 0, (map1.getListCharacters()[1]));
-			//std::cout << "vers la droite" << std::endl;
+		/*
+		* commande : 	Z : aller en haut
+		* 				Q : aller à gauche
+		* 				S : aller en bas
+		* 				D : aller à droite
+		* 				F : fermer la fenetre
+		*/
+		// Permet de déplacer le perso2 vers le persoPrincipal
+		
+		X1=map1.getListCharacters()[0]->getX();
+		Y1=map1.getListCharacters()[0]->getY();
+		X2=map1.getListCharacters()[1]->getX();
+		Y2=map1.getListCharacters()[1]->getY();
+		
+		if(X1==X2 && Y1==Y2){
+			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+		}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
+			dy=8;
+			if(Y1<Y2){
+				signe = -1;
+			}else{
+				signe=1;
+			}
+			
+			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
+			actions.addAction(&action);
+			actions.setPermissionTrue(actions.getActionNumber());
+		}else{
+			dx=8;
+			if(X1<X2){
+				signe = -1;
+			}else{
+				signe= 1;
+			}
+			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 		}
-		else {
-			action = MOTEUR_DeplacementPersonnage(-TAILLEBLOC, 0, (map1.getListCharacters()[1]));
-			//std::cout << "vers la gauche" << std::endl;
-			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
+	}
+	
+/*	if(map1.getListCharacters()[1]->getX() == map1.getListCharacters()[0]->getX() && map1.getListCharacters()[1]->getY() == map1.getListCharacters()[0]->getY()){}
+	else{
+		if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
+			if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
+				if(map1.getListCharacters()[1]->getX() - map1.getListCharacters()[0]->getX() > -16){
+					action = MOTEUR_DeplacementPersonnage(map1.getListCharacters()[0]->getX()-map1.getListCharacters()[1]->getX(), 0, (map1.getListCharacters()[1]));
+					//std::cout << "vers la droite" << std::endl;
+					actions.addAction(&action);
+					actions.setPermissionTrue(actions.getActionNumber());
+				}else{
+					action = MOTEUR_DeplacementPersonnage(TAILLEBLOC/2, 0, (map1.getListCharacters()[1]));
+					//std::cout << "vers la droite" << std::endl;
+					actions.addAction(&action);
+					actions.setPermissionTrue(actions.getActionNumber());
+				}
+			}
+			else {
+				if(map1.getListCharacters()[1]->getX() - map1.getListCharacters()[0]->getX() <16){
+					action = MOTEUR_DeplacementPersonnage((map1.getListCharacters()[0]->getX()-map1.getListCharacters()[1]->getX()), 0, (map1.getListCharacters()[1]));
+					//std::cout << "vers la gauche" << std::endl;
+					actions.addAction(&action);
+					actions.setPermissionTrue(actions.getActionNumber());
+				}else{
+					action = MOTEUR_DeplacementPersonnage(-TAILLEBLOC/2, 0, (map1.getListCharacters()[1]));
+					//std::cout << "vers la gauche" << std::endl;
+					actions.addAction(&action);
+					actions.setPermissionTrue(actions.getActionNumber());
+				}
 
+			}
+		}
+		else if (map1.getListCharacters()[1]->getY() != map1.getListCharacters()[0]->getY()) {
+			if (map1.getListCharacters()[1]->getY() < map1.getListCharacters()[0]->getY()) {
+				action = MOTEUR_DeplacementPersonnage(0, TAILLEBLOC/2, (map1.getListCharacters()[1]));
+				//std::cout << "vers le bas" << std::endl;
+				actions.addAction(&action);
+				actions.setPermissionTrue(actions.getActionNumber());
+			}
+			else {
+				action = MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC/2, (map1.getListCharacters()[1]));
+				//std::cout << "vers le haut" << std::endl;
+				actions.addAction(&action);
+				actions.setPermissionTrue(actions.getActionNumber());
+			}
 		}
 	}
-	else if (map1.getListCharacters()[1]->getY() != map1.getListCharacters()[0]->getY()) {
-		if (map1.getListCharacters()[1]->getY() < map1.getListCharacters()[0]->getY()) {
-			action = MOTEUR_DeplacementPersonnage(0, TAILLEBLOC, (map1.getListCharacters()[1]));
-			//std::cout << "vers le bas" << std::endl;
-			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
-		}
-		else {
-			action = MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC, (map1.getListCharacters()[1]));
-			//std::cout << "vers le haut" << std::endl;
-			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
-		}
-	}
+	*/
+	
+
+
+	
 		
 	actions.apply();
 		
@@ -278,7 +345,6 @@ void moteurJeu(){
 	}
 	
 }
-
 
 
 
