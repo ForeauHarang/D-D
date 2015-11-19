@@ -1,5 +1,6 @@
 #include "MOTEUR_ListeAction.hpp"
 
+
 /*private:
 		MOTEUR_Action *listeAction[LISTEMAX];
 		bool permission[LISTEMAX];
@@ -15,6 +16,7 @@
  
 MOTEUR_ListeAction::MOTEUR_ListeAction(){
 	nombreAction=0;
+	regles=MOTEUR_Regle();
 }
 
 /*
@@ -64,9 +66,12 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 		for(i=placeDansListe;i<nombreAction-1;i++){
 			this->listeAction[nombreAction]=this->listeAction[nombreAction+1];
 			this->permission[nombreAction]=this->permission[nombreAction+1];
+
 		}
 		nombreAction--;
+
 	}
+	this->permission[nombreAction+1]=false;
 	if(nombreAction==0){
 		this->permission[nombreAction]=false;
 	}
@@ -74,21 +79,22 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 
 /*
  * Methodes
+&listeAction[i]
  */ 
 
 void MOTEUR_ListeAction::apply(){
-
 	for(int i=0;i<nombreAction;i++){
-		
-		if(permission[i]){
-
-			listeAction[i]->apply();
+		if(listeAction[i]->getActionId()=="deplacementPersonnage"){
+			std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
+				
+			
+			if(regles.isAvailable(dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i]))){
+				std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
+				listeAction[i]->apply();
+			}
 		}
 	}
 	for(int i=0;i<nombreAction;i++){
 		removeAction(i);
 	}
-	
-	
-	
 }

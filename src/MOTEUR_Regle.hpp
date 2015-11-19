@@ -2,11 +2,13 @@
 #define MOTEUR_REGLE_HPP
 
 #include "MOTEUR_DeplacementPersonnage.hpp"
+#include "MAP_Carte.hpp"
+
+#define TAILLEBLOC 32
 
 class MOTEUR_Regle{
 	private:
 		MAP_Carte* CARTE_carte;
-		MOTEUR_ListeAction *actions;
 	public:
 	
 		/*
@@ -32,11 +34,11 @@ class MOTEUR_Regle{
 		 */
 		
 		void setCARTE_Map(MAP_Carte*);
-		void setActionList(MOTEUR_ListeAction*);
 		/*
 		 * Methodes
 		 */  
-		bool isAvailable(MOTEUR_DeplacementPersonnage);
+		bool isAvailable(MOTEUR_DeplacementPersonnage *);
+		//bool isAvailable(MOTEUR_Action commande);
 };
 
 #endif

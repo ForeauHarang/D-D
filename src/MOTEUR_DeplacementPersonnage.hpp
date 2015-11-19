@@ -3,7 +3,8 @@
 
 #include "MOTEUR_Action.hpp"
 #include "MAP_Personnage.hpp"
-
+#include <string>
+using std::string;
 
 class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 
@@ -12,6 +13,7 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		int dx;
 		int dy;
 		MAP_Personnage* ptrperso;
+		
 		
 	public:
 		/*
@@ -27,7 +29,7 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		/*
 		 * Destructeur 
 		 */
-		~MOTEUR_DeplacementPersonnage(){}
+		virtual ~MOTEUR_DeplacementPersonnage(){}
 		
 		/*
 		 * Getters
@@ -38,6 +40,8 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		int getDY();
 		
 		MAP_Personnage* getCharacterPtr();
+		
+		virtual string getActionId() override;
 		/*
 		 * Setters
 		 */
@@ -46,6 +50,6 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		 * Methodes
 		 */ 
 		 
-		 void apply() override;
+		 virtual void apply() override;
 };
 #endif

@@ -1,23 +1,25 @@
 #ifndef MOTEUR_ACTION_HPP
 #define MOTEUR_ACTION_HPP
 
+#include <string>
+using std::string;
 
 class MOTEUR_Action {
 	public :
 		/*
 		 * Constructeur 
 		 */
-		MOTEUR_Action();
+		//MOTEUR_Action();
 		
 		/*
 		 * Destructeur 
 		 */
-		virtual ~MOTEUR_Action()=0;
+		//~MOTEUR_Action();
 		
 		/*
 		 * Getters
 		 */
-				
+		virtual string getActionId()=0;
 		/*
 		 * Setters
 		 */

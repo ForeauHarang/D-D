@@ -44,7 +44,7 @@ add_executable(
 	src/MOTEUR_Action.hpp
 	src/MOTEUR_DeplacementPersonnage.hpp
 	src/MOTEUR_ListeAction.hpp
-#	src/MOTEUR_Regle.hpp
+	src/MOTEUR_Regle.hpp
 	
 	
 	src/TileMap.hpp
@@ -81,7 +81,7 @@ add_executable(
 	src/MOTEUR_Action.cpp
 	src/MOTEUR_DeplacementPersonnage.cpp
 	src/MOTEUR_ListeAction.cpp
-#	src/MOTEUR_Regle.cpp
+	src/MOTEUR_Regle.cpp
 
 )
 

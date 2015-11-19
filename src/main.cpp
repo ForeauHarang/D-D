@@ -196,9 +196,9 @@ void moteurJeu(){
 	int dy=0;
 	
 	int signe=0;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
-		actionDon=true;	
 		actions.addAction(&action);
 
 		// check if action is true
@@ -209,7 +209,6 @@ void moteurJeu(){
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
 		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
-		actionDon=true;	
 		actions.addAction(&action);
 
 		// check if action is true
@@ -219,7 +218,6 @@ void moteurJeu(){
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
 		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC / 2,(map1.getListCharacters()[0]));
-		actionDon=true;			
 		actions.addAction(&action);
 
 		// check if action is true
@@ -231,7 +229,6 @@ void moteurJeu(){
 		//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
-		actionDon=true;					
 		actions.addAction(&action);
 
 		// check if action is true
@@ -257,9 +254,9 @@ void moteurJeu(){
 		Y2=map1.getListCharacters()[1]->getY();
 		
 		if(X1==X2 && Y1==Y2){
-			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
+			/*action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
+			actions.setPermissionTrue(actions.getActionNumber());*/
 		}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
 			dy=8;
 			if(Y1<Y2){
@@ -330,14 +327,9 @@ void moteurJeu(){
 			}
 		}
 	}
-	*/
-	
-
-
-	
-		
+	*/	
 	actions.apply();
-		
+	
 	//quitter la fenetre
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ 
 		window.close();

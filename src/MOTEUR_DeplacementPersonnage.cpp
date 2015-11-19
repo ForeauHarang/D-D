@@ -27,3 +27,8 @@ void MOTEUR_DeplacementPersonnage::apply(){
 	ptrperso->setX(ptrperso->getX()+dx);
 	ptrperso->setY(ptrperso->getY()+dy);
 }
+
+string MOTEUR_DeplacementPersonnage::getActionId(){
+	string tempstr="deplacementPersonnage";
+	return tempstr;
+}
