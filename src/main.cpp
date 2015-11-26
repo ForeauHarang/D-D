@@ -251,13 +251,10 @@ void moteurJeu(){
 
 bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 {
-	// Taille du tableau level
-	int h = 23;
-	int w = 67;
-
+	int w = map1.getWidthMap();
 	int x = dy*w + dx;
 
-	if (numdir == 3 && (x - w) >= 0) { //vers le haut
+	if(numdir == 3) { //vers le haut
 		if (level[x - w] > 14) {
 			std::cout << "Attention Obstacle" << std::endl;
 			return false; //tu ne peux pas passer

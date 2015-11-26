@@ -50,10 +50,6 @@ static int level1[] =
 	9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,12,12,12,12,12,14,14,9,9,9,9,9,9
 };
 
-int height = 23;
-int width = 67;
-
-
 
 /*
 * constructeurs
@@ -123,6 +119,14 @@ int* MAP_Carte::getListImpassableElement(){
 
 std::vector<int> MAP_Carte::getMap() {
 	return this->level;
+}
+
+int MAP_Carte::getWidthMap() {
+	return this->width;
+}
+
+int MAP_Carte::getHeightMap() {
+	return this->height;
 }
 
 /*
