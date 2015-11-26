@@ -20,6 +20,13 @@ class MAP_Carte{
 		int nombreElementsInfranchissables;
 	
 	public :
+	
+		
+		// on définit le niveau à l'aide de numéro de tuiles
+		std::vector<int> level;
+		
+
+
 		/*
 		 * constructeurs
 		 * */
@@ -40,6 +47,7 @@ class MAP_Carte{
 		MAP_Quete* getListQuests();
 		MAP_Coffre* getListChest();
 		int* getListImpassableElement();
+		std::vector<int> getMap();
 		
 		
 		/*

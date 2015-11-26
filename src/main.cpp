@@ -3,88 +3,36 @@
 #include <SFML/Window.hpp>
 
 #include "FIGHT_Carte.hpp"
-
 #include "TileMap.hpp"
-
 #include "MAP_Carte.hpp"
 #include "MAP_Personnage.hpp"
 #include "MAP_VariablesGlobales.hpp"
-
 #include "MOTEUR_DeplacementPersonnage.hpp"
 #include "MOTEUR_ListeAction.hpp"
 
 #define TAILLEBLOC 32
 
 MOTEUR_DeplacementPersonnage action;
+MOTEUR_ListeAction actions = MOTEUR_ListeAction();
+
 bool actionDon = false;
-
-MOTEUR_ListeAction actions=MOTEUR_ListeAction();
-
-	
-//on évite de recharger dans la boucle principale les constantes : permet une fenetre "fluide"
-int herbe0=9;
-int herbe1=54;//Arbres
-int terre2=12;
-int terre3=14;
-int route4=0;//180 : eau (en fait, toit bleu)
-int route5=2;//115 : eau2
-int water6=15;
-int water7=17;
+bool windowOpen = true;
+int numdir = 0;
+int id = 1;
 
 // on crée la fenêtre
-sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
+sf::RenderWindow window(sf::VideoMode(1000, 800), "Tilemap");
 
-// on définit le niveau à l'aide de numéro de tuiles
-const int level[] =
-{
-	herbe0,herbe0,herbe0,herbe0,route4,route4,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre3,water6,water6,water7,water7,water7,water7,water7,water6,water6,terre3,herbe1,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,route4,route4,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre2,terre3,terre3,water6,water6,water7,water7,water7,water6,water6,terre3,terre3,herbe1,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe1,terre3,terre3,water6,water6,water6,water6,water6,terre3,terre3,herbe1,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,water6,herbe0,herbe0,herbe0,herbe0,terre3,route5,terre3,route5,water6,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe1,herbe1,terre3,terre3,terre3,terre3,terre3,herbe1,herbe1,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,route5,route5,route5,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route4,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre3,terre3,terre3,terre3,terre3,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre3,route5,water6,route5,water6,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,herbe0,route4,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,route5,route5,route5,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,route4,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,water6,route5,terre3,route5,water6,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,route4,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe1,herbe1,route4,route4,route4,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	//herbe1,herbe1,herbe1,route4,route4,route4,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	//herbe1,herbe1,herbe1,herbe1,route4,route4,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	herbe0,herbe0,herbe0,herbe0,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,route4,route4,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	terre3,terre3,terre3,terre3,route4,route4,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,
-	route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,
-	route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,
-	route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,route5,
-	route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route5,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,route4,
-	terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,route5,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,terre2,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,route5,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	//herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,route5,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	//herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,route5,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,herbe1,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,route5,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,water6,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe1,herbe1,herbe1,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,water6,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,route5,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre3,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre3,terre3,terre3,terre3,terre3,terre3,terre3,terre3,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,terre2,terre2,terre3,terre3,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,terre2,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,
-	//herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,route5,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,terre2,terre2,terre2,terre2,terre2,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0,herbe0
-};
-	
+
 // on crée la tilemap avec le niveau précédemment défini
 TileMap map;
-
-int id=1;
 MAP_Carte map1 = MAP_Carte(id);
+std::vector<int> level = map1.getMap();
 
-void rendu();//MAP_Carte map1);
+void rendu();
 void moteurJeu();
+bool collisions(int dx, int dy, int numdir, std::vector<int> level);
 
-bool windowOpen=true;
 
 int main()
 {
@@ -96,8 +44,8 @@ int main()
 	Groupe gentil=GENTIL;
 	MAP_Personnage persoPrincipal = MAP_Personnage(bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
-	persoPrincipal.setX(5*TAILLEBLOC);
-	persoPrincipal.setY(5*TAILLEBLOC);
+	persoPrincipal.setX(8*TAILLEBLOC);
+	persoPrincipal.setY(8*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
 
@@ -109,10 +57,11 @@ int main()
 	Groupe gentil2 = GENTIL;
 	MAP_Personnage perso2 = MAP_Personnage(bobMaman);
 	MAP_Personnage* ptrperso2 = &perso2;
-	perso2.setX(15 * TAILLEBLOC); 
-	perso2.setY(15 * TAILLEBLOC); 
+	perso2.setX(15*TAILLEBLOC); 
+	perso2.setY(15*TAILLEBLOC); 
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
+
 	
 	/*
 	MAP_Carte carte1 = new MAP_Carte();
@@ -131,8 +80,11 @@ int main()
         // on gère les évènements       
         //perso.setPosition(300,250);		
     //}
+
 		rendu();
 		moteurJeu();
+		collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
+		std::cout << numdir << std::endl;
 		
 		if(windowOpen==false) break;
 	}
@@ -164,7 +116,7 @@ void rendu(){
 	perso2.setTexture(texture2);
 	perso2.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
 
-	//Chagement de la map
+	//Chargement de la map
 	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), level, 67, 23))
 		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
 
@@ -185,7 +137,13 @@ void rendu(){
         window.display();
 }
 
-
+/*
+* commande : 	Z : aller en haut
+* 				Q : aller à gauche
+* 				S : aller en bas
+* 				D : aller à droite
+* 				F : fermer la fenetre
+*/
 void moteurJeu(){
 	int X1=0;
 	int X2=0;
@@ -196,9 +154,11 @@ void moteurJeu(){
 	int dy=0;
 	
 	int signe=0;
-		
+
+	//Si le perso principal est en déplacement		
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
+		numdir = 1;
+		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
 		// check if action is true
@@ -208,7 +168,8 @@ void moteurJeu(){
 			
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC / 2,0,(map1.getListCharacters()[0]));
+		numdir = 2;
+		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
 		// check if action is true
@@ -217,7 +178,8 @@ void moteurJeu(){
 
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC / 2,(map1.getListCharacters()[0]));
+		numdir = 3;
+		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
 		// check if action is true
@@ -228,6 +190,7 @@ void moteurJeu(){
 	// la touche "flèche gauche" est enfoncée : on bouge le personnage
 		//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+		numdir = 4;
 		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
@@ -237,15 +200,8 @@ void moteurJeu(){
 		else actions.setPermissionFalse(actions.getActionNumber());
 					
 	}else{
-		
 
-		/*
-		* commande : 	Z : aller en haut
-		* 				Q : aller à gauche
-		* 				S : aller en bas
-		* 				D : aller à droite
-		* 				F : fermer la fenetre
-		*/
+	//Si le perso principal ne se déplace plus, le perso2 le rejoint
 		// Permet de déplacer le perso2 vers le persoPrincipal
 		
 		X1=map1.getListCharacters()[0]->getX();
@@ -258,18 +214,17 @@ void moteurJeu(){
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());*/
 		}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
-			dy=8;
+			dy=TAILLEBLOC;
 			if(Y1<Y2){
 				signe = -1;
 			}else{
 				signe=1;
 			}
-			
 			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 			actions.addAction(&action);
 			actions.setPermissionTrue(actions.getActionNumber());
 		}else{
-			dx=8;
+			dx=TAILLEBLOC;
 			if(X1<X2){
 				signe = -1;
 			}else{
@@ -280,62 +235,36 @@ void moteurJeu(){
 			actions.setPermissionTrue(actions.getActionNumber());
 		}
 	}
-	
-/*	if(map1.getListCharacters()[1]->getX() == map1.getListCharacters()[0]->getX() && map1.getListCharacters()[1]->getY() == map1.getListCharacters()[0]->getY()){}
-	else{
-		if (map1.getListCharacters()[1]->getX() != map1.getListCharacters()[0]->getX()) {
-			if (map1.getListCharacters()[1]->getX() < map1.getListCharacters()[0]->getX()) {
-				if(map1.getListCharacters()[1]->getX() - map1.getListCharacters()[0]->getX() > -16){
-					action = MOTEUR_DeplacementPersonnage(map1.getListCharacters()[0]->getX()-map1.getListCharacters()[1]->getX(), 0, (map1.getListCharacters()[1]));
-					//std::cout << "vers la droite" << std::endl;
-					actions.addAction(&action);
-					actions.setPermissionTrue(actions.getActionNumber());
-				}else{
-					action = MOTEUR_DeplacementPersonnage(TAILLEBLOC/2, 0, (map1.getListCharacters()[1]));
-					//std::cout << "vers la droite" << std::endl;
-					actions.addAction(&action);
-					actions.setPermissionTrue(actions.getActionNumber());
-				}
-			}
-			else {
-				if(map1.getListCharacters()[1]->getX() - map1.getListCharacters()[0]->getX() <16){
-					action = MOTEUR_DeplacementPersonnage((map1.getListCharacters()[0]->getX()-map1.getListCharacters()[1]->getX()), 0, (map1.getListCharacters()[1]));
-					//std::cout << "vers la gauche" << std::endl;
-					actions.addAction(&action);
-					actions.setPermissionTrue(actions.getActionNumber());
-				}else{
-					action = MOTEUR_DeplacementPersonnage(-TAILLEBLOC/2, 0, (map1.getListCharacters()[1]));
-					//std::cout << "vers la gauche" << std::endl;
-					actions.addAction(&action);
-					actions.setPermissionTrue(actions.getActionNumber());
-				}
 
-			}
-		}
-		else if (map1.getListCharacters()[1]->getY() != map1.getListCharacters()[0]->getY()) {
-			if (map1.getListCharacters()[1]->getY() < map1.getListCharacters()[0]->getY()) {
-				action = MOTEUR_DeplacementPersonnage(0, TAILLEBLOC/2, (map1.getListCharacters()[1]));
-				//std::cout << "vers le bas" << std::endl;
-				actions.addAction(&action);
-				actions.setPermissionTrue(actions.getActionNumber());
-			}
-			else {
-				action = MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC/2, (map1.getListCharacters()[1]));
-				//std::cout << "vers le haut" << std::endl;
-				actions.addAction(&action);
-				actions.setPermissionTrue(actions.getActionNumber());
-			}
-		}
-	}
-	*/	
 	actions.apply();
-	
+
 	//quitter la fenetre
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)){ 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
 		window.close();
-		windowOpen=false;
-	}
+		windowOpen = false;
+	}	
 	
+}
+
+
+//Collisions
+
+bool collisions(int dx, int dy, int numdir, std::vector<int> level)
+{
+	// Taille du tableau level
+	int h = 23;
+	int w = 67;
+
+	int x = dy*w + dx;
+
+	if (numdir == 3 && (x - w) >= 0) { //vers le haut
+		if (level[x - w] > 14) {
+			std::cout << "Attention Obstacle" << std::endl;
+			return false; //tu ne peux pas passer
+		}
+	}
+
+	return true; //tu peux passer
 }
 
 
