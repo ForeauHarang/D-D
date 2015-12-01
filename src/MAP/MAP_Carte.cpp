@@ -129,22 +129,14 @@ int MAP_Carte::getLevelValue(int x,int y) const {
 	if(y<0){
 		throw std::invalid_argument("y<0");
 	}
-<<<<<<< HEAD
-	if(y>this->height){
-=======
 	if(y>=height){
 		std::cerr << y << " et " << height << std::endl;
->>>>>>> 7da0617d55ddac569f38cb594e6db72427a9bfa5
 		throw std::invalid_argument("y>taille");
 	}
 	if(x<0){
 		throw std::invalid_argument("x<0");
 	}
-<<<<<<< HEAD
-	if(x>this->width){
-=======
 	if(x>=width){
->>>>>>> 7da0617d55ddac569f38cb594e6db72427a9bfa5
 		throw std::invalid_argument("x>taille");
 	}
 	
