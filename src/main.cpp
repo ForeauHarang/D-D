@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include "FIGHT_Carte.hpp"
-#include "TileMap.hpp"
-#include "MAP_Carte.hpp"
-#include "MAP_Personnage.hpp"
-#include "MAP_VariablesGlobales.hpp"
-#include "MOTEUR_DeplacementPersonnage.hpp"
-#include "MOTEUR_ListeAction.hpp"
+#include "FIGHT/FIGHT_Carte.hpp"
+#include "RENDU/TileMap.hpp"
+#include "MAP/MAP_Carte.hpp"
+#include "MAP/MAP_Personnage.hpp"
+#include "MAP/MAP_VariablesGlobales.hpp"
+#include "MOTEUR/MOTEUR_DeplacementPersonnage.hpp"
+#include "MOTEUR/MOTEUR_ListeAction.hpp"
 
 #define TAILLEBLOC 32
 
