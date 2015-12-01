@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include "FIGHT_Carte.hpp"
-#include "TileMap.hpp"
-#include "MAP_Carte.hpp"
-#include "MAP_Personnage.hpp"
-#include "MAP_VariablesGlobales.hpp"
-#include "MOTEUR_DeplacementPersonnage.hpp"
-#include "MOTEUR_ListeAction.hpp"
+#include "FIGHT/FIGHT_Carte.hpp"
+#include "RENDU/TileMap.hpp"
+#include "MAP/MAP_Carte.hpp"
+#include "MAP/MAP_Personnage.hpp"
+#include "MAP/MAP_VariablesGlobales.hpp"
+#include "MOTEUR/MOTEUR_DeplacementPersonnage.hpp"
+#include "MOTEUR/MOTEUR_ListeAction.hpp"
 
 #define TAILLEBLOC 32
 
@@ -21,7 +21,7 @@ int numdir = 0;
 int id = 1;
 
 // on crée la fenêtre
-sf::RenderWindow window(sf::VideoMode(1000, 800), "Tilemap");
+sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 
 // on crée la tilemap avec le niveau précédemment défini
@@ -83,7 +83,7 @@ int main()
 
 		rendu();
 		moteurJeu();
-		//collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
+		collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
 		std::cout << numdir << std::endl;
 		
 		if(windowOpen==false) break;
@@ -248,7 +248,7 @@ void moteurJeu(){
 
 
 //Collisions
-/*
+
 bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 {
 	int w = map1.getWidthMap();
@@ -262,7 +262,7 @@ bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 	}
 
 	return true; //tu peux passer
-}*/
+}
 
 
 
