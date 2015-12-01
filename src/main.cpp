@@ -12,8 +12,8 @@
 
 #define TAILLEBLOC 32
 
-MOTEUR_DeplacementPersonnage action;
-MOTEUR_ListeAction actions = MOTEUR_ListeAction();
+//MOTEUR_DeplacementPersonnage action;
+//MOTEUR_ListeAction actions = MOTEUR_ListeAction();
 
 bool actionDon = false;
 bool windowOpen = true;
@@ -26,16 +26,17 @@ sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 // on crée la tilemap avec le niveau précédemment défini
 TileMap map;
-MAP_Carte map1 = MAP_Carte(id);
-std::vector<int> level = map1.getMap();
 
-void rendu();
-void moteurJeu();
-bool collisions(int dx, int dy, int numdir, std::vector<int> level);
+
+void rendu(MAP_Carte& map1);
+void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
+//bool collisions(int dx, int dy, int numdir, std::vector<int> level);
 
 
 int main()
 {
+	MAP_Carte map1(id);
+	MOTEUR_ListeAction actions = MOTEUR_ListeAction(&map1);
 	//Personnage Principal - map1.getListCharacters()[0] - perso
     MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
 	std::string bob = "bob";
@@ -63,35 +64,22 @@ int main()
 	map1.getListCharacters().push_back(ptrperso2);
 
 	
-	/*
-	MAP_Carte carte1 = new MAP_Carte();
-	RENDU_Scene scene1 = new RENDU_Scene();
-	MAP_Personnage perso1 = new MAP_Personnage("Perso1");
-	MAP_Coffre coffre1 = new MAP_Coffre(1,820,550,COUTEAU, ARME);
-	carte1.addCharacter(perso1);
-	carte1.addChest(coffre1);
-	scene1->plan[0].setCarteMap(carte1);*/
+
+
 
 	while(1){
-	
-    // on fait tourner la boucle principale
-	//	while (window.isOpen())
-    //{
-        // on gère les évènements       
-        //perso.setPosition(300,250);		
-    //}
 
-		rendu();
-		moteurJeu();
-		collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
-		std::cout << numdir << std::endl;
+		rendu(map1);
+		moteurJeu(map1,actions);
+		//collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
+		//std::cout << numdir << std::endl;
 		
 		if(windowOpen==false) break;
 	}
     return 0;
 }
 
-void rendu(){
+void rendu(MAP_Carte& map1){
 	int x=map1.getListCharacters()[0]->getX();
 	int y=map1.getListCharacters()[0]->getY();
 
@@ -117,7 +105,7 @@ void rendu(){
 	perso2.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
 
 	//Chargement de la map
-	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), level, 67, 23))
+	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), map1.getMap(), 67, 23))
 		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
 
 
@@ -144,7 +132,8 @@ void rendu(){
 * 				D : aller à droite
 * 				F : fermer la fenetre
 */
-void moteurJeu(){
+void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
+	MOTEUR_DeplacementPersonnage action;
 	int X1=0;
 	int X2=0;
 	int Y1=0;
@@ -248,7 +237,7 @@ void moteurJeu(){
 
 
 //Collisions
-
+/*
 bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 {
 	int w = map1.getWidthMap();
@@ -263,7 +252,7 @@ bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 
 	return true; //tu peux passer
 }
-
+*/
 
 
  /*MAP_Carte carte1 = new MAP_Carte();
