@@ -55,7 +55,7 @@ static int level1[] =
 * constructeurs
 * */
 
-MAP_Carte::MAP_Carte(int idCarte){
+MAP_Carte::MAP_Carte(int idCarte, int width, int height){
 	int i=0;
 
 	this->nombrePersonnages=0;
@@ -63,11 +63,11 @@ MAP_Carte::MAP_Carte(int idCarte){
 	this->nombreCoffres=0;
 	this->nombreElementsInfranchissables=0;
 	this->idCarte=idCarte;
+	this->width = width;
+	this->height = height;
 
-<<<<<<< HEAD
-=======
-	height = 23;
->>>>>>> 7da0617d55ddac569f38cb594e6db72427a9bfa5
+
+
 	level.resize(width*height);
 	for (i = 0; i < level.size(); i++) {
 		level[i] = level1[i];
@@ -129,22 +129,16 @@ int MAP_Carte::getLevelValue(int x,int y) const {
 	if(y<0){
 		throw std::invalid_argument("y<0");
 	}
-<<<<<<< HEAD
-	if(y>this->height){
-=======
+
 	if(y>=height){
 		std::cerr << y << " et " << height << std::endl;
->>>>>>> 7da0617d55ddac569f38cb594e6db72427a9bfa5
 		throw std::invalid_argument("y>taille");
 	}
 	if(x<0){
 		throw std::invalid_argument("x<0");
 	}
-<<<<<<< HEAD
-	if(x>this->width){
-=======
+
 	if(x>=width){
->>>>>>> 7da0617d55ddac569f38cb594e6db72427a9bfa5
 		throw std::invalid_argument("x>taille");
 	}
 	
@@ -270,6 +264,13 @@ void MAP_Carte::removeImpassableElement(int x, int y){
 	}
 	listeElementsInfranchissables[nombreElementsInfranchissables+1]=PTRNULL;
 	listeElementsInfranchissables[nombreElementsInfranchissables+2]=PTRNULL;
+}
+
+void MAP_Carte::setWidthMap(int width) {
+	this->width = width;
+}
+void MAP_Carte::setHeightMap(int height) {
+	this->height = height;
 }
 	
 
