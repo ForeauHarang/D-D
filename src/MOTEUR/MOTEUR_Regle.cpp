@@ -58,6 +58,7 @@ bool MOTEUR_Regle::isAvailable(MOTEUR_DeplacementPersonnage* commande){
 	
 	if(!((X+DX < 42) && (X+DX > -1) && +(Y+DY<22) && (Y+DY>-1))) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
 		return false;
+
 	if(DX!=0){
 		if(CARTE_carte->getLevelValue(X+DX,Y) > 14)
 			return false;

@@ -19,12 +19,11 @@ class MOTEUR_ListeAction{
 		bool permission[LISTEMAX];//a supprimer
 		int nombreAction;
 		MOTEUR_Regle regles;
-		
+
 	public:
 		/*
 		 * Constructeur 
 		 */
-		 
 		MOTEUR_ListeAction(MAP_Carte *carte);
 		
 		/*

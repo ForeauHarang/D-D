@@ -14,7 +14,7 @@ class MOTEUR_Regle{
 	
 		/*
 		 * Constructeur 
-		 */
+		 */		
 		MOTEUR_Regle();
 		MOTEUR_Regle(MAP_Carte *carte);
 		

@@ -14,6 +14,7 @@
  * Constructeur 
  */
  
+
 MOTEUR_ListeAction::MOTEUR_ListeAction(MAP_Carte *carte){
 	nombreAction=0;
 	regles=MOTEUR_Regle(carte);
