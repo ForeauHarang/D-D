@@ -12,9 +12,6 @@
 
 #define TAILLEBLOC 32
 
-//MOTEUR_DeplacementPersonnage action;
-//MOTEUR_ListeAction actions = MOTEUR_ListeAction();
-
 bool actionDon = false;
 bool windowOpen = true;
 int numdir = 0;
@@ -234,37 +231,3 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 	}	
 	
 }
-
-
-//Collisions
-/*
-bool collisions(int dx, int dy, int numdir, std::vector<int> level)
-{
-	int w = map1.getWidthMap();
-	int x = dy*w + dx;
-
-	if(numdir == 3) { //vers le haut
-		if (level[x - w] > 14) {
-			std::cout << "Attention Obstacle" << std::endl;
-			return false; //tu ne peux pas passer
-		}
-	}
-
-	return true; //tu peux passer
-}
-*/
-
-
- /*MAP_Carte carte1 = new MAP_Carte();
- RENDU_Scene scene1 = new RENDU_Scene();
- MAP_Personnage perso1 = new MAP_Personnage("Perso1");
- MAP_Coffre coffre1 = new MAP_Coffre(1,820,550,COUTEAU, ARME);
-
- carte1.addCharacter(perso1);
- carte1.addChest(coffre1);
-
- scene1->plan[0].setCarteMap(carte1);*/
-
-
- 	/*// Découper l'image 
- 	carte.setTextureRect(sf::IntRect(0, 277, 847, 616));*/
