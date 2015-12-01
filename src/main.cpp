@@ -21,7 +21,7 @@ int numdir = 0;
 int id = 1;
 
 // on crée la fenêtre
-sf::RenderWindow window(sf::VideoMode(1000, 800), "Tilemap");
+sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 
 // on crée la tilemap avec le niveau précédemment défini
