@@ -6,6 +6,7 @@
 #include "MOTEUR_Regle.hpp"
 #include "MOTEUR_DeplacementPersonnage.hpp"
 #include <string>
+#include "../MAP/MAP_Carte.hpp"
 using std::string;
 
 #define LISTEMAX 1024
@@ -18,12 +19,12 @@ class MOTEUR_ListeAction{
 		bool permission[LISTEMAX];//a supprimer
 		int nombreAction;
 		MOTEUR_Regle regles;
+
 	public:
 		/*
 		 * Constructeur 
 		 */
-		 
-		MOTEUR_ListeAction();
+		MOTEUR_ListeAction(MAP_Carte *carte);
 		
 		/*
 		 * Destructeur 

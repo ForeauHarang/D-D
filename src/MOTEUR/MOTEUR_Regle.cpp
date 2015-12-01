@@ -9,6 +9,10 @@ MOTEUR_Regle::MOTEUR_Regle(){
 	
 }
 
+MOTEUR_Regle::MOTEUR_Regle(MAP_Carte *carte){
+	this->CARTE_carte=carte;
+}
+
 /*
  * Destructeur 
  */
@@ -45,28 +49,29 @@ bool MOTEUR_Regle::isAvailable(MOTEUR_DeplacementPersonnage* commande){
 	int Y=commande->getY() / TAILLEBLOC;
 	int DX=commande->getDX() / TAILLEBLOC;
 	int DY=commande->getDY() / TAILLEBLOC;
+
+	std::cout<<Y<<std::endl;
 	
-	int incrementationDeLigne = 67;//CARTE_carte->getWidth();
-	
-	int caseDuPerso = X+Y*incrementationDeLigne;
+	int caseDuPerso = CARTE_carte->getLevelValue(X,Y);
 	//std::vector<int> level = CARTE_carte->getMap();
 	
 	
 	if(!((X+DX < 42) && (X+DX > -1) && +(Y+DY<22) && (Y+DY>-1))) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
 		return false;
-/*	if(DX<0){
-		if(level[caseDuPerso-1] > 14)
+
+	if(DX!=0){
+		if(CARTE_carte->getLevelValue(X+DX,Y) > 14)
 			return false;
 	}
-	if(DX>0){
+	/*if(DX>0){
 		if(level[caseDuPerso+1] > 14)
 			return false;
-	}
-	if(DY<0){
-		if(level[caseDuPerso-incrementationDeLigne] > 14)
+	}*/
+	if(DY!=0){
+		if(CARTE_carte->getLevelValue(X,Y+DY) > 14)
 			return false;
 	}
-	if(DY>0){
+	/*if(DY>0){
 		if(level[caseDuPerso+incrementationDeLigne] > 14)
 			return false;
 	}*/
