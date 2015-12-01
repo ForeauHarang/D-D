@@ -63,16 +63,9 @@ MAP_Carte::MAP_Carte(int idCarte, int width, int height){
 	this->nombreCoffres=0;
 	this->nombreElementsInfranchissables=0;
 	this->idCarte=idCarte;
-<<<<<<< HEAD
-	width = 67;
-	height = 23;
-=======
 	this->width = width;
 	this->height = height;
 
-
-
->>>>>>> d3cab950fbbd8764a4d425fd49be3b01407b0231
 	level.resize(width*height);
 	for (i = 0; i < level.size(); i++) {
 		level[i] = level1[i];

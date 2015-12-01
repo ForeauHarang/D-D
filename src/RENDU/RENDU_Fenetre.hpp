@@ -1,5 +1,5 @@
-#ifndef RENDU_fenetre_HPP
-#define RENDU_fenetre_HPP
+#ifndef RENDU_FENETRE_HPP
+#define RENDU_FENETRE_HPP
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>

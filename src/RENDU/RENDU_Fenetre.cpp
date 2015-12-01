@@ -1,4 +1,4 @@
-#include "RENDU_fenetre.hpp"
+#include "RENDU_Fenetre.hpp"
 
 /*
 * constructeurs
