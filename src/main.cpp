@@ -83,7 +83,7 @@ int main()
 
 		rendu();
 		moteurJeu();
-		collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
+		//collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
 		std::cout << numdir << std::endl;
 		
 		if(windowOpen==false) break;
@@ -248,7 +248,7 @@ void moteurJeu(){
 
 
 //Collisions
-
+/*
 bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 {
 	int w = map1.getWidthMap();
@@ -262,7 +262,7 @@ bool collisions(int dx, int dy, int numdir, std::vector<int> level)
 	}
 
 	return true; //tu peux passer
-}
+}*/
 
 
 

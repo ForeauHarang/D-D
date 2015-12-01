@@ -20,11 +20,9 @@ class MAP_Carte{
 		int nombreElementsInfranchissables;
 		int height = 23;
 		int width = 67;
-	
-	public :		
-		// on définit le niveau à l'aide de numéro de tuiles
 		std::vector<int> level;
-		
+	
+	public :
 
 		/*
 		 * constructeurs
