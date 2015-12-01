@@ -20,8 +20,8 @@ class MAP_Carte{
 		int nombreQuetes;
 		int nombreCoffres;
 		int nombreElementsInfranchissables;
-		int height = 23;
-		int width = 67;
+		int height;// = 23
+		int width; //= 67
 		std::vector<int> level;
 	
 	
@@ -33,7 +33,7 @@ class MAP_Carte{
 		/*
 		 * constructeurs
 		 * */	 
-		 MAP_Carte(int idCarte);
+		 MAP_Carte(int idCarte, int width, int height);
 		 MAP_Carte();
 
 		 /*
@@ -68,6 +68,9 @@ class MAP_Carte{
 		
 		void addImpassableElement(int, int);
 		void removeImpassableElement(int, int);
+
+		void setWidthMap(int width);
+		void setHeightMap(int height);
 };
 
 #endif

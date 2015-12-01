@@ -32,7 +32,7 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
 
 int main()
 {
-	MAP_Carte map1(id);
+	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
 	//Personnage Principal - map1.getListCharacters()[0] - perso
     MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
