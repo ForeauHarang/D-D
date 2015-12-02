@@ -16,18 +16,12 @@
 
 //bool actionDon = false;
 bool windowOpen = true;
-int numdir = 0;
 int id = 1;
 
 // on crée la fenêtre
 
-	sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
+sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
-// on crée la tilemap avec le niveau précédemment défini
-TileMap map;
-
-
-void rendu(MAP_Carte& map1);
 void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
 //bool collisions(int dx, int dy, int numdir, std::vector<int> level);
 
@@ -71,8 +65,8 @@ int main()
 	//Groupe gentil2 = GENTIL;
 	MAP_Personnage perso2 = MAP_Personnage(bobMaman);
 	MAP_Personnage* ptrperso2 = &perso2;
-	perso2.setX(15*TAILLEBLOC); 
-	perso2.setY(15*TAILLEBLOC); 
+	perso2.setX(15*TAILLEBLOC);
+	perso2.setY(15*TAILLEBLOC);
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
 
@@ -81,62 +75,13 @@ int main()
 
 	while(1){
 		fenetre.afficherFenetre();
-//		rendu(map1);
 		moteurJeu(map1,actions);
-		//collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
-		//std::cout << numdir << std::endl;
 		
 		if(windowOpen==false) break;
 	}
     return 0;
 }
 
-void rendu(MAP_Carte& map1){
-	int x=map1.getListCharacters()[0]->getX();
-	int y=map1.getListCharacters()[0]->getY();
-
-	int x2 = map1.getListCharacters()[1]->getX();
-	int y2 = map1.getListCharacters()[1]->getY();
-
-  	/* Récupérer l'image pour le personnage principal */
-	sf::Texture texturePrincipale;
-	texturePrincipale.loadFromFile("../res/images/vampire.png");
-	
-	/* Créer l'image pour le premier personnage */
-	sf::Sprite perso;
-	perso.setTexture(texturePrincipale);
-	perso.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
-
-	/* Récupérer l'image pour le deuxième personnage */
-	sf::Texture texture2;
-	texture2.loadFromFile("../res/images/Loup-garou.png");
-
-	/* Créer l'image pour le deuxième personnage */
-	sf::Sprite perso2;
-	perso2.setTexture(texture2);
-	perso2.setTextureRect(sf::IntRect(0, TAILLEBLOC, TAILLEBLOC, TAILLEBLOC));
-
-	//Chargement de la map
-	if (!map.load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), map1.getMap(), 67, 23))
-		std::cout<<"erreur chargement petiteimages.jpeg\n"<<std::endl;
-
-
-	
-	sf::Event event;
-//	while (window.pollEvent(event))
-//	{		
-		//perso.setPosition(persoPrincipal.getX(),persoPrincipal.getY());
-		
-		perso.setPosition(x,y);
-		perso2.setPosition(x2, y2);
-//	}
-	    window.clear();
-        window.draw(map);
-        window.draw(perso);
-		window.draw(perso2);
-        window.display();
-
-}
 
 /*
 * commande : 	Z : aller en haut
@@ -159,7 +104,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 
 	//Si le perso principal est en déplacement		
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		numdir = 1;
 		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
@@ -170,7 +114,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 			
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-		numdir = 2;
 		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
@@ -180,7 +123,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		numdir = 3;
 		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
@@ -192,7 +134,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 	// la touche "flèche gauche" est enfoncée : on bouge le personnage
 		//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-		numdir = 4;
 		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
