@@ -12,16 +12,16 @@ int nombreElementsInfranchissables;
 std::vector<int> level;
  */
 
-/* C'est ici que se définit notre map : donc level doit être définit ici par exemple ainsi que le passage des coordonnées du tableau 1D vers 2D*/
+/* C'est ici que se dï¿½finit notre map : donc level doit ï¿½tre dï¿½finit ici par exemple ainsi que le passage des coordonnï¿½es du tableau 1D vers 2D*/
 
 // 9 = herbe
 // 54 = arbres
 // 12 = terre claire
-// 14 = terre foncée
+// 14 = terre foncï¿½e
 // 0 = route grise
 // 2 = route noire
 // 15 = eau claire
-// 17 = eau foncée
+// 17 = eau foncï¿½e
 
 static int level1[] =
 {
@@ -147,7 +147,9 @@ int MAP_Carte::getWidthMap() {
 }
 
 int MAP_Carte::getHeightMap() {
+	std::cout<<"test"<<std::endl;
 	return this->height;
+
 }
 
 /*
@@ -155,6 +157,7 @@ int MAP_Carte::getHeightMap() {
  * */
  
 void MAP_Carte::addCharacter(MAP_Personnage *perso){
+
 	listePersonnages.push_back(perso);//new MAP_Personnage(perso.getCharacteristics(), perso.getRace(), perso.getJob(), perso.getGroup(), perso.getCharacterId());//perso.getInventory(), perso.getCharacterId());
 	nombrePersonnages++;
 }

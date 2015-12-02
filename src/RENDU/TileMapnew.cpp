@@ -1,11 +1,10 @@
-#include "TileMap.hpp"
+#include "TileMapnew.hpp"
 
 /*class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
-*/
-
-    bool TileMap::load(const string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
+*/	
+    bool TileMapnew::load(const string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
     {
         // on charge la texture du tileset
         if (!m_tileset.loadFromFile(tileset))
@@ -45,11 +44,26 @@ public:
         return true;
     }
     
-
+    std::string TileMapnew::getElemId(){
+		return this->stringId;
+	}
+	
+	void TileMapnew::setStringId(std::string name){
+		this->stringId=name;
+	}
+	
+	bool TileMapnew::load(){
+		return load("../res/images/petiteimages.jpeg", sf::Vector2u(TAILLEBLOC, TAILLEBLOC), carte->getMap(), carte->getWidthMap(),carte->getHeightMap());
+	}
+	
+	void TileMapnew::setMap(MAP_Carte* carte){
+		this->carte=carte;
+	}
+	
 /*
 private:
 */
-    void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    void TileMapnew::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         // on applique la transformation
         states.transform *= getTransform();

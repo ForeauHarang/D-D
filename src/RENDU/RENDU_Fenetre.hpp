@@ -6,34 +6,37 @@
 #include <iostream>
 #include <vector>
 
-//#include "RENDU_ElementGraphique.hpp"
+#include "RENDU_ElementGraphique.hpp"
 #include "../MAP/MAP_Carte.hpp"
 #include "TileMap.hpp"
+#include "RENDU_Sprite.hpp"
 
 #define TAILLEBLOC 32
 
-class RENDU_fenetre {
+class RENDU_Fenetre {
 	private:
 		sf::RenderWindow* window;
-		std::vector<RENDU_ElementGraphique>* listeElementGraphique;
+		std::vector<RENDU_ElementGraphique*> listeElementGraphique;
 		MAP_Carte* map1;
 
 	public:
 		/*
 		* constructeurs
 		* */
-		RENDU_fenetre(sf::RenderWindow* window);
+		RENDU_Fenetre(sf::RenderWindow* window, MAP_Carte* map1);
 
 		/*
 		* Destructeurs
 		* */
-		~RENDU_fenetre();
+		~RENDU_Fenetre();
 
 		/*
-		* Méthodes
+		* Mï¿½thodes
 		* */
 		void afficherElementGraphique();
 		void afficherFenetre();
+		void addElementToList(RENDU_ElementGraphique* element);
+		//void removeElementFromList(std::string name);
 
 };
-#endif;
+#endif

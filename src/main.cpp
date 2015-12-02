@@ -9,17 +9,19 @@
 #include "MAP/MAP_VariablesGlobales.hpp"
 #include "MOTEUR/MOTEUR_DeplacementPersonnage.hpp"
 #include "MOTEUR/MOTEUR_ListeAction.hpp"
+#include "RENDU/RENDU_Fenetre.hpp"
+#include "RENDU/TileMapnew.hpp"
 
 #define TAILLEBLOC 32
 
-bool actionDon = false;
+//bool actionDon = false;
 bool windowOpen = true;
 int numdir = 0;
 int id = 1;
 
 // on crée la fenêtre
-sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
+	sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 // on crée la tilemap avec le niveau précédemment défini
 TileMap map;
@@ -32,14 +34,25 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
 
 int main()
 {
+
+	
 	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
+	RENDU_Fenetre fenetre(&window, &map1);
+	
+	TileMapnew tilemap;
+	tilemap.setMap(&map1);
+	
+	fenetre.addElementToList(&tilemap);
+	
+	
+	
 	//Personnage Principal - map1.getListCharacters()[0] - perso
-    MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
+    //MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
 	std::string bob = "bob";
-	Race hum = HUMAIN;
-	Profession sold = SOLDAT;
-	Groupe gentil=GENTIL;
+	//Race hum = HUMAIN;
+	//Profession sold = SOLDAT;
+	//Groupe gentil=GENTIL;
 	MAP_Personnage persoPrincipal = MAP_Personnage(bob);
 	MAP_Personnage* ptrpersoPrincipal = &persoPrincipal;
 	persoPrincipal.setX(8*TAILLEBLOC);
@@ -48,11 +61,11 @@ int main()
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
 
 	//Personnage 2 - map1.getListCharacters()[1] - perso2
-	MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
+	//MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
 	std::string bobMaman = "bobMaman";
-	Race hum2 = VAMPIRE;
-	Profession sold2 = SOLDAT;
-	Groupe gentil2 = GENTIL;
+	//Race hum2 = VAMPIRE;
+	//Profession sold2 = SOLDAT;
+	//Groupe gentil2 = GENTIL;
 	MAP_Personnage perso2 = MAP_Personnage(bobMaman);
 	MAP_Personnage* ptrperso2 = &perso2;
 	perso2.setX(15*TAILLEBLOC); 
@@ -60,13 +73,10 @@ int main()
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
 
-	
-
-
 
 	while(1){
-
-		rendu(map1);
+		fenetre.afficherFenetre();
+//		rendu(map1);
 		moteurJeu(map1,actions);
 		//collisions(TAILLEBLOC, TAILLEBLOC, numdir, level);
 		//std::cout << numdir << std::endl;
@@ -120,6 +130,7 @@ void rendu(MAP_Carte& map1){
         window.draw(perso);
 		window.draw(perso2);
         window.display();
+
 }
 
 /*

@@ -52,5 +52,5 @@ set(SOURCE_FILES
     RENDU_VariablesGlobales.hpp
     TileMap.cpp
     TileMap.hpp)
-
+enable_language(CXX)
 add_executable(src ${SOURCE_FILES})

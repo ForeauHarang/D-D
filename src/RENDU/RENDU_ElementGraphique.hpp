@@ -3,11 +3,15 @@
 
 #include <string>
 #include "RENDU_VariablesGlobales.hpp"
-#include <SFML/Graphics/VertexArray.hpp>
+#include <SFML/Graphics/VertexArray.hpp>	
+
+#ifndef TAILLEBLOC
+#define TAILLEBLOC 32
+#endif
 
 using std::string;
 
-class RENDU_ElementGrapgique public sf::Drawable, public sf::Transformable{
+class RENDU_ElementGraphique : public sf::Drawable, public sf::Transformable{
 	public :
 		/*
 		 * Constructeur 
@@ -22,15 +26,16 @@ class RENDU_ElementGrapgique public sf::Drawable, public sf::Transformable{
 		/*
 		 * Getters
 		 */
-		virtual int getElemId() = 0;
+		virtual std::string getElemId() = 0;
 		/*
 		 * Setters
 		 */
 		
 		/*
 		 * Methodes
-		 */	 
-		virtual void load(const string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height);
+		 */
+		//virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const=0;
+		virtual bool load()=0;
 		//virtual void undo()=0;
 		
 };

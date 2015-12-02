@@ -46,6 +46,10 @@ add_executable(
 	src/MOTEUR/MOTEUR_ListeAction.hpp
 	src/MOTEUR/MOTEUR_Regle.hpp
 	
+	src/RENDU/RENDU_Fenetre.hpp
+	src/RENDU/RENDU_ElementGraphique.hpp
+	src/RENDU/RENDU_Sprite.hpp
+	src/RENDU/TileMapnew.hpp
 	
 	src/RENDU/TileMap.hpp
 	
@@ -73,6 +77,10 @@ add_executable(
 	src/RENDU/RENDU_StaticTuile.cpp
 #	src/RENDU/RENDU_Surface.cpp
 	src/RENDU/RENDU_Tuile.cpp
+	src/RENDU/RENDU_Fenetre.cpp
+	src/RENDU/RENDU_ElementGraphique.cpp
+	src/RENDU/TileMapnew.cpp
+	src/RENDU/RENDU_Sprite.cpp
 	
 	src/RENDU/TileMap.cpp
 	
@@ -82,6 +90,8 @@ add_executable(
 	src/MOTEUR/MOTEUR_DeplacementPersonnage.cpp
 	src/MOTEUR/MOTEUR_ListeAction.cpp
 	src/MOTEUR/MOTEUR_Regle.cpp
+	
+	
 
 )
 
