@@ -26,9 +26,8 @@ void RENDU_Fenetre::afficherElementGraphique(){
 	for (i = 0; i < listeElementGraphique.size(); i++) {
 		
 		if (listeElementGraphique[i]->getElemId() == "TileMap") {
-			std::cout<<"test"<<std::endl;
 			if (!((dynamic_cast<TileMapnew*>(listeElementGraphique[i]))
-					->load("../../res/images/petiteimages.jpeg",
+					->load("../res/images/petiteimages.jpeg",
 						   sf::Vector2u(TAILLEBLOC, TAILLEBLOC),
 						   map1->getMap(), map1->getWidthMap(),
 						   map1->getHeightMap()))) {

@@ -60,6 +60,9 @@ int main()
 	map1.addCharacter(ptrpersoPrincipal);
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
 
+	RENDU_Sprite sprite1("../res/images/vampire.png", "bob", ptrpersoPrincipal);
+	fenetre.addElementToList(&sprite1);
+
 	//Personnage 2 - map1.getListCharacters()[1] - perso2
 	//MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
 	std::string bobMaman = "bobMaman";
@@ -73,6 +76,8 @@ int main()
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
 
+	RENDU_Sprite sprite2("../res/images/Loup-garou.png", "bobMaman", ptrperso2);
+	fenetre.addElementToList(&sprite2);
 
 	while(1){
 		fenetre.afficherFenetre();

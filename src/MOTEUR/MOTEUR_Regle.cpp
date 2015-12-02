@@ -49,8 +49,6 @@ bool MOTEUR_Regle::isAvailable(MOTEUR_DeplacementPersonnage* commande){
 	int Y=commande->getY() / TAILLEBLOC;
 	int DX=commande->getDX() / TAILLEBLOC;
 	int DY=commande->getDY() / TAILLEBLOC;
-
-	std::cout<<Y<<std::endl;
 	
 	int caseDuPerso = CARTE_carte->getLevelValue(X,Y);
 	//std::vector<int> level = CARTE_carte->getMap();

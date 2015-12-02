@@ -147,7 +147,6 @@ int MAP_Carte::getWidthMap() {
 }
 
 int MAP_Carte::getHeightMap() {
-	std::cout<<"test"<<std::endl;
 	return this->height;
 
 }

@@ -12,12 +12,11 @@ private :
 	
 public :
 */
-RENDU_Sprite::RENDU_Sprite(std::string path, std::string id){
+RENDU_Sprite::RENDU_Sprite(std::string path, std::string id, MAP_Personnage* personnagePtr){
 	this->stringId=id;
 	this->elementString=path;
+    this->personnagePtr=personnagePtr;
 }
-
-
 
 std::string RENDU_Sprite::getElementString(){
 	return this->elementString;
@@ -72,6 +71,11 @@ void RENDU_Sprite::setElementId(std::string stringId){
 	this->stringId=stringId;
 }
 
+void RENDU_Sprite::draw(sf::RenderTarget&, sf::RenderStates) const{
 
+}
 
+bool RENDU_Sprite::load() {
+
+}
 
