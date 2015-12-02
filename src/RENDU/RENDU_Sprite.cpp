@@ -76,6 +76,6 @@ void RENDU_Sprite::draw(sf::RenderTarget&, sf::RenderStates) const{
 }
 
 bool RENDU_Sprite::load() {
-
+	return false;
 }
 
