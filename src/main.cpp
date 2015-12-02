@@ -108,27 +108,16 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 		actions.addAction(&action);
 
 		// check if action is true
-		if(map1.getListCharacters()[0]->getX()<41*TAILLEBLOC) // le personnage ne peut pas aller hors de l'ecran; par défaut, permission=false
-			actions.setPermissionTrue(actions.getActionNumber());
-			//std::cout<<actions.getPermissionFromList(actions.getActionNumber())<<std::endl;
-			
+
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
 		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
-		// check if action is true
-		if(map1.getListCharacters()[0]->getX()>0)
-			actions.setPermissionTrue(actions.getActionNumber());			
-
 		// la touche "flèche gauche" est enfoncée : on bouge le personnage
 	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
 		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
-
-		// check if action is true
-		if(map1.getListCharacters()[0]->getY()>0)
-			actions.setPermissionTrue(actions.getActionNumber());
 			
 			
 	// la touche "flèche gauche" est enfoncée : on bouge le personnage
@@ -137,11 +126,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
 		actions.addAction(&action);
 
-		// check if action is true
-		if(map1.getListCharacters()[0]->getY()<21*TAILLEBLOC)
-			actions.setPermissionTrue(actions.getActionNumber());
-		else actions.setPermissionFalse(actions.getActionNumber());
-					
 	}else{
 
 	//Si le perso principal ne se déplace plus, le perso2 le rejoint
@@ -165,7 +149,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 			}
 			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
 		}else{
 			dx=TAILLEBLOC;
 			if(X1<X2){
@@ -175,7 +158,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 			}
 			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());
 		}
 	}
 

@@ -60,11 +60,11 @@ void RENDU_Sprite::setY(int Y){
 }
 
 void RENDU_Sprite::setDirectionX(int dirX){
-	this->DirectionX=X;
+	this->DirectionX=dirX;
 }
 
 void RENDU_Sprite::setDirectionY(int dirY){
-	this->DirectionY=Y;
+	this->DirectionY=dirY;
 }
 
 void RENDU_Sprite::setElementId(std::string stringId){
@@ -76,6 +76,6 @@ void RENDU_Sprite::draw(sf::RenderTarget&, sf::RenderStates) const{
 }
 
 bool RENDU_Sprite::load() {
-
+    return false;
 }
 

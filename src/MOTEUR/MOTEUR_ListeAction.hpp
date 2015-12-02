@@ -16,7 +16,6 @@ using std::string;
 class MOTEUR_ListeAction{
 	private:
 		MOTEUR_Action *listeAction[LISTEMAX];
-		bool permission[LISTEMAX];//a supprimer
 		int nombreAction;
 		MOTEUR_Regle regles;
 
@@ -38,15 +37,12 @@ class MOTEUR_ListeAction{
 		 
 		MOTEUR_Action* getActionFromList(int placeDansListe);
 		int getActionNumber();
-		bool getPermissionFromList(int pladeDansListe); // a supprimer
 		
 		/*
 		 * Setters
 		 */
 		
 		void addAction(MOTEUR_Action *action);
-		void setPermissionTrue(int placeDansListe);//a supprimer
-		void setPermissionFalse(int placeDansListe);//a supprimer		
 		void removeAction(int placeDansListe);
 		/*
 		 * Methodes
