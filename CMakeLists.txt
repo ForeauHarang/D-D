@@ -91,7 +91,8 @@ add_executable(
 	src/MOTEUR/MOTEUR_ListeAction.cpp
 	src/MOTEUR/MOTEUR_Regle.cpp
 	
-	
+	src/IHM/IHM_PersonnageControleur.cpp
+	src/IHM/IHM_PersonnageControleur.hpp
 
 )
 
