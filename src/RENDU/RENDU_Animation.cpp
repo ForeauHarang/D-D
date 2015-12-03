@@ -1,8 +1,5 @@
 #include "RENDU_Animation.hpp" 
 
-#include "RENDU_Surface.hpp"
-#include "RENDU_Tuile.hpp"
-
 		/*int x;
 		int y;
 		float vitesse;

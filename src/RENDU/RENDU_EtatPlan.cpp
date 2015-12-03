@@ -1,6 +1,5 @@
 #include "RENDU_EtatPlan.hpp"
 
-#include "RENDU_Plan.hpp"
 
 /* include ETAT */
 

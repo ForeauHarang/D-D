@@ -3,6 +3,7 @@
 
 #include "MAP_VariablesGlobales.hpp"
 #include "MAP_ObjetInventaire.hpp"
+#include <iostream>
 
 /* changer l'uml état MAP*/
 

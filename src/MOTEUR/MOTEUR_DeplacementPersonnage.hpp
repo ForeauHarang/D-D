@@ -2,7 +2,7 @@
 #define MOTEUR_DEPLACEMENTPERSONNAGE_HPP
 
 #include "MOTEUR_Action.hpp"
-#include "MAP_Personnage.hpp"
+#include "../MAP/MAP_Personnage.hpp"
 #include <string>
 using std::string;
 

@@ -1,6 +1,5 @@
 #include "RENDU_AnimatedTuile.hpp"
 
-#include "RENDU_Tuile.hpp"
 
 	/*taux;
 	RENDU_Tuile* tuile;*/ 

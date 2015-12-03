@@ -1,16 +1,12 @@
-#ifndef test_hpp
-#define test_hpp
-
-#include "RENDU_VariablesGlobales.hpp"
 #include "TileMap.hpp"
-#include <SFML/Graphics/VertexArray.hpp>
 
-class TileMap : public sf::Drawable, public sf::Transformable
+/*class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
+*/
 
-    bool load(const string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
- /*   {
+    bool TileMap::load(const string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
+    {
         // on charge la texture du tileset
         if (!m_tileset.loadFromFile(tileset))
             return false;
@@ -48,11 +44,13 @@ public:
 
         return true;
     }
-*/
-private:
+    
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-  /*  {
+/*
+private:
+*/
+    void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
         // on applique la transformation
         states.transform *= getTransform();
 
@@ -62,8 +60,7 @@ private:
         // et on dessine enfin le tableau de vertex
         target.draw(m_vertices, states);
     }
-*/
+/*
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
-};
-#endif
+*/

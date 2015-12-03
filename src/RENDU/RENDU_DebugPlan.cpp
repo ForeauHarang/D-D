@@ -1,6 +1,5 @@
 #include "RENDU_DebugPlan.hpp"
 
-#include "RENDU_Plan.hpp"
 
 /* include ETAT */
 

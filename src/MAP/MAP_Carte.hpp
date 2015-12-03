@@ -5,6 +5,8 @@
 #include "MAP_Personnage.hpp"
 #include "MAP_Quete.hpp"
 #include "MAP_Coffre.hpp"
+#include <stdexcept>
+
 
 class MAP_Carte{
 	private :
@@ -18,34 +20,43 @@ class MAP_Carte{
 		int nombreQuetes;
 		int nombreCoffres;
 		int nombreElementsInfranchissables;
+		int height;// = 23
+		int width; //= 67
+		std::vector<int> level;
 	
-	public :
+	
+	public :		
+		// on d�finit le niveau � l'aide de num�ro de tuiles
+		
+		
+
 		/*
 		 * constructeurs
-		 * */
-		 
-		 MAP_Carte(int idCarte);
+		 * */	 
+		 MAP_Carte(int idCarte, int width, int height);
 		 MAP_Carte();
+
 		 /*
 		  * destructeurs
 		  * */
-		  
 		 ~MAP_Carte();
 		
 		/*
 		 * liste des getteurs
 		 * */
-		
 		std::vector<MAP_Personnage*> getListCharacters();
 		MAP_Quete* getListQuests();
 		MAP_Coffre* getListChest();
 		int* getListImpassableElement();
+		const std::vector<int>& getMap() const;
+		int getLevelValue(int x,int y) const;
+		int getWidthMap();
+		int getHeightMap();
 		
 		
 		/*
 		 * liste des setteurs
 		 * */
-		 
 		void addCharacter(MAP_Personnage*);
 		void removeCharacter(MAP_Personnage);
 		
@@ -57,6 +68,9 @@ class MAP_Carte{
 		
 		void addImpassableElement(int, int);
 		void removeImpassableElement(int, int);
+
+		void setWidthMap(int width);
+		void setHeightMap(int height);
 };
 
 #endif

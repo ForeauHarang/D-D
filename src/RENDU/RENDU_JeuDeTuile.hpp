@@ -3,15 +3,15 @@
 
 /* include ETAT */
 #include "RENDU_VariablesGlobales.hpp"
-#include "MAP_Carte.hpp"
-#include "MAP_InventairePersonnage.hpp"
-#include "MAP_Personnage.hpp"
-#include "MAP_Coffre.hpp"
-#include "MAP_ObjetInventaire.hpp"
+#include "../MAP/MAP_Carte.hpp"
+#include "../MAP/MAP_InventairePersonnage.hpp"
+#include "../MAP/MAP_Personnage.hpp"
+#include "../MAP/MAP_Coffre.hpp"
+#include "../MAP/MAP_ObjetInventaire.hpp"
 
-#include "FIGHT_Personnage.hpp"
-#include "FIGHT_Competence.hpp"
-#include "FIGHT_Carte.hpp"
+#include "../FIGHT/FIGHT_Personnage.hpp"
+#include "../FIGHT/FIGHT_Competence.hpp"
+#include "../FIGHT/FIGHT_Carte.hpp"
 
 
 #include "RENDU_Tuile.hpp"

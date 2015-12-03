@@ -1,5 +1,5 @@
 #include "MAP_InventairePersonnage.hpp"
-#include <iostream>
+
 /*
 private :
 MAP_ObjetInventaire[NOMBRESLOTS] tableauSlots;

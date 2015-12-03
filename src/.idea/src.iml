@@ -3,77 +3,13 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ETAT_EtatObserver.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ETAT_EtatObserver.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Carte.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Carte.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Competence.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Competence.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Personnage.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_Personnage.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/FIGHT_VariablesGlobales.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Carte.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Carte.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Coffre.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Coffre.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_InventairePersonnage.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_InventairePersonnage.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_ObjetInventaire.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_ObjetInventaire.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Personnage.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Personnage.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Quete.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_Quete.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MAP_VariablesGlobales.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_AnimatedTuile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_AnimatedTuile.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Animation.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Animation.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_DebugPlan.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_DebugPlan.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_EtatPlan.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_EtatPlan.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_JeuDeTuile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_JeuDeTuile.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_ListeElementPlan.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_ListeElementPlan.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Plan.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Plan.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Scene.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Scene.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_StaticTuile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_StaticTuile.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Surface.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Surface.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Tuile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_Tuile.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RENDU_VariablesGlobales.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/TileMap.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/TileMap.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
-        <CLASSES>
-          <root url="file:///usr/include" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/cilk" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/objc" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/sanitizer" />
-          <root url="file:///usr/local/include" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file:///usr/include" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/cilk" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/objc" />
-          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/sanitizer" />
-          <root url="file:///usr/local/include" />
-        </SOURCES>
+        <CLASSES />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

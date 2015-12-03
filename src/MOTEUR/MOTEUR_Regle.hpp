@@ -2,7 +2,8 @@
 #define MOTEUR_REGLE_HPP
 
 #include "MOTEUR_DeplacementPersonnage.hpp"
-#include "MAP_Carte.hpp"
+#include "../MAP/MAP_Carte.hpp"
+#include <iostream>
 
 #define TAILLEBLOC 32
 
@@ -13,9 +14,9 @@ class MOTEUR_Regle{
 	
 		/*
 		 * Constructeur 
-		 */
-		
+		 */		
 		MOTEUR_Regle();
+		MOTEUR_Regle(MAP_Carte *carte);
 		
 		/*
 		 * Destructeur 
