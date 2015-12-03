@@ -36,6 +36,7 @@ int MOTEUR_ListeAction::getActionNumber(){
  */
 
 void MOTEUR_ListeAction::addAction(MOTEUR_Action *action){
+
 	this->listeAction[nombreAction]=action;
 	nombreAction++;
 }
@@ -57,7 +58,8 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
  */ 
 
 void MOTEUR_ListeAction::apply(){
-	for(int i=0;i<nombreAction;i++){
+	int limite=nombreAction;
+	for(int i=0;i<limite;i++){
 		if(listeAction[i]->getActionId()=="deplacementPersonnage"){
 			//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
 				
@@ -68,7 +70,7 @@ void MOTEUR_ListeAction::apply(){
 			}
 		}
 	}
-	for(int i=0;i<nombreAction;i++){
-		removeAction(i);
+	for(int i=0;i<limite;i++){
+		removeAction(0);
 	}
 }

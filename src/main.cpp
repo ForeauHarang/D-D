@@ -12,6 +12,7 @@
 #include "RENDU/RENDU_Fenetre.hpp"
 #include "RENDU/TileMapnew.hpp"
 #include "IHM/IHM_PersonnageControleur.hpp"
+#include "IA/IA_IASimple.hpp"
 
 #define TAILLEBLOC 32
 
@@ -27,7 +28,8 @@ int main()
 	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
 	RENDU_Fenetre fenetre(&window, &map1);
-	IHM_PersonnageControleur ihm(&map1);
+	IHM_PersonnageControleur ihm(&map1, &actions);
+	IA_IASimple ia(&map1,&actions);
 	
 	TileMapnew tilemap;
 	tilemap.setMap(&map1);
@@ -73,7 +75,7 @@ int main()
 	std::cout << "Aller a gauche : Touche Q" << std::endl;
 	std::cout << "Aller en haut : Touche Z" << std::endl;
 	std::cout << "Aller en bas : Touche S" << std::endl;
-	std::cout << "Fermer la fenetre : Touche Echap ou la croix rouge" << std::endl;
+	std::cout << "Fermer la fenetre : Touche Echap ou la croix" << std::endl;
 
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
 	while (window.isOpen())
@@ -87,10 +89,13 @@ int main()
 			ihm.deplacementCommande(event);
 			//Event pour fermer la fenêtre 
 			ihm.fermerFenetre(event, &window);
-
+			
 		}
 		//IA simple
-		iaSimple(map1, actions);
+		//iaSimple(map1, actions);
+		ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
+		actions.apply();
+		
 	}
 
 
@@ -136,5 +141,9 @@ void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 		action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
 		actions.addAction(&action);
 	}
-	actions.apply();
+
+	/*std::cout << "test" << std::endl;
+	actions.getActionFromList(0);
+	std::cout << "test" << std::endl;
+	actions.apply();*/
 }

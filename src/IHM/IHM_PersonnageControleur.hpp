@@ -14,12 +14,11 @@ class IHM_PersonnageControleur {
 
 	private:
 		sf::Event event;
-		//MAP_Personnage perso;
-		MOTEUR_ListeAction actions;
+		MOTEUR_ListeAction* actions;
 		MAP_Carte* map;
 
 	public:
-		IHM_PersonnageControleur(MAP_Carte* map);
+		IHM_PersonnageControleur(MAP_Carte* map, MOTEUR_ListeAction* actions);
 		~IHM_PersonnageControleur();
 
 	void deplacementCommande(sf::Event event);

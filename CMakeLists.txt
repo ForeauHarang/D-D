@@ -42,7 +42,8 @@ add_executable(
 		src/MOTEUR/MOTEUR_Regle.hpp
 
 		src/IHM/IHM_PersonnageControleur.hpp
-
+		
+		src/IA/IA_IASimple.hpp
 		src/IA/IA_DeplacementCase.hpp
 		src/IA/IA_ComplexeDeplacement.hpp
 
@@ -77,8 +78,10 @@ add_executable(
 
 		src/IHM/IHM_PersonnageControleur.cpp
 
+		src/IA/IA_IASimple.cpp
 		src/IA/IA_DeplacementCase.cpp
 		src/IA/IA_ComplexeDeplacement.cpp
+
 )
 
 
