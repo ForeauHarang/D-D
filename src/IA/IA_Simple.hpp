@@ -5,6 +5,6 @@
 
 class IA_Simple {
 	public :
-		void 
+		void reachTarget();
 };
 #endif 

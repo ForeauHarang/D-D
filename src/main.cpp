@@ -15,13 +15,12 @@
 
 #define TAILLEBLOC 32
 
+void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions);
+
 int id = 1;
 
 // on crée la fenêtre
 sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
-
-void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions);
-
 
 int main()
 {
