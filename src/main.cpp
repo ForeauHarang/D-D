@@ -13,6 +13,8 @@
 #include "RENDU/TileMapnew.hpp"
 #include "IHM/IHM_PersonnageControleur.hpp"
 #include "IA/IA_IASimple.hpp"
+#include "IA/IA_ComplexeDeplacement.hpp"
+
 
 #define TAILLEBLOC 32
 
@@ -29,6 +31,7 @@ int main()
 	MOTEUR_ListeAction actions(&map1);
 	RENDU_Fenetre fenetre(&window, &map1);
 	IHM_PersonnageControleur ihm(&map1, &actions);
+
 	IA_IASimple ia(&map1,&actions);
 	
 	TileMapnew tilemap;
@@ -80,6 +83,7 @@ int main()
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
 	while (window.isOpen())
 	{
+
 		fenetre.afficherFenetre();
 		// on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
 		sf::Event event;
@@ -91,9 +95,16 @@ int main()
 			ihm.fermerFenetre(event, &window);
 			
 		}
+
+		IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
+
+		IAComplexeDeplacement.reachTarget(map1.getListCharacters()[0]->getX()/TAILLEBLOC,map1.getListCharacters()[0]->getY()/TAILLEBLOC,0);
+
 		//IA simple
 		//iaSimple(map1, actions);
-		ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
+
+		//ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
+
 		actions.apply();
 		
 	}

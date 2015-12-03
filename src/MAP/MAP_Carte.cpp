@@ -135,6 +135,7 @@ int MAP_Carte::getLevelValue(int x,int y) const {
 		throw std::invalid_argument("x<0");
 	}
 	if(x>=width){
+		std::cerr << x << " et " << width << std::endl;
 		throw std::invalid_argument("x>taille");
 	}
 	

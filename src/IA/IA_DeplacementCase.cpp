@@ -19,8 +19,9 @@ public :
 
 IA_DeplacementCase::IA_DeplacementCase(int etage, int x, int y, MAP_Carte* carte) {
     this->etage=etage;
-    this->x=x;
-    this->y=y;
+    this->x=x/TAILLEBLOC;
+    this->y=y/TAILLEBLOC;
+
     this->carte=carte;
 }
 
@@ -51,14 +52,29 @@ int IA_DeplacementCase::getX(){
 int IA_DeplacementCase::getY(){
     return this->y;
 }
-int IA_DeplacementCase::getSquareDistance(IA_DeplacementCase* cible){
+
+int IA_DeplacementCase::getSquareDistance(IA_DeplacementCase* cible, MAP_Carte* map){
     int d=0;
 
-    if(carte->getLevelValue(this->x,this->y)>14) {
+
+    if(map->getLevelValue(this->x,this->y)>14) {
         d=-1;
-        }else {
+    }else {
         d += (this->x - cible->getX()) * (this->x - cible->getX());
         d += (this->y - cible->getY()) * (this->y - cible->getY());
+    }
+    return d;
+}
+
+int IA_DeplacementCase::getSquareDistance(int x, int y, MAP_Carte* map){
+    int d=0;
+
+
+    if(map->getLevelValue(this->x,this->y)>14) {
+        d=-1;
+    }else {
+        d += (this->x - x) * (this->x - x);
+        d += (this->y - y) * (this->y - y);
     }
     return d;
 }
@@ -71,6 +87,9 @@ IA_DeplacementCase* IA_DeplacementCase::getFather(){
     return this->pere;
 }
 
+MAP_Carte* IA_DeplacementCase::getMap(){
+
+}
 
 /*
 * setteurs

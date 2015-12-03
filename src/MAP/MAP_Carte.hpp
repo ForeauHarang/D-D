@@ -26,9 +26,8 @@ class MAP_Carte{
 	
 	
 	public :		
-		// on définit le niveau à l'aide de numéro de tuiles
-		
-		
+
+		// on dï¿½finit le niveau ï¿½ l'aide de numï¿½ro de tuiles
 
 		/*
 		 * constructeurs
