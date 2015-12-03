@@ -23,6 +23,7 @@ class MOTEUR_ListeAction{
 		/*
 		 * Constructeur 
 		 */
+		MOTEUR_ListeAction();
 		MOTEUR_ListeAction(MAP_Carte *carte);
 		
 		/*

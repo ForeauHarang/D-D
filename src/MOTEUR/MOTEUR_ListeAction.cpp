@@ -3,7 +3,8 @@
 /*
  * Constructeur 
  */
- 
+MOTEUR_ListeAction::MOTEUR_ListeAction() {
+}
 
 MOTEUR_ListeAction::MOTEUR_ListeAction(MAP_Carte *carte){
 	nombreAction=0;

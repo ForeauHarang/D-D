@@ -88,15 +88,15 @@ MAP_Carte::MAP_Carte(){
  * destructeurs
  * */
  
-MAP_Carte::~MAP_Carte(){
-	int i=0;
+MAP_Carte::~MAP_Carte() {
+	int i = 0;
 	MAP_Personnage* temp = 0;
-	while(listePersonnages.size() != 0)
-	delete listePersonnages[0];
+	/*while (listePersonnages.size() != 0) {
+		delete listePersonnages[0];
+	}
+		delete[] listeQuetes[NBQUETES];
+		delete[] listeCoffres[NBCOFFRES];*/
 
-	delete[] listeQuetes[NBQUETES];
-	delete[] listeCoffres[NBCOFFRES];
-	
 }
 
 /*

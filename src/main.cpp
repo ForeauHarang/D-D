@@ -11,36 +11,32 @@
 #include "MOTEUR/MOTEUR_ListeAction.hpp"
 #include "RENDU/RENDU_Fenetre.hpp"
 #include "RENDU/TileMapnew.hpp"
+#include "IHM/IHM_PersonnageControleur.hpp"
 
 #define TAILLEBLOC 32
 
-//bool actionDon = false;
-bool windowOpen = true;
 int id = 1;
 
 // on crée la fenêtre
-
 sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
-void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
-//bool collisions(int dx, int dy, int numdir, std::vector<int> level);
+void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions);
 
 
 int main()
 {
-
 	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
 	RENDU_Fenetre fenetre(&window, &map1);
+	IHM_PersonnageControleur ihm(&map1);
 	
 	TileMapnew tilemap;
 	tilemap.setMap(&map1);
 	
 	fenetre.addElementToList(&tilemap);
-	
-	
-	
+		
 	//Personnage Principal - map1.getListCharacters()[0] - perso
+
     //MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
 	std::string bob = "bob";
 	//Race hum = HUMAIN;
@@ -56,6 +52,7 @@ int main()
 	fenetre.addElementToList(&sprite1);
 
 	//Personnage 2 - map1.getListCharacters()[1] - perso2
+
 	//MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
 	std::string bobMaman = "bobMaman";
 	//Race hum2 = VAMPIRE;
@@ -71,24 +68,38 @@ int main()
 	RENDU_Sprite sprite2("../res/images/Loup-garou.png", "bobMaman", ptrperso2);
 	fenetre.addElementToList(&sprite2);
 
-	while(1){
+	// Event possibles :
+	std::cout << "Vous pouvez :" << std::endl;
+	std::cout << "Aller a droite : Touche D" << std::endl;
+	std::cout << "Aller a gauche : Touche Q" << std::endl;
+	std::cout << "Aller en haut : Touche Z" << std::endl;
+	std::cout << "Aller en bas : Touche S" << std::endl;
+	std::cout << "Fermer la fenetre : Touche Echap ou la croix rouge" << std::endl;
+
+	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
+	while (window.isOpen())
+	{
 		fenetre.afficherFenetre();
-		moteurJeu(map1,actions);
-		
-		if(windowOpen==false) break;
+		// on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			//Event du clavier pour déplacement d'un joueur
+			ihm.deplacementCommande(event);
+			//Event pour fermer la fenêtre 
+			ihm.fermerFenetre(event, &window);
+
+		}
+		//IA simple
+		iaSimple(map1, actions);
 	}
+
+
     return 0;
 }
 
 
-/*
-* commande : 	Z : aller en haut
-* 				Q : aller à gauche
-* 				S : aller en bas
-* 				D : aller à droite
-* 				F : fermer la fenetre
-*/
-void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
+void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 	MOTEUR_DeplacementPersonnage action;
 	int X1=0;
 	int X2=0;
@@ -100,71 +111,31 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 	
 	int signe=0;
 
-	//Si le perso principal est en déplacement		
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		action=MOTEUR_DeplacementPersonnage(TAILLEBLOC,0,(map1.getListCharacters()[0]));
-		actions.addAction(&action);
-
-		// check if action is true
-
-		// la touche "flèche gauche" est enfoncée : on bouge le personnage
-	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-		action=MOTEUR_DeplacementPersonnage(-TAILLEBLOC,0,(map1.getListCharacters()[0]));
-		actions.addAction(&action);
-
-		// la touche "flèche gauche" est enfoncée : on bouge le personnage
-	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		action=MOTEUR_DeplacementPersonnage(0,-TAILLEBLOC,(map1.getListCharacters()[0]));
-		actions.addAction(&action);
-			
-			
-	// la touche "flèche gauche" est enfoncée : on bouge le personnage
-		//map1.getListCharacters()[0].setY(map1.getListCharacters()[0].getY()-TAILLEBLOC);
-	}else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-		action=MOTEUR_DeplacementPersonnage(0,TAILLEBLOC,(map1.getListCharacters()[0]));
-		actions.addAction(&action);
-
-	}else{
-
-	//Si le perso principal ne se déplace plus, le perso2 le rejoint
-		// Permet de déplacer le perso2 vers le persoPrincipal
+	// Permet de déplacer le perso2 vers le persoPrincipal		
+	X1=map1.getListCharacters()[0]->getX();
+	Y1=map1.getListCharacters()[0]->getY();
+	X2=map1.getListCharacters()[1]->getX();
+	Y2=map1.getListCharacters()[1]->getY();
 		
-		X1=map1.getListCharacters()[0]->getX();
-		Y1=map1.getListCharacters()[0]->getY();
-		X2=map1.getListCharacters()[1]->getX();
-		Y2=map1.getListCharacters()[1]->getY();
-		
-		if(X1==X2 && Y1==Y2){
-			/*action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
-			actions.addAction(&action);
-			actions.setPermissionTrue(actions.getActionNumber());*/
-		}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
-			dy=TAILLEBLOC;
-			if(Y1<Y2){
-				signe = -1;
-			}else{
-				signe=1;
-			}
-			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
-			actions.addAction(&action);
+	if(X1==X2 && Y1==Y2){
+	}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
+		dy=TAILLEBLOC;
+		if(Y1<Y2){
+			signe = -1;
 		}else{
-			dx=TAILLEBLOC;
-			if(X1<X2){
-				signe = -1;
-			}else{
-				signe= 1;
-			}
-			action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
-			actions.addAction(&action);
+			signe=1;
 		}
+		action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
+		actions.addAction(&action);
+	}else{
+		dx=TAILLEBLOC;
+		if(X1<X2){
+			signe = -1;
+		}else{
+			signe= 1;
+		}
+		action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
+		actions.addAction(&action);
 	}
-
 	actions.apply();
-
-	//quitter la fenetre
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-		window.close();
-		windowOpen = false;
-	}	
-	
 }

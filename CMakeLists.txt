@@ -12,7 +12,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_executable(
 		vandw
 
-
+		#HPP
 		src/MAP/MAP_Personnage.hpp
 		src/MAP/MAP_Carte.hpp
 		src/MAP/MAP_Coffre.hpp
@@ -25,34 +25,28 @@ add_executable(
 		src/FIGHT/FIGHT_Competence.hpp
 		src/FIGHT/FIGHT_Personnage.hpp
 		src/FIGHT/FIGHT_VariablesGlobales.hpp
-	
-#	src/RENDU/RENDU_AnimatedTuile.hpp
-#	src/RENDU/RENDU_Animation.hpp
-#	src/RENDU/RENDU_DebugPlan.hpp
-#	src/RENDU/RENDU_EtatPlan.hpp
+
 		src/RENDU/RENDU_JeuDeTuile.hpp
-#	src/RENDU/RENDU_ListeElementPlan.hpp
-#	src/RENDU/RENDU_Plan.hpp
-#	src/RENDU/RENDU_Scene.hpp
 		src/RENDU/RENDU_StaticTuile.hpp
-#	src/RENDU/RENDU_Surface.hpp
 		src/RENDU/RENDU_Tuile.hpp
 		src/RENDU/RENDU_VariablesGlobales.hpp
-	
-#	src/ETAT/ETAT_EtatObserver.hpp
+		src/RENDU/RENDU_Fenetre.hpp
+		src/RENDU/RENDU_ElementGraphique.hpp
+		src/RENDU/RENDU_Sprite.hpp
+		src/RENDU/TileMapnew.hpp
+		#src/RENDU/TileMap.hpp
 
 		src/MOTEUR/MOTEUR_Action.hpp
 		src/MOTEUR/MOTEUR_DeplacementPersonnage.hpp
 		src/MOTEUR/MOTEUR_ListeAction.hpp
 		src/MOTEUR/MOTEUR_Regle.hpp
 
-		src/RENDU/RENDU_Fenetre.hpp
-		src/RENDU/RENDU_ElementGraphique.hpp
-		src/RENDU/RENDU_Sprite.hpp
-		src/RENDU/TileMapnew.hpp
+		src/IHM/IHM_PersonnageControleur.hpp
 
-		src/RENDU/TileMap.hpp
+		src/IA/IA_DeplacementCase.hpp
+		src/IA/IA_DeplacementDur.hpp
 
+		#CPP
 		src/main.cpp
 
 		src/MAP/MAP_Carte.cpp
@@ -65,37 +59,27 @@ add_executable(
 		src/FIGHT/FIGHT_Carte.cpp
 		src/FIGHT/FIGHT_Competence.cpp
 		src/FIGHT/FIGHT_Personnage.cpp
-	
-#	src/RENDU/RENDU_AnimatedTuile.cpp
-#	src/RENDU/RENDU_Animation.cpp
-#	src/RENDU/RENDU_DebugPlan.cpp
-#	src/RENDU/RENDU_EtatPlan.cpp
+
 		src/RENDU/RENDU_JeuDeTuile.cpp
-#	src/RENDU/RENDU_ListeElementPlan.cpp
-#	src/RENDU/RENDU_Plan.cpp
-#	src/RENDU/RENDU_Scene.cpp
 		src/RENDU/RENDU_StaticTuile.cpp
-#	src/RENDU/RENDU_Surface.cpp
 		src/RENDU/RENDU_Tuile.cpp
 		src/RENDU/RENDU_Fenetre.cpp
 		src/RENDU/RENDU_ElementGraphique.cpp
 		src/RENDU/TileMapnew.cpp
 		src/RENDU/RENDU_Sprite.cpp
 
-		src/RENDU/TileMap.cpp
-	
-#	src/ETAT/ETAT_EtatObserver.cpp
+		#src/RENDU/TileMap.cpp
 
 		src/MOTEUR/MOTEUR_Action.cpp
 		src/MOTEUR/MOTEUR_DeplacementPersonnage.cpp
 		src/MOTEUR/MOTEUR_ListeAction.cpp
 		src/MOTEUR/MOTEUR_Regle.cpp
 
+		src/IHM/IHM_PersonnageControleur.cpp
+
 		src/IA/IA_DeplacementDur.cpp
-		src/IA/IA_DeplacementDur.hpp
 		src/IA/IA_DeplacementCase.cpp
-		src/IA/IA_DeplacementCase.hpp
-		src/IA/IA_DeplacementCase.hpp)
+)
 
 
 # Detect and add SFML
