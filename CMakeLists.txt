@@ -44,7 +44,7 @@ add_executable(
 		src/IHM/IHM_PersonnageControleur.hpp
 
 		src/IA/IA_DeplacementCase.hpp
-		src/IA/IA_DeplacementDur.hpp
+		src/IA/IA_ComplexeDeplacement.hpp
 
 		#CPP
 		src/main.cpp
@@ -77,8 +77,8 @@ add_executable(
 
 		src/IHM/IHM_PersonnageControleur.cpp
 
-		src/IA/IA_DeplacementDur.cpp
 		src/IA/IA_DeplacementCase.cpp
+		src/IA/IA_ComplexeDeplacement.cpp
 )
 
 
