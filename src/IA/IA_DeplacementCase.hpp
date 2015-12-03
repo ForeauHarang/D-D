@@ -5,6 +5,7 @@
 #ifndef INC_3A_IA_DEPLACEMENTCASE_HPP
 #define INC_3A_IA_DEPLACEMENTCASE_HPP
 
+
 #define TAILLEBLOC 32
 
 #include <vector>
@@ -18,6 +19,7 @@ private :
     int x;
     int y;
     MAP_Carte* carte;
+
     int i=0;
 
 public :
@@ -40,11 +42,13 @@ public :
 
     int getX();
     int getY();
+
     int getSquareDistance(int x, int y, MAP_Carte* map);
     int getSquareDistance(IA_DeplacementCase* cible, MAP_Carte* map);
     int getStage();
     IA_DeplacementCase* getFather();
     MAP_Carte* getMap();
+
 
 
     /*

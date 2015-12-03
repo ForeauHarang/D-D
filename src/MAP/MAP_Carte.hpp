@@ -26,9 +26,8 @@ class MAP_Carte{
 	
 	
 	public :		
+
 		// on d�finit le niveau � l'aide de num�ro de tuiles
-		
-		
 
 		/*
 		 * constructeurs

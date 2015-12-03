@@ -15,6 +15,7 @@
 #include "IA/IA_IASimple.hpp"
 #include "IA/IA_ComplexeDeplacement.hpp"
 
+
 #define TAILLEBLOC 32
 
 void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions);
@@ -54,8 +55,6 @@ int main()
 	RENDU_Sprite sprite1("../res/images/vampire.png", "bob", ptrpersoPrincipal);
 	fenetre.addElementToList(&sprite1);
 
-
-
 	//Personnage 2 - map1.getListCharacters()[1] - perso2
 
 	//MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
@@ -69,8 +68,6 @@ int main()
 	perso2.setY(15*TAILLEBLOC);
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
-
-
 
 	RENDU_Sprite sprite2("../res/images/Loup-garou.png", "bobMaman", ptrperso2);
 	fenetre.addElementToList(&sprite2);
@@ -98,12 +95,16 @@ int main()
 			ihm.fermerFenetre(event, &window);
 			
 		}
+
 		IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
-		//IA simple
-		//iaSimple(map1, actions);
+
 		IAComplexeDeplacement.reachTarget(map1.getListCharacters()[0]->getX()/TAILLEBLOC,map1.getListCharacters()[0]->getY()/TAILLEBLOC,0);
 
+		//IA simple
+		//iaSimple(map1, actions);
+
 		//ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
+
 		actions.apply();
 		
 	}

@@ -21,6 +21,7 @@ IA_DeplacementCase::IA_DeplacementCase(int etage, int x, int y, MAP_Carte* carte
     this->etage=etage;
     this->x=x/TAILLEBLOC;
     this->y=y/TAILLEBLOC;
+
     this->carte=carte;
 }
 
@@ -51,6 +52,7 @@ int IA_DeplacementCase::getX(){
 int IA_DeplacementCase::getY(){
     return this->y;
 }
+
 int IA_DeplacementCase::getSquareDistance(IA_DeplacementCase* cible, MAP_Carte* map){
     int d=0;
 

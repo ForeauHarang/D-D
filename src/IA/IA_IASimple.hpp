@@ -14,17 +14,21 @@ class IA_IASimple {
 		/*
 		* Constructeur
 		*/
+
 		IA_IASimple(MAP_Carte* map, MOTEUR_ListeAction* actions);
+
 
 		/*
 		* Destructeur
 		*/
+
 		~IA_IASimple();
 
 		/*
 		* M�thodes
 		*/
 		void reachTarget(MAP_Carte* map, int X1, int Y1, int X2, int Y2);
+
 };
 
 #endif
