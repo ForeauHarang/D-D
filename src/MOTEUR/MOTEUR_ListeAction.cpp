@@ -1,15 +1,5 @@
 #include "MOTEUR_ListeAction.hpp"
 
-
-/*private:
-		MOTEUR_Action *listeAction[LISTEMAX];
-		bool permission[LISTEMAX];
-		int nombreAtion=0;
-	
-	public:
-*/
-
-
 /*
  * Constructeur 
  */
@@ -41,10 +31,6 @@ int MOTEUR_ListeAction::getActionNumber(){
 	return this->nombreAction;
 }
 
-bool MOTEUR_ListeAction::getPermissionFromList(int pladeDansListe){
-	return permission[pladeDansListe];
-}
-
 /*
  * Setters
  */
@@ -54,28 +40,14 @@ void MOTEUR_ListeAction::addAction(MOTEUR_Action *action){
 	nombreAction++;
 }
 
-void MOTEUR_ListeAction::setPermissionTrue(int placeDansListe){
-	this->permission[placeDansListe-1]=true;
-}
-
-void MOTEUR_ListeAction::setPermissionFalse(int placeDansListe){
-	this->permission[placeDansListe-1]=false;
-}
-
 void MOTEUR_ListeAction::removeAction(int placeDansListe){
 	if(nombreAction>0){
 		int i=placeDansListe;
 		for(i=placeDansListe;i<nombreAction-1;i++){
 			this->listeAction[nombreAction]=this->listeAction[nombreAction+1];
-			this->permission[nombreAction]=this->permission[nombreAction+1];
-
 		}
 		nombreAction--;
 
-	}
-	this->permission[nombreAction+1]=false;
-	if(nombreAction==0){
-		this->permission[nombreAction]=false;
 	}
 }
 

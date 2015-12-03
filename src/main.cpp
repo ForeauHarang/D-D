@@ -101,13 +101,6 @@ int main()
 }
 
 
-/*
-* commande : 	Z : aller en haut
-* 				Q : aller à gauche
-* 				S : aller en bas
-* 				D : aller à droite
-* 				F : fermer la fenetre
-*/
 void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions){
 	MOTEUR_DeplacementPersonnage action;
 	int X1=0;
