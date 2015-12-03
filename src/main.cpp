@@ -29,7 +29,6 @@ void moteurJeu(MAP_Carte& map1, MOTEUR_ListeAction& actions);
 int main()
 {
 
-	
 	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
 	RENDU_Fenetre fenetre(&window, &map1);
@@ -53,7 +52,6 @@ int main()
 	persoPrincipal.setY(8*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
-
 	RENDU_Sprite sprite1("../res/images/vampire.png", "bob", ptrpersoPrincipal);
 	fenetre.addElementToList(&sprite1);
 
