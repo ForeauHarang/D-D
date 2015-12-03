@@ -11,7 +11,7 @@
 #include "MOTEUR/MOTEUR_ListeAction.hpp"
 #include "RENDU/RENDU_Fenetre.hpp"
 #include "RENDU/TileMapnew.hpp"
-#include "IHM\IHM_PersonnageControleur.hpp"
+#include "IHM/IHM_PersonnageControleur.hpp"
 
 #define TAILLEBLOC 32
 
@@ -24,7 +24,6 @@ sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 int main()
 {
-	
 	MAP_Carte map1(id, 67, 23);
 	MOTEUR_ListeAction actions(&map1);
 	RENDU_Fenetre fenetre(&window, &map1);
@@ -48,7 +47,6 @@ int main()
 	persoPrincipal.setY(8*TAILLEBLOC);
 	map1.addCharacter(ptrpersoPrincipal);
 	map1.getListCharacters().push_back(ptrpersoPrincipal);
-
 	RENDU_Sprite sprite1("../res/images/vampire.png", "bob", ptrpersoPrincipal);
 	fenetre.addElementToList(&sprite1);
 
