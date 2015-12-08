@@ -8,7 +8,7 @@
 
 #include "RENDU_ElementGraphique.hpp"
 #include "../MAP/MAP_Carte.hpp"
-#include "TileMap.hpp"
+#include "TileMapnew.hpp"
 #include "RENDU_Sprite.hpp"
 
 #define TAILLEBLOC 32

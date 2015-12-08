@@ -55,9 +55,11 @@ void RENDU_Fenetre::afficherElementGraphique(){
 }
 
 void RENDU_Fenetre::afficherFenetre() {
-	window->clear();
-	afficherElementGraphique();
-	window->display();
+//	while(1) {
+		window->clear();
+		afficherElementGraphique();
+		window->display();
+//	}
 }
 
 void RENDU_Fenetre::addElementToList(RENDU_ElementGraphique* element){
