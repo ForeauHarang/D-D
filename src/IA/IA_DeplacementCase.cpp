@@ -87,8 +87,9 @@ IA_DeplacementCase* IA_DeplacementCase::getFather(){
     return this->pere;
 }
 
-MAP_Carte* IA_DeplacementCase::getMap(){
 
+MAP_Carte* IA_DeplacementCase::getMap(){
+	return this->carte;
 }
 
 /*

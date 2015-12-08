@@ -87,10 +87,10 @@ void IA_ComplexeDeplacement::addAction(){
     while(temp->getStage()>1){
         temp=temp->getFather();
     }
-//    std::cout<<liste[0]->getY()<<" y et "<< temp->getY()<<std::endl;
+    //std::cout<<liste[0]->getY()<<" y et "<< temp->getY()<<std::endl;
     if(temp->getStage()) {
         MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage(
                 (-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);
-        //actions->addAction(tempAction);
+        actions->addAction(tempAction);
     }
 }
