@@ -26,14 +26,12 @@ add_executable(
 		src/FIGHT/FIGHT_Personnage.hpp
 		src/FIGHT/FIGHT_VariablesGlobales.hpp
 
-		src/RENDU/RENDU_JeuDeTuile.hpp
-		src/RENDU/RENDU_StaticTuile.hpp
-		src/RENDU/RENDU_Tuile.hpp
 		src/RENDU/RENDU_VariablesGlobales.hpp
 		src/RENDU/RENDU_Fenetre.hpp
 		src/RENDU/RENDU_ElementGraphique.hpp
 		src/RENDU/RENDU_Sprite.hpp
 		src/RENDU/TileMapnew.hpp
+
 		#src/RENDU/TileMap.hpp
 
 		src/MOTEUR/MOTEUR_Action.hpp
@@ -61,9 +59,6 @@ add_executable(
 		src/FIGHT/FIGHT_Competence.cpp
 		src/FIGHT/FIGHT_Personnage.cpp
 
-		src/RENDU/RENDU_JeuDeTuile.cpp
-		src/RENDU/RENDU_StaticTuile.cpp
-		src/RENDU/RENDU_Tuile.cpp
 		src/RENDU/RENDU_Fenetre.cpp
 		src/RENDU/RENDU_ElementGraphique.cpp
 		src/RENDU/TileMapnew.cpp
@@ -81,6 +76,18 @@ add_executable(
 		src/IA/IA_IASimple.cpp
 		src/IA/IA_DeplacementCase.cpp
 		src/IA/IA_ComplexeDeplacement.cpp
+
+# MOTEUR de jeu
+	#src/MOTEUR_ModeCommande.cpp
+	#src/MOTEUR_ModeCommande.hpp
+	#src/MOTEUR_ChargementCommande.cpp
+	#src/MOTEUR_ChargementCommande.hpp
+	#src/MOTEUR_DirectionCommande.cpp
+	#src/MOTEUR_DirectionCommande.hpp
+	#src/MOTEUR_Commande.cpp
+	#src/MOTEUR_Commande.hpp
+	
+	#src/MOTEUR_VariablesGlobales.hpp
 
 )
 

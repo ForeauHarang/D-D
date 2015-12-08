@@ -19,11 +19,11 @@ void IA_ComplexeDeplacement::addChildrenToList(IA_DeplacementCase* pere) {
         IA_DeplacementCase *fils1 = new IA_DeplacementCase(etage + 1, x + 1, y, pere, pere->getMap());
         liste.push_back(fils1);
     }
-    if(x>1) {
+    if(x>0) {
         IA_DeplacementCase *fils2 = new IA_DeplacementCase(etage + 1, x - 1, y, pere, pere->getMap());
         liste.push_back(fils2);
     }
-    if(y>1){
+    if(y>0){
         IA_DeplacementCase* fils3 = new IA_DeplacementCase(etage+1, x, y-1, pere, pere->getMap());
         liste.push_back(fils3);
     }

@@ -5,7 +5,7 @@
 #include <thread>
 
 #include "FIGHT/FIGHT_Carte.hpp"
-#include "RENDU/TileMap.hpp"
+#include "RENDU/TileMapnew.hpp"
 #include "MAP/MAP_Carte.hpp"
 #include "MAP/MAP_Personnage.hpp"
 #include "MAP/MAP_VariablesGlobales.hpp"
@@ -85,7 +85,7 @@ int main() {
 	std::cout << "Aller en bas : Touche S" << std::endl;
 	std::cout << "Fermer la fenetre : Touche Echap ou la croix" << std::endl;
 
-	std::thread tAfficherFenetre(&RENDU_Fenetre::afficherFenetre, &fenetre);
+	//std::thread tAfficherFenetre(&RENDU_Fenetre::afficherFenetre, &fenetre);
 
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
 	while (window.isOpen()) {
@@ -114,10 +114,10 @@ int main() {
 		actions.apply();
 
 	}
-	if (tAfficherFenetre.joinable()){
+/*	if (tAfficherFenetre.joinable()){
 		tAfficherFenetre.join();
 	}
-    return 0;
+    return 0;*/
 }
 
 
