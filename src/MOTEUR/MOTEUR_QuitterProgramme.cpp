@@ -31,6 +31,5 @@ void MOTEUR_QuitterProgramme::setWindow(sf::RenderWindow* window){
  */
 
 void MOTEUR_QuitterProgramme::apply(){
-    this->window->close();
     std::cout<<"exit"<<std::endl;
 }

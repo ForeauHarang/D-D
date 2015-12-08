@@ -45,7 +45,7 @@ void IHM_PersonnageControleur::fermerFenetre(sf::Event event, sf::RenderWindow* 
 		action=new MOTEUR_QuitterProgramme();
 		action->setWindow(window);
 		actions->addAction(action);
-		//window->close();
+		window->close();
 	}
 }
 
