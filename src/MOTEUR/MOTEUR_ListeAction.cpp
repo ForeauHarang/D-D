@@ -59,7 +59,7 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 
 void MOTEUR_ListeAction::apply(){
 	int limite;
-	while(1) {
+	while(resterDansLaBoucle){
 		limite = nombreAction;
 		for (int i = 0; i < limite; i++) {
 			if (listeAction[i]->getActionId() == "deplacementPersonnage") {
@@ -71,9 +71,19 @@ void MOTEUR_ListeAction::apply(){
 					listeAction[i]->apply();
 				}
 			}
+			if (listeAction[i]->getActionId() == "QuitterProgramme") {
+				std::cout<<"action exit"<<std::endl;
+				//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
+				listeAction[i]->apply();
+				resterDansLaBoucle=false;
+				i=limite;
+			}
 		}
 		for (int i = 0; i < limite; i++) {
 			removeAction(0);
 		}
+	}
+	while(nombreAction+1) {
+		removeAction(0);
 	}
 }

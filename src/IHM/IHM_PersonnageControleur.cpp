@@ -15,22 +15,22 @@ IHM_PersonnageControleur::~IHM_PersonnageControleur() {
 void IHM_PersonnageControleur::deplacementCommande(sf::Event event) {
 	MOTEUR_DeplacementPersonnage* action;
 
-	//Si la touche D est appuyée, aller à droite
+	//Si la touche D est appuyï¿½e, aller ï¿½ droite
 	if (event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::D)) {
 		action = new MOTEUR_DeplacementPersonnage(TAILLEBLOC, 0, (map->getListCharacters()[0]));
 		actions->addAction(action);
 	}
-	//Si la touche Q est appuyée, aller à gauche
+	//Si la touche Q est appuyï¿½e, aller ï¿½ gauche
 	if (event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Q)) {
 		action =new MOTEUR_DeplacementPersonnage(-TAILLEBLOC, 0, (map->getListCharacters()[0]));
 		actions->addAction(action);
 	}
-	//Si la touche Z est appuyée, aller en haut
+	//Si la touche Z est appuyï¿½e, aller en haut
 	if (event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Z)) {
 		action =new MOTEUR_DeplacementPersonnage(0, -TAILLEBLOC, (map->getListCharacters()[0]));
 		actions->addAction(action);
 	}
-	//Si la touche S est appuyée, aller en bas
+	//Si la touche S est appuyï¿½e, aller en bas
 	if (event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::S)) {
 		action =new MOTEUR_DeplacementPersonnage(0, TAILLEBLOC, (map->getListCharacters()[0]));
 		actions->addAction(action);
@@ -39,9 +39,13 @@ void IHM_PersonnageControleur::deplacementCommande(sf::Event event) {
 }
 
 void IHM_PersonnageControleur::fermerFenetre(sf::Event event, sf::RenderWindow* window) {
-	//Si la touche Echape est appuyée ou la croix rouge cliquée, fermé
+	//Si la touche Echape est appuyï¿½e ou la croix rouge cliquï¿½e, fermï¿½
 	if (event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Escape) || event.type == sf::Event::Closed) {
-		window->close();
+		MOTEUR_QuitterProgramme* action;
+		action=new MOTEUR_QuitterProgramme();
+		action->setWindow(window);
+		actions->addAction(action);
+		//window->close();
 	}
 }
 

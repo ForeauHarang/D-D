@@ -4,6 +4,9 @@
 #include "FIGHT_VariablesGlobales.hpp"
 #include "FIGHT_Competence.hpp"
 
+
+/*#include "FIGHT.hpp"
+
 /* changer l'uml : personnage possede compétence; il ne la référence plus */
 
 class FIGHT_Personnage{

@@ -26,6 +26,8 @@ add_executable(
 		src/FIGHT/FIGHT_Personnage.hpp
 		src/FIGHT/FIGHT_VariablesGlobales.hpp
 
+#		src/FIGHT/FIGHT.hpp
+
 		src/RENDU/RENDU_VariablesGlobales.hpp
 		src/RENDU/RENDU_Fenetre.hpp
 		src/RENDU/RENDU_ElementGraphique.hpp
@@ -38,9 +40,10 @@ add_executable(
 		src/MOTEUR/MOTEUR_DeplacementPersonnage.hpp
 		src/MOTEUR/MOTEUR_ListeAction.hpp
 		src/MOTEUR/MOTEUR_Regle.hpp
+		src/MOTEUR/MOTEUR_QuitterProgramme.hpp
 
 		src/IHM/IHM_PersonnageControleur.hpp
-		
+
 		src/IA/IA_IASimple.hpp
 		src/IA/IA_DeplacementCase.hpp
 		src/IA/IA_ComplexeDeplacement.hpp
@@ -70,6 +73,7 @@ add_executable(
 		src/MOTEUR/MOTEUR_DeplacementPersonnage.cpp
 		src/MOTEUR/MOTEUR_ListeAction.cpp
 		src/MOTEUR/MOTEUR_Regle.cpp
+		src/MOTEUR/MOTEUR_QuitterProgramme.cpp
 
 		src/IHM/IHM_PersonnageControleur.cpp
 
@@ -89,7 +93,7 @@ add_executable(
 	
 	#src/MOTEUR_VariablesGlobales.hpp
 
-		src/MOTEUR/MOTEUR.hpp)
+		src/MOTEUR/MOTEUR.hpp src/MOTEUR/MOTEUR_QuitterProgramme.cpp src/MOTEUR/MOTEUR_QuitterProgramme.hpp)
 
 
 # Detect and add SFML

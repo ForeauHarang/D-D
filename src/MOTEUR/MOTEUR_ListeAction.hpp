@@ -5,6 +5,7 @@
 #include <iostream>
 #include "MOTEUR_Regle.hpp"
 #include "MOTEUR_DeplacementPersonnage.hpp"
+#include "MOTEUR_QuitterProgramme.hpp"
 #include <string>
 #include "../MAP/MAP_Carte.hpp"
 using std::string;
@@ -18,6 +19,7 @@ class MOTEUR_ListeAction{
 		MOTEUR_Action *listeAction[LISTEMAX];
 		int nombreAction;
 		MOTEUR_Regle regles;
+		bool resterDansLaBoucle=true;
 
 	public:
 		/*

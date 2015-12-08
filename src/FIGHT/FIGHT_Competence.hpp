@@ -13,23 +13,23 @@ class FIGHT_Competence{
 		int coutMana;
 		bool utilisable;
 	public :
-		
+
 		/*
 		* constructeurs
 		* */
-		
+
 		FIGHT_Competence(FIGHT_NomCompetence nomComp,int force, int intel, int niveau, FIGHT_Race race, FIGHT_Profession profession, FIGHT_NomArme arme, FIGHT_NomPotion potion);
-		
+
 		/*
 		* destructeurs
 		* */
-		
+
 		~FIGHT_Competence();
-		
+
 		/*
 		* getteurs
 		* */
-		
+
 		int getDamage();
 		int getHeal();
 		int getShield();
@@ -39,13 +39,13 @@ class FIGHT_Competence{
 		/*
 		* setteurs
 		* */
-		
+
 		void SkillLevelUp(int niveau);
-		
+
 		/*
 		* autres méthodes
 		* */
-		
+
 };
 
 #endif

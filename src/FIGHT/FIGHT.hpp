@@ -1,5 +1,5 @@
-#ifndef FIGHT__H
-#define FIGHT__H
+#ifndef FIGHT__HPP
+#define FIGHT__HPP
 
 #include <string>
 #include <iostream>
@@ -10,6 +10,9 @@
 namespace FIGHT {
 
     using std::string;
+    class FIGHT_Carte;
+    class FIGHT_Competence;
+    class FIGHT_Personnage;
 
 }
 
