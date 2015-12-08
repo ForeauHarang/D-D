@@ -34,7 +34,6 @@ void IA_ComplexeDeplacement::addChildrenToList(IA_DeplacementCase* pere) {
 
 }
 void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
-    IA_DeplacementCase cible=IA_DeplacementCase(0, xCible, yCible, map);
     distanceMin=liste[0]->getSquareDistance(xCible, yCible, map);
 
     if(liste[0]->getX()==xCible && liste[0]->getY()==yCible){
@@ -73,25 +72,25 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
     }
 
 //std::cout<<d<<std::endl;
-    if(distanceMin>0){
+    if(distanceMin>=0){
         addAction();
         //std::cout<<distanceMin<<std::endl;
     }
     int distanceMin=-1;
     int indiceDistanceMin=0;
-    for(i=0;i<1024;i++){
-        liste.erase(liste.begin(), liste.begin()+liste.size());
-    }
+
+    liste.erase(liste.begin(), liste.begin()+liste.size());
+
 }
 void IA_ComplexeDeplacement::addAction(){
     IA_DeplacementCase* temp = liste[indiceDistanceMin];
-
     while(temp->getStage()>1){
         temp=temp->getFather();
     }
-    //std::cout<<-liste[0]->getX()+temp->getX()<<std::endl;
 //    std::cout<<liste[0]->getY()<<" y et "<< temp->getY()<<std::endl;
-
-    MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage((-liste[0]->getX()+temp->getX())*TAILLEBLOC, (-liste[0]->getY()+temp->getY())*TAILLEBLOC, ia);
-    actions->addAction(tempAction);
+    if((-liste[0]->getX() + temp->getX())+(-liste[0]->getY() + temp->getY())) {
+        MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage(
+                (-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);
+        actions->addAction(tempAction);
+    }
 }
