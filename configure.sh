@@ -3,11 +3,11 @@ sfml_path=""
 OPTIND=1
 
 cd dia/
-dia2code Etat_Fight.dia -d ../src/FIGHT/
+#dia2code Etat_Fight.dia -d ../src/FIGHT/
 #dia2code Ia.dia -d ../src/IA/
 #dia2code Ihm.dia -d ../src/IHM/
 #dia2code Map.dia -d ../src/MAP/
-dia2code Moteur.dia -d ../src/MOTEUR/
+#dia2code Moteur.dia -d ../src/MOTEUR/
 #dia2code Rendu.dia -d ../src/RENDU/
 cd ..
 
