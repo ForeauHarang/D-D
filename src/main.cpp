@@ -85,7 +85,7 @@ int main() {
 	std::cout << "Aller en bas : Touche S" << std::endl;
 	std::cout << "Fermer la fenetre : Touche Echap ou la croix" << std::endl;
 
-	//std::thread tAfficherFenetre(&RENDU_Fenetre::afficherFenetre, &fenetre);
+	std::thread tMoteurJeu(&MOTEUR_ListeAction::apply, &actions);
 
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
 	while (window.isOpen()) {
@@ -111,13 +111,13 @@ int main() {
 
 		//ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
 
-		actions.apply();
+		//actions.apply();
 
 	}
-/*	if (tAfficherFenetre.joinable()){
-		tAfficherFenetre.join();
+	if (tMoteurJeu.joinable()){
+		tMoteurJeu.join();
 	}
-    return 0;*/
+    return 0;
 }
 
 

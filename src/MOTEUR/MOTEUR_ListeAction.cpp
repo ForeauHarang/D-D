@@ -58,19 +58,22 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
  */ 
 
 void MOTEUR_ListeAction::apply(){
-	int limite=nombreAction;
-	for(int i=0;i<limite;i++){
-		if(listeAction[i]->getActionId()=="deplacementPersonnage"){
-			//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
-				
-			
-			if(regles.isAvailable(dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i]))){
+	int limite;
+	while(1) {
+		limite = nombreAction;
+		for (int i = 0; i < limite; i++) {
+			if (listeAction[i]->getActionId() == "deplacementPersonnage") {
 				//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
-				listeAction[i]->apply();
+
+
+				if (regles.isAvailable(dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i]))) {
+					//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
+					listeAction[i]->apply();
+				}
 			}
 		}
-	}
-	for(int i=0;i<limite;i++){
-		removeAction(0);
+		for (int i = 0; i < limite; i++) {
+			removeAction(0);
+		}
 	}
 }
