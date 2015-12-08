@@ -60,6 +60,7 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 void MOTEUR_ListeAction::apply(){
 	int limite;
 	while(resterDansLaBoucle){
+
 		limite = nombreAction;
 		for (int i = 0; i < limite; i++) {
 			if (listeAction[i]->getActionId() == "deplacementPersonnage") {
@@ -83,7 +84,9 @@ void MOTEUR_ListeAction::apply(){
 			removeAction(0);
 		}
 	}
-	while(nombreAction+1) {
+	while(nombreAction) {
 		removeAction(0);
 	}
+	removeAction(0);
+
 }
