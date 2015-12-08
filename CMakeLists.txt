@@ -7,7 +7,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ../bin)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lsfml-graphics -lsfml-window -lsfml-system")
 add_executable(
 		vandw

@@ -41,6 +41,7 @@ namespace RENDU {
     string getElementId ();
     bool load ();
     void setElementId (strindId string);
+    void setMap (MAP_Carte* carte);
   private:
     void const draw (sf::RenderTarget& target, sf::RenderStates states);
   };
@@ -56,6 +57,7 @@ namespace RENDU {
     int Y;
     int DirectionX;
     string stringId;
+    MAP_Personnage* personnagePtr;
     // Operations
   public:
     int getDirectionY ();
@@ -70,6 +72,7 @@ namespace RENDU {
     void setDirectionX (int dirX);
     void setDirectionY (int dirY);
     void setElementId (string stringId);
+    MAP::MAP_Personnage* getCharacterPtr() ();
   };
 
 };
