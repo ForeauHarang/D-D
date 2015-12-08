@@ -36,9 +36,10 @@ int MOTEUR_ListeAction::getActionNumber(){
  */
 
 void MOTEUR_ListeAction::addAction(MOTEUR_Action *action){
-
-	this->listeAction[nombreAction]=action;
-	nombreAction++;
+	if(resterDansLaBoucle) {
+		this->listeAction[nombreAction] = action;
+		nombreAction++;
+	}
 }
 
 void MOTEUR_ListeAction::removeAction(int placeDansListe){
