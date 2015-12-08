@@ -89,7 +89,7 @@ add_executable(
 	
 	#src/MOTEUR_VariablesGlobales.hpp
 
-)
+		src/MOTEUR/MOTEUR.hpp)
 
 
 # Detect and add SFML

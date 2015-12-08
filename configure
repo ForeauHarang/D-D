@@ -2,6 +2,12 @@
 sfml_path=""
 OPTIND=1
 
+cd dia/
+dia2code Etat_Fight.dia -d ../src/FIGHT/
+dia2code Moteur.dia -d ../src/MOTEUR/
+
+cd ..
+
 rm -r bin
 mkdir bin
 rm -r build
