@@ -20,9 +20,6 @@
 
 #define TAILLEBLOC 32
 
-void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions);
-
-int id = 1;
 
 void helloWorld(){
 	std::cout<<"Hello World !"<<std::endl;
@@ -32,9 +29,13 @@ void helloWorld(){
 sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 
 int main() {
+	int id = 1;
 	MAP_Carte map1(id, 67, 23);
+
 	MOTEUR_ListeAction actions(&map1);
+
 	RENDU_Fenetre fenetre(&window, &map1);
+
 	IHM_PersonnageControleur ihm(&map1, &actions);
 
 	IA_IASimple ia(&map1, &actions);
@@ -116,53 +117,6 @@ int main() {
 	}
 	if (tMoteurJeu.joinable()){
 		tMoteurJeu.join();
-		std::cout<<"test"<<std::endl;
 	}
     return 0;
-}
-
-
-void iaSimple(MAP_Carte& map1, MOTEUR_ListeAction& actions){
-	MOTEUR_DeplacementPersonnage action;
-	int X1=0;
-	int X2=0;
-	int Y1=0;
-	int Y2=0;
-	
-	int dx=0;
-	int dy=0;
-	
-	int signe=0;
-
-	// Permet de déplacer le perso2 vers le persoPrincipal		
-	X1=map1.getListCharacters()[0]->getX();
-	Y1=map1.getListCharacters()[0]->getY();
-	X2=map1.getListCharacters()[1]->getX();
-	Y2=map1.getListCharacters()[1]->getY();
-		
-	if(X1==X2 && Y1==Y2){
-	}else if((X1-X2)*(X1-X2)<(Y1-Y2)*(Y1-Y2)){
-		dy=TAILLEBLOC;
-		if(Y1<Y2){
-			signe = -1;
-		}else{
-			signe=1;
-		}
-		action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
-		actions.addAction(&action);
-	}else{
-		dx=TAILLEBLOC;
-		if(X1<X2){
-			signe = -1;
-		}else{
-			signe= 1;
-		}
-		action = MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map1.getListCharacters()[1]));
-		actions.addAction(&action);
-	}
-
-	/*std::cout << "test" << std::endl;
-	actions.getActionFromList(0);
-	std::cout << "test" << std::endl;
-	actions.apply();*/
 }
