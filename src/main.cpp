@@ -116,7 +116,6 @@ int main() {
 	}
 	if (tMoteurJeu.joinable()){
 		tMoteurJeu.join();
-		std::cout<<"test"<<std::endl;
 	}
     return 0;
 }
