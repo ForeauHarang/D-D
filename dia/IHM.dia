@@ -65,13 +65,13 @@
   <dia:layer name="Background" visible="true" active="true">
     <dia:object type="UML - Class" version="0" id="O0">
       <dia:attribute name="obj_pos">
-        <dia:point val="1,-6.75"/>
+        <dia:point val="12.75,0.75"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.95,-6.8;28.115,0.7"/>
+        <dia:rectangle val="12.7,0.7;39.865,8.2"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="1,-6.75"/>
+        <dia:point val="12.75,0.75"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="27.064999999999998"/>

@@ -74,7 +74,6 @@ int main() {
 	perso2.setY(15 * TAILLEBLOC);
 	map1.addCharacter(ptrperso2);
 	map1.getListCharacters().push_back(ptrperso2);
-
 	RENDU_Sprite sprite2("../res/images/Loup-garou.png", "bobMaman", ptrperso2);
 	fenetre.addElementToList(&sprite2);
 
