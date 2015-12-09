@@ -44,7 +44,8 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
     distanceMin=liste[0]->getSquareDistance(xCible, yCible, map);
 
     if(liste[0]->getX()==xCible && liste[0]->getY()==yCible){
-
+        indiceDistanceMin=0;
+        distanceMin=0;
     }else{
 
         while(i<1023) {
@@ -80,6 +81,7 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
 
 //std::cout<<d<<std::endl;
     if(distanceMin>=0){
+        std::cout<<indiceDistanceMin<<std::endl;
         addAction();
         //std::cout<<distanceMin<<std::endl;
     }
@@ -91,6 +93,7 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
 }
 void IA_ComplexeDeplacement::addAction(){
     IA_DeplacementCase* temp = liste[indiceDistanceMin];
+
     while(temp->getStage()>1){
         temp=temp->getFather();
     }
@@ -99,5 +102,7 @@ void IA_ComplexeDeplacement::addAction(){
         MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage();
                 tempAction->initDeplacement((-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);
         actions->addAction(tempAction);
+
     }
+
 }
