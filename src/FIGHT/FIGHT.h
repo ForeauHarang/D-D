@@ -40,48 +40,6 @@ namespace FIGHT {
     FIGHT_POISON
   };
 
-  /// class FIGHT_Competence - 
-  class FIGHT_Competence {
-    // Attributes
-  private:
-    FIGHT_NomCompetence  competence;
-    int  degats;
-    int  soins;
-    int  bouclier;
-    int  coutMana;
-    bool  utilisable;
-    // Operations
-  public:
-    FIGHT_Competence (FIGHT_NomCompetence nomComp, int force, int intel, int niveau, FIGHT_Race race, FIGHT_Profession profession, FIGHT_NomArme arme, FIGHT_NomPotion potion);
-    ~FIGHT_Competence ();
-    int  getDamage ();
-    int  getHeal ();
-    int  getShield ();
-    int  getManaCost ();
-    bool  isAvailable ();
-    FIGHT_NomCompetence  getSkillName ();
-    void  SkillLevelUp (int niveau);
-  };
-
-  /// class FIGHT_Carte - 
-  class FIGHT_Carte {
-    // Attributes
-  private:
-    int  nombreGentils;
-    int  nombreMechants;
-    int  nombreTotal;
-    // Operations
-  public:
-    FIGHT_Carte (int nbGentils, int nbMechants, FIGHT_Personnage* tableauPersonnage);
-    ~FIGHT_Carte ();
-    int  getNiceNumber ();
-    int  getEvilNumber ();
-    FIGHT_Personnage* getListCharacters ();
-    void  setNiceNumber (in t);
-    void  setEvilNumber (in t);
-    void  removeCharacter (FIGHT_Personnag e);
-  };
-
   enum FIGHT_Groupe {
     FIGHT_GENTIL,
     FIGHT_MECHANT
@@ -131,6 +89,50 @@ namespace FIGHT {
     void  setPotion ();
     void  setDeath ();
     void  useCompetence (FIGHT_Personnage cible, int numComp);
+  };
+
+  /// class FIGHT_Competence - 
+  class FIGHT_Competence {
+    // Associations
+    FIGHT::FIGHT_Personnage* competences;
+    // Attributes
+  private:
+    FIGHT_NomCompetence  competence;
+    int  degats;
+    int  soins;
+    int  bouclier;
+    int  coutMana;
+    bool  utilisable;
+    // Operations
+  public:
+    FIGHT_Competence (FIGHT_NomCompetence nomComp, int force, int intel, int niveau, FIGHT_Race race, FIGHT_Profession profession, FIGHT_NomArme arme, FIGHT_NomPotion potion);
+    ~FIGHT_Competence ();
+    int  getDamage ();
+    int  getHeal ();
+    int  getShield ();
+    int  getManaCost ();
+    bool  isAvailable ();
+    FIGHT_NomCompetence  getSkillName ();
+    void  SkillLevelUp (int niveau);
+  };
+
+  /// class FIGHT_Carte - 
+  class FIGHT_Carte {
+    // Attributes
+  private:
+    int  nombreGentils;
+    int  nombreMechants;
+    int  nombreTotal;
+    // Operations
+  public:
+    FIGHT_Carte (int nbGentils, int nbMechants, FIGHT_Personnage* tableauPersonnage);
+    ~FIGHT_Carte ();
+    int  getNiceNumber ();
+    int  getEvilNumber ();
+    FIGHT_Personnage* getListCharacters ();
+    void  setNiceNumber (in t);
+    void  setEvilNumber (in t);
+    void  removeCharacter (FIGHT_Personnag e);
   };
 
 };

@@ -4,76 +4,6 @@
 
 namespace MAP {
 
-  /// class MAP_Carte - 
-  class MAP_Carte {
-    // Attributes
-  private:
-    int  idCarte;
-    int* listeElementsInfranchissables;
-    int  nombrePersonnages;
-    int  nombreQuetes;
-    int  nombreCoffres;
-    int  nombreElementsInfranchissables;
-    int  height;
-    int  width;
-    std::vector<int>  level;
-    std::vector<MAP_Personnage*> listePersonnages;
-    // Operations
-  public:
-    MAP_Carte (int idCarte, int width, int height);
-    MAP_Carte ();
-    ~MAP_Carte ();
-    MAP_Quete* getListQuests ();
-    MAP_Coffre* getListChest ();
-    int* getListImpassableElement ();
-    const std::vector<int>& getMap ();
-    int  getLevelValue (int x, int y);
-    int  getWidthMap ();
-    int  getHeightMap ();
-    void  addCharacter (MAP_Personnag e);
-    void  removeCharacter (MAP_Personnag e);
-    void  addQuest (MAP_Quet e);
-    void  removeQuest (MAP_Quet e);
-    void  addChest (MAP_Coffr e);
-    void  removeChest (MAP_Coffr e);
-    void  addImpassableElement (in t, in t);
-    void  removeImpassableElement (in t, in t);
-    void  setWidthMap (int width);
-    void  setHeightMap (int height);
-    std::vector<MAP_Personnage*> getListCharacters ();
-  };
-
-  /// class MAP_Coffre - 
-  class MAP_Coffre {
-    // Associations
-    MAP::MAP_Carte* listeCoffres;
-    // Attributes
-  private:
-    int  idCoffre;
-    int  x;
-    int  y;
-    NomObjet  nomObjet;
-    TypeObjet  typeObjet;
-    // Operations
-  public:
-    MAP_Coffre (int idCoffre, int x, int y, NomObje t, TypeObje t);
-    ~MAP_Coffre ();
-    NomObjet  getNameItem ();
-    TypeObjet  getTypeItem ();
-    int  getChestId ();
-    int  getX ();
-    int  getY ();
-    void  setX (int x);
-    void  setY (int y);
-  };
-
-  enum TypeObjet {
-    ARME,
-    ARMURE,
-    POTION,
-    QUETE
-  };
-
   enum Race {
     HUMAIN,
     LOUP_GAROU,
@@ -95,7 +25,6 @@ namespace MAP {
   /// class MAP_Personnage - 
   class MAP_Personnage {
     // Associations
-    MAP::MAP_Carte* listePersonnages;
     // Attributes
   private:
     int caracteristiques[NOMBRECARAC];
@@ -121,10 +50,98 @@ namespace MAP {
     void closeInventory ();
   };
 
+  /// class MAP_Quete - 
+  class MAP_Quete {
+    // Attributes
+  private:
+    int  idQuete;
+    string  donneur;
+    int  but;
+    EtatQuete  etat;
+    // Operations
+  public:
+    MAP_Quete (int idQuete, string donneur, int but);
+    ~MAP_Quete ();
+    EtatQuete  getState ();
+    MAP_Personnage  getGiver ();
+    int  getGoal ();
+    int  getQuestId ();
+    void  setState (EtatQuete etatQuete);
+  };
+
+  enum TypeObjet {
+    ARME,
+    ARMURE,
+    POTION,
+    QUETE
+  };
+
+  /// class MAP_Coffre - 
+  class MAP_Coffre {
+    // Associations
+    // Attributes
+  private:
+    int  idCoffre;
+    int  x;
+    int  y;
+    NomObjet  nomObjet;
+    TypeObjet  typeObjet;
+    // Operations
+  public:
+    MAP_Coffre (int idCoffre, int x, int y, NomObjet nomObjet, TypeObjet typeObjet);
+    ~MAP_Coffre ();
+    NomObjet  getNameItem ();
+    TypeObjet  getTypeItem ();
+    int  getChestId ();
+    int  getX ();
+    int  getY ();
+    void  setX (int x);
+    void  setY (int y);
+  };
+
+  /// class MAP_Carte - 
+  class MAP_Carte {
+    // Associations
+    // Attributes
+  private:
+    int  idCarte;
+    int* listeElementsInfranchissables;
+    int  nombrePersonnages;
+    int  nombreQuetes;
+    int  nombreCoffres;
+    int  nombreElementsInfranchissables;
+    int  height;
+    int  width;
+    std::vector<int>  level;
+    std::vector<MAP_Personnage*> listePersonnages;
+    // Operations
+  public:
+    MAP_Carte (int idCarte, int width, int height);
+    MAP_Carte ();
+    ~MAP_Carte ();
+    MAP_Quete* getListQuests ();
+    MAP_Coffre* getListChest ();
+    int* getListImpassableElement ();
+    const std::vector<int>& getMap ();
+    int  getLevelValue (int x, int y);
+    int  getWidthMap ();
+    int  getHeightMap ();
+    void  addCharacter (MAP_Personnage perso);
+    void  removeCharacter (MAP_Personnage perso);
+    void  addQuest (MAP_Quete quete);
+    void  removeQuest (MAP_Quete quete);
+    void  addChest (MAP_Coffre coffre);
+    void  removeChest (MAP_Coffre coffre);
+    void  addImpassableElement (int x, int y);
+    void  removeImpassableElement (int x, int y);
+    void  setWidthMap (int width);
+    void  setHeightMap (int height);
+    std::vector<MAP_Personnage*> getListCharacters ();
+  };
+
   /// class MAP_InventairePersonnage - 
   class MAP_InventairePersonnage {
     // Associations
-    MAP::MAP_Personnage inventaire;
     // Attributes
   private:
     MAP_ObjetInventaire* tableauSlots;
@@ -156,33 +173,12 @@ namespace MAP {
     // Operations
   public:
     MAP_ObjetInventaire (TypeObjet , NomObjet , int );
-    MAP_ObjetInventaire (in t);
+    MAP_ObjetInventaire (int );
     ~MAP_ObjetInventaire ();
-    void  setSlot (in t);
+    void  setSlot (int );
     TypeObjet  getTypeItem ();
     NomObjet  getItemName ();
     int  getSlot ();
-  };
-
-  /// class MAP_Quete - 
-  class MAP_Quete {
-    // Associations
-    MAP::MAP_Carte* listeQuetes;
-    // Attributes
-  private:
-    int  idQuete;
-    string  donneur;
-    int  but;
-    EtatQuete  etat;
-    // Operations
-  public:
-    MAP_Quete (int idQuete, string donneur, int but);
-    ~MAP_Quete ();
-    EtatQuete  getState ();
-    MAP_Personnage  getGiver ();
-    int  getGoal ();
-    int  getQuestId ();
-    void  setState (EtatQuet e);
   };
 
   enum nomObjet {

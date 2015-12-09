@@ -3,12 +3,50 @@ sfml_path=""
 OPTIND=1
 
 cd dia/
-#dia2code Etat_Fight.dia -d ../src/FIGHT/
-#dia2code Ia.dia -d ../src/IA/
-#dia2code Ihm.dia -d ../src/IHM/
-#dia2code Map.dia -d ../src/MAP/
-#dia2code Moteur.dia -d ../src/MOTEUR/
-#dia2code Rendu.dia -d ../src/RENDU/
+
+cd ../src/FIGHT
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code Etat_Fight.dia -d ../src/FIGHT/
+
+cd ../src/IA
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code IA.dia -d ../src/IA/
+
+cd ../src/IHM
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code IHM.dia -d ../src/IHM/
+
+cd ../src/MAP
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code Etat_Map.dia -d ../src/MAP/
+
+cd ../src/MOTEUR
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code Moteur.dia -d ../src/MOTEUR/
+
+cd ../src/RENDU
+rm *.h
+cd ..
+cd ..
+cd dia
+dia2code Rendu.dia -d ../src/RENDU/
+
+
 cd ..
 
 rm -r bin
