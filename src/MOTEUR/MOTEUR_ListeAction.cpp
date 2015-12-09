@@ -13,6 +13,7 @@ MOTEUR_ListeAction::MOTEUR_ListeAction() {
 MOTEUR_ListeAction::MOTEUR_ListeAction(MAP_Carte *carte){
 	nombreAction=0;
 	regles=MOTEUR_Regle(carte);
+	resterDansLaBoucle=true;
 }
 
 /*
@@ -65,7 +66,6 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 void MOTEUR_ListeAction::apply(){
 	int limite;
 	while(resterDansLaBoucle){
-
 		limite = nombreAction;
 		for (int i = 0; i < limite; i++) {
 			if (listeAction[i]->getActionId() == "deplacementPersonnage") {
