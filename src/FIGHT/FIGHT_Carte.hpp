@@ -53,13 +53,6 @@
 		* autres méthodes
 		* */
 
-	};
-
-
-
-
-
-
-
+};
 #endif
 
