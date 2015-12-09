@@ -2,7 +2,14 @@
 // Created by gabriel on 03/12/15.
 //
 
-#include "IA_ComplexeDeplacement.hpp"
+//#include "IA_ComplexeDeplacement.hpp"
+
+#include "IA.hpp"
+
+using namespace IA;
+using namespace MOTEUR;
+using namespace MAP;
+
 IA_ComplexeDeplacement::IA_ComplexeDeplacement(MOTEUR_ListeAction* actions, MAP_Personnage* ia, MAP_Carte* map){
     this->actions=actions;
     this->ia=ia;
@@ -89,8 +96,8 @@ void IA_ComplexeDeplacement::addAction(){
     }
     //std::cout<<liste[0]->getY()<<" y et "<< temp->getY()<<std::endl;
     if(temp->getStage()) {
-        MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage(
-                (-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);
+        MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage();
+                tempAction->initDeplacement((-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);
         actions->addAction(tempAction);
     }
 }

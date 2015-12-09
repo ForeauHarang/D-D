@@ -1,4 +1,4 @@
-#include "RENDU_Sprite.hpp"
+#include "RENDU.hpp"
 /*
 class RENDU_Sprite : public RENDU_Sprite{
 private :
@@ -12,6 +12,10 @@ private :
 	
 public :
 */
+
+using namespace MAP;
+using namespace RENDU;
+
 RENDU_Sprite::RENDU_Sprite(std::string path, std::string id, MAP_Personnage* personnagePtr){
 	this->stringId=id;
 	this->elementString=path;

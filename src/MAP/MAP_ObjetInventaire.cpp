@@ -1,4 +1,6 @@
-#include "MAP_ObjetInventaire.hpp"
+//#include "MAP_ObjetInventaire.hpp"
+#include "MAP.hpp"
+using namespace MAP;
 /*
 private :
 TypeObjet typeObjet;

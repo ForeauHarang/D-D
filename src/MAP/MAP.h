@@ -4,24 +4,6 @@
 
 namespace MAP {
 
-  enum Race {
-    HUMAIN,
-    LOUP_GAROU,
-    VAMPIRE
-  };
-
-  enum Profession {
-    SOLDAT,
-    VOLEUR,
-    SORCIER
-  };
-
-  enum Groupe {
-    NEUTRE,
-    GENTIL,
-    MECHANT
-  };
-
   /// class MAP_Personnage - 
   class MAP_Personnage {
     // Associations
@@ -31,6 +13,7 @@ namespace MAP {
     Race race;
     Profession profession;
     std::string idPersonnage;
+    Groupe groupe;
     // Operations
   public:
     MAP_Personnage (int[NOMBRECARAC] , Race , Profession , Groupe , string );
@@ -48,6 +31,7 @@ namespace MAP {
     void setY (int y);
     void openInventory ();
     void closeInventory ();
+    ~MAP_Personnage ();
   };
 
   /// class MAP_Quete - 
@@ -67,13 +51,6 @@ namespace MAP {
     int  getGoal ();
     int  getQuestId ();
     void  setState (EtatQuete etatQuete);
-  };
-
-  enum TypeObjet {
-    ARME,
-    ARMURE,
-    POTION,
-    QUETE
   };
 
   /// class MAP_Coffre - 
@@ -114,6 +91,8 @@ namespace MAP {
     int  width;
     std::vector<int>  level;
     std::vector<MAP_Personnage*> listePersonnages;
+    MAP_Coffre* listeCoffres[NBCOFFRES];
+    MAP_Quete* listeQuetes[NBQUETES];
     // Operations
   public:
     MAP_Carte (int idCarte, int width, int height);
@@ -122,11 +101,11 @@ namespace MAP {
     MAP_Quete* getListQuests ();
     MAP_Coffre* getListChest ();
     int* getListImpassableElement ();
-    const std::vector<int>& getMap ();
-    int  getLevelValue (int x, int y);
+    const std::vector<int>& getMap() const;// ();
+    int  getLevelValue(int x, int y) const;// (int x, int y);
     int  getWidthMap ();
     int  getHeightMap ();
-    void  addCharacter (MAP_Personnage perso);
+    void  addCharacter (MAP_Personnage* perso);
     void  removeCharacter (MAP_Personnage perso);
     void  addQuest (MAP_Quete quete);
     void  removeQuest (MAP_Quete quete);
@@ -144,17 +123,16 @@ namespace MAP {
     // Associations
     // Attributes
   private:
-    MAP_ObjetInventaire* tableauSlots[NOMBRESLOTS];
+    MAP_ObjetInventaire *tableauSlots[NOMBRESLOTS];
     bool inventaireOuvert;
     // Operations
   public:
     MAP_InventairePersonnage ();
-    MAP_InventairePersonnage (MAP_ObjetInventaire* tableauSlots);
+    MAP_InventairePersonnage (MAP_ObjetInventaire* tableauSlots[NOMBRESLOTS]);
     ~MAP_InventairePersonnage ();
-    MAP_ObjetInventaire getItemSlot (int numeroSlot);
+    MAP_ObjetInventaire getItemInSlot (int numeroSlot);
     bool isInventoryOpen ();
     void moveItemToSlot (int numeroSlot, int origine);
-     ();
     void addItemInBag (TypeObjet , NomObjet );
     void closeInventory ();
     void openInventory ();
@@ -179,21 +157,6 @@ namespace MAP {
     TypeObjet  getTypeItem ();
     NomObjet  getItemName ();
     int  getSlot ();
-  };
-
-  enum nomObjet {
-    COUTEAU,
-    PISTOLET,
-    FUSIL,
-    VETEMENT,
-    KEVLAR,
-    POTION_SOIN,
-    POISON,
-    LIVRE,
-    POULET,
-    BALLE_ARGENT,
-    SAC_SANG,
-    PIEUX
   };
 
 };

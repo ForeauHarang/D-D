@@ -19,13 +19,9 @@ class MOTEUR_DeplacementPersonnage : public MOTEUR_Action{
 		/*
 		 * Constructeur 
 		 */
-		MOTEUR_DeplacementPersonnage():MOTEUR_Action(){}
-		MOTEUR_DeplacementPersonnage(int dx, int dy, MAP_Personnage* ptrperso):MOTEUR_Action(){
-			this->dx=dx;
-			this->dy=dy;
-			this->ptrperso=ptrperso;
-		}
-		
+		/*MOTEUR_DeplacementPersonnage():MOTEUR_Action(){}
+		MOTEUR_DeplacementPersonnage(int dx, int dy, MAP_Personnage* ptrperso):MOTEUR_Action(){this->dx=dx;this->dy=dy;this->ptrperso=ptrperso;}
+		*/
 		/*
 		 * Destructeur 
 		 */

@@ -7,12 +7,13 @@ namespace IA {
   /// class IA_Manager - 
   class IA_Manager {
     // Attributes
-  private:
+  protected:
     MOTEUR_ListeAction* actions;
     MAP_Carte* map;
     // Operations
   public:
-    virtual void reachTarget (int x, int y) = 0;
+    IA_Manager(){}// ();
+    ~IA_Manager(){}// ();
   };
 
   /// class IA_ComplexeDeplacement - 
@@ -32,6 +33,7 @@ namespace IA {
     void  addChildrenToList (IA_DeplacementCase* pere);
     void  reachTarget (int xCible, int yCible, int i);
     void  addAction ();
+    ~IA_ComplexeDeplacement(){}// ();
   };
 
   /// class IA_DeplacementCase - 
@@ -67,8 +69,8 @@ namespace IA {
     // Operations
   public:
     IA_IASimple (MAP_Carte* map, MOTEUR_ListeAction* actions);
-    ~IA_IASimple ();
-    void  reachTarget (MAP_Carte* map, int X1, int Y1, int X2, int Y2);
+    ~IA_IASimple(){}// ();
+    virtual void  reachTarget (MAP_Carte* map, int X1, int Y1, int X2, int Y2);
   };
 
 };

@@ -4,14 +4,6 @@
 
 namespace RENDU {
 
-  /// class publicsf::Transformable - 
-  class publicsf::Transformable {
-  };
-
-  /// class sf::Drawable - 
-  class sf::Drawable {
-  };
-
   /// class RENDU_Fenetre - 
   class RENDU_Fenetre {
     // Attributes
@@ -29,17 +21,19 @@ namespace RENDU {
     void  addElementToList (RENDU_ElementGraphique* element);
   };
 
-  /// class RENDU_ElementGraphique - 
-  class RENDU_ElementGraphique : public RENDU::publicsf::Transformable, public RENDU::sf::Drawable {
+  /// class RENDU_ElementGraphique : public sf::Drawable, public sf::Transformable - 
+  class RENDU_ElementGraphique : public sf::Drawable, public sf::Transformable {
     // Associations
     // Operations
   public:
-    virtual std::string  getElemId ();
-    virtual bool  load ();
+    virtual std::string  getElemId()=0;// ();
+    virtual bool  load()=0;// ();
+    RENDU_ElementGraphique(){}// ();
+    ~RENDU_ElementGraphique(){}// ();
   };
 
-  /// class RENDU_Sprite - 
-  class RENDU_Sprite : public RENDU::RENDU_ElementGraphique {
+  /// class RENDU_Sprite : public RENDU_ElementGraphique{// - 
+  class RENDU_Sprite : public RENDU_ElementGraphique{// : public RENDU::RENDU_ElementGraphique : public sf::Drawable, public sf::Transformable {
     // Attributes
   private:
     std::string  elementString;
@@ -52,7 +46,7 @@ namespace RENDU {
     // Operations
   public:
     RENDU_Sprite (std::string path, std::string id, MAP_Personnage* personnagePtr);
-    ~RENDU_Sprite ();
+    ~RENDU_Sprite(){}// ();
     std::string  getElementString ();
     int  getX ();
     int  getY ();
@@ -68,21 +62,17 @@ namespace RENDU {
     void  setElementId (std::string stringId);
     virtual bool  load ();
   private:
-    virtual void  draw (sf::RenderTarge t, sf::RenderState s);
+    virtual void draw(sf::RenderTarget&, sf::RenderStates) const;// ();
   };
 
-  /// class RENDU_ElementGraphique//publicpublicsf::Drawable - 
-  class RENDU_ElementGraphique//publicpublicsf::Drawable {
-  };
-
-  /// class TileMapnew - 
-  class TileMapnew : public RENDU::RENDU_ElementGraphique//publicpublicsf::Drawable, public RENDU::publicsf::Transformable {
+  /// class TileMapnew : public RENDU_ElementGraphique{// - 
+  class TileMapnew : public RENDU_ElementGraphique{// : public RENDU::RENDU_ElementGraphique : public sf::Drawable, public sf::Transformable {
     // Attributes
   private:
     MAP_Carte* carte;
     sf::VertexArray  m_vertices;
     sf::Texture  m_tileset;
-    std::string stringId;
+    std::string stringId="TileMap";
     // Operations
   public:
     bool  load ();
@@ -90,8 +80,10 @@ namespace RENDU {
     virtual std::string  getElemId ();
     void  setStringId (std::string name);
     void  setMap (MAP_Carte* carte);
+    TileMapnew(){}// ();
+    ~TileMapnew(){}// ();
   private:
-    void  const draw (sf::RenderTarget& target, sf::RenderStates states);
+    void draw (sf::RenderTarget& target, sf::RenderStates states) const;// ();
   };
 
 };

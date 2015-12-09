@@ -1,4 +1,9 @@
-#include "FIGHT_Carte.hpp"
+//#include "FIGHT_Carte.hpp"
+
+
+#include "FIGHT.hpp"
+using namespace FIGHT;
+
 /*
 private : 
 int nombreGentils;

@@ -1,4 +1,6 @@
-#include "MAP_Personnage.hpp"
+//#include "MAP_Personnage.hpp"
+#include "MAP.hpp"
+using namespace MAP;
 /*
 private :
 	int[NOMBRECARAC] caracteristiques; 

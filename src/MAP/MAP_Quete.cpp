@@ -1,4 +1,6 @@
-#include "MAP_Quete.hpp"
+//#include "MAP_Quete.hpp"
+#include "MAP.hpp"
+using namespace MAP;
 /*
 private :
 int idQuete;

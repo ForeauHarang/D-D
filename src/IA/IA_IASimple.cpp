@@ -1,12 +1,17 @@
-#include "IA_IASimple.hpp"
+//#include "IA_IASimple.hpp"
 
+#include "IA.hpp"
+
+using namespace IA;
+using namespace MOTEUR;
+using namespace MAP;
 
 #define TAILLEBLOC 32
 
 /*
 * Contructeur
 */
-IA_IASimple::IA_IASimple(MAP_Carte* map, MOTEUR_ListeAction* actions) {
+IA_IASimple::IA_IASimple(MAP_Carte* map, MOTEUR_ListeAction* actions):IA_Manager() {
 	this->actions = actions;
 	this->map = map;
 }
@@ -14,12 +19,12 @@ IA_IASimple::IA_IASimple(MAP_Carte* map, MOTEUR_ListeAction* actions) {
 /*
 * Destructeur
 */
-IA_IASimple::~IA_IASimple() {
+/*IA_IASimple::~IA_IASimple() {
 
-}
+}*/
 
 /*
-* Méthodes
+* Mï¿½thodes
 */
 
 // (x1,y1) : cible / (x2,y2) : objet qui atteint la cible
@@ -49,7 +54,8 @@ void IA_IASimple::reachTarget(MAP_Carte* map, int X1, int Y1, int X2, int Y2) {
 		else {
 			signe = 1;
 		}
-		action =new MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map->getListCharacters()[1]));
+		action =new MOTEUR_DeplacementPersonnage();
+		action->initDeplacement(signe*dx, signe*dy, (map->getListCharacters()[1]));
 		actions->addAction(action);
 
 	}
@@ -62,7 +68,8 @@ void IA_IASimple::reachTarget(MAP_Carte* map, int X1, int Y1, int X2, int Y2) {
 		}else {
 			signe = 1;
 		}
-		action = new MOTEUR_DeplacementPersonnage(signe*dx, signe*dy, (map->getListCharacters()[1]));
+		action = new MOTEUR_DeplacementPersonnage();
+		action->initDeplacement(signe*dx, signe*dy, (map->getListCharacters()[1]));
 		
 		actions->addAction(action);
 	}

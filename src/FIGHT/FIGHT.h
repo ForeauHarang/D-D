@@ -64,6 +64,7 @@ namespace FIGHT {
     FIGHT_NomPotion  potion;
     string  idPersonnage;
     bool  vivant;
+    FIGHT_Competence* listeCompetences[NOMBRECOMPETENCES];
     // Operations
   public:
     FIGHT_Personnage (int niveau, int x, int y, FIGHT_Race race, FIGHT_Groupe groupe, FIGHT_Profession profession, FIGHT_NomArme arme, FIGHT_NomArmure armure, FIGHT_NomPotion potion, string idPersonnage);
@@ -84,8 +85,8 @@ namespace FIGHT {
     int  getXpos ();
     int  getYpos ();
     bool  getAlive ();
-    void  setHP (in t);
-    void  setMana (in t);
+    void  setHP (int );
+    void  setMana (int );
     void  setPotion ();
     void  setDeath ();
     void  useCompetence (FIGHT_Personnage cible, int numComp);
@@ -94,7 +95,6 @@ namespace FIGHT {
   /// class FIGHT_Competence - 
   class FIGHT_Competence {
     // Associations
-    FIGHT::FIGHT_Personnage* competences;
     // Attributes
   private:
     FIGHT_NomCompetence  competence;
@@ -123,6 +123,7 @@ namespace FIGHT {
     int  nombreGentils;
     int  nombreMechants;
     int  nombreTotal;
+    FIGHT_Personnage *listePersonnages[NBPERSO];;
     // Operations
   public:
     FIGHT_Carte (int nbGentils, int nbMechants, FIGHT_Personnage* tableauPersonnage);
@@ -130,9 +131,9 @@ namespace FIGHT {
     int  getNiceNumber ();
     int  getEvilNumber ();
     FIGHT_Personnage* getListCharacters ();
-    void  setNiceNumber (in t);
-    void  setEvilNumber (in t);
-    void  removeCharacter (FIGHT_Personnag e);
+    void  setNiceNumber (int );
+    void  setEvilNumber (int );
+    void  removeCharacter (FIGHT_Personnage );
   };
 
 };

@@ -9,9 +9,8 @@
 #include "../MOTEUR/MOTEUR_DeplacementPersonnage.hpp"
 
 
-#include "IHM_PersonnageControleur.h"
 // IHM => cr� une commande qui sera envoy� au moteur
-/*
+
 class IHM_PersonnageControleur {
 
 	private:
@@ -27,5 +26,6 @@ class IHM_PersonnageControleur {
 	void fermerFenetre(sf::Event event, sf::RenderWindow* window);
 
 };
-*/
+
+
 #endif

@@ -1,4 +1,8 @@
-#include "TileMapnew.hpp"
+//#include "TileMapnew.hpp"
+
+#include "RENDU.hpp"
+using namespace MAP;
+using namespace RENDU;
 
 /*class TileMap : public sf::Drawable, public sf::Transformable
 {

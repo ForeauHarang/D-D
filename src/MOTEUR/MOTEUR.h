@@ -4,13 +4,29 @@
 
 namespace MOTEUR {
 
+  /// class MOTEUR_Regle - 
+  class MOTEUR_Regle {
+    // Associations
+    // Attributes
+  private:
+    MAP_Carte* CARTE_carte;
+    // Operations
+  public:
+    MOTEUR_Regle ();
+    MOTEUR_Regle (MAP_Carte* carte);
+    ~MOTEUR_Regle ();
+    MAP_Carte* getCARTE_Map ();
+    void  setCARTE_Map (MAP_Carte );
+    bool  isAvailable (MOTEUR_DeplacementPersonnage* );
+  };
+
   /// class MOTEUR_ListeAction - 
   class MOTEUR_ListeAction {
     // Attributes
   private:
     int  nombreAction;
-    MOTEUR_Regle  regles;
-    MOTEUR_Action* listeAction;
+    MOTEUR_Regle regles;
+    MOTEUR_Action* listeAction[LISTEMAX];
     bool resterDansLaBoucle;
     // Operations
   public:
@@ -29,24 +45,8 @@ namespace MOTEUR {
     // Associations
     // Operations
   public:
-    virtual virtual string  getActionId () = 0;
-    virtual virtual void  apply () = 0;
-  };
-
-  /// class MOTEUR_Regle - 
-  class MOTEUR_Regle {
-    // Associations
-    // Attributes
-  private:
-    MAP_Carte* CARTE_carte;
-    // Operations
-  public:
-    MOTEUR_Regle ();
-    MOTEUR_Regle (MAP_Carte* carte);
-    ~MOTEUR_Regle ();
-    MAP_Carte* getCARTE_Map ();
-    void  setCARTE_Map (MAP_Carte );
-    bool  isAvailable (MOTEUR_DeplacementPersonnage* );
+    virtual string  getActionId()=0;// () = 0;
+    virtual void  apply()=0;// () = 0;
   };
 
   /// class MOTEUR_DeplacementPersonnage - 
@@ -58,16 +58,16 @@ namespace MOTEUR {
     MAP_Personnage* ptrperso;
     // Operations
   public:
-    MOTEUR_DeplacementPersonnage ();
-    MOTEUR_DeplacementPersonnage (int dx, int dy, MAP_Personnage* ptrperso);
-    virtual ~MOTEUR_DeplacementPersonnage ();
+    MOTEUR_DeplacementPersonnage(){}//:MOTEUR_Action(){}// ();
+    void initDeplacement(int, int, MAP_Personnage*);// ();
+    ~MOTEUR_DeplacementPersonnage ();
     int  getX ();
     int  getY ();
     int  getDX ();
     int  getDY ();
     MAP_Personnage* getCharacterPtr ();
-    virtual virtual string  getActionId () = 0;
-    virtual virtual void  apply () = 0;
+    virtual string  getActionId ();
+    virtual void  apply ();
   };
 
   /// class MOTEUR_QuitterProgramme - 
@@ -77,8 +77,8 @@ namespace MOTEUR {
     sf::RenderWindow* window;
     // Operations
   public:
-    MOTEUR_QuitterProgramme ();
-    ~MOTEUR_QuitterProgramme ();
+    MOTEUR_QuitterProgramme(){}// ();
+    ~MOTEUR_QuitterProgramme(){}// ();
     virtual string  getActionId ();
     void  setWindow (sf::RenderWindow* window);
     virtual void  apply ();
