@@ -144,7 +144,7 @@ namespace MAP {
     // Associations
     // Attributes
   private:
-    MAP_ObjetInventaire* tableauSlots;
+    MAP_ObjetInventaire* tableauSlots[NOMBRESLOTS];
     bool inventaireOuvert;
     // Operations
   public:

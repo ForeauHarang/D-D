@@ -4,15 +4,28 @@
 
 namespace IA {
 
-  /// class IA_ComplexeDeplacement - 
-  class IA_ComplexeDeplacement {
+  /// class IA_Manager - 
+  class IA_Manager {
     // Attributes
   private:
-    MOTEUR_ListeAction * actions;
-    MAP_Personnage* ia;
+    MOTEUR_ListeAction* actions;
     MAP_Carte* map;
+    // Operations
+  public:
+    virtual void reachTarget (int x, int y) = 0;
+  };
+
+  /// class IA_ComplexeDeplacement - 
+  class IA_ComplexeDeplacement : public IA::IA_Manager {
+    // Attributes
+  private:
+    MAP_Personnage* ia;
     int distanceMin;
     int indiceDistanceMin;
+    std::vector<IA_DeplacementCase*> liste;
+  protected:
+    MOTEUR_ListeAction* actions;
+    MAP_Carte* map;
     // Operations
   public:
     IA_ComplexeDeplacement (MOTEUR_ListeAction* actions, MAP_Personnage* ia, MAP_Carte* map);
@@ -46,9 +59,9 @@ namespace IA {
   };
 
   /// class IA_IASimple - 
-  class IA_IASimple {
+  class IA_IASimple : public IA::IA_Manager {
     // Attributes
-  private:
+  protected:
     MOTEUR_ListeAction* actions;
     MAP_Carte* map;
     // Operations
