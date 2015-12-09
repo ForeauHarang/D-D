@@ -8,6 +8,8 @@ using namespace MAP;
  * Constructeur 
  */
 MOTEUR_ListeAction::MOTEUR_ListeAction() {
+	nombreAction=0;
+	resterDansLaBoucle=true;
 }
 
 MOTEUR_ListeAction::MOTEUR_ListeAction(MAP_Carte *carte){
@@ -54,7 +56,9 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
 			this->listeAction[nombreAction]=this->listeAction[nombreAction+1];
 		}
 		nombreAction--;
-
+	}
+	if(nombreAction==-1){
+		nombreAction=0;
 	}
 }
 
@@ -64,6 +68,7 @@ void MOTEUR_ListeAction::removeAction(int placeDansListe){
  */ 
 
 void MOTEUR_ListeAction::apply(){
+
 	int limite;
 	while(resterDansLaBoucle){
 		limite = nombreAction;
@@ -76,12 +81,14 @@ void MOTEUR_ListeAction::apply(){
 					//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
 					listeAction[i]->apply();
 				}
+
 			}
 			if (listeAction[i]->getActionId() == "QuitterProgramme") {
 				std::cout<<"action exit"<<std::endl;
 				//std::cout<<dynamic_cast <MOTEUR_DeplacementPersonnage *>(listeAction[i])->getCharacterPtr()->getCharacterId()<<std::endl;
 				listeAction[i]->apply();
 				resterDansLaBoucle=false;
+
 				i=limite;
 			}
 		}
@@ -93,5 +100,6 @@ void MOTEUR_ListeAction::apply(){
 		removeAction(0);
 	}
 	removeAction(0);
+
 
 }

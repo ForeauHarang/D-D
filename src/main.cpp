@@ -137,6 +137,8 @@ int main() {
 
 		//ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
 
+
+
 		//actions.apply();
 
 	}
