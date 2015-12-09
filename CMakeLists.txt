@@ -13,40 +13,52 @@ add_executable(
 		vandw
 
 		#HPP
-		src/MAP/MAP_Personnage.hpp
-		src/MAP/MAP_Carte.hpp
-		src/MAP/MAP_Coffre.hpp
-		src/MAP/MAP_Quete.hpp
-		src/MAP/MAP_ObjetInventaire.hpp
-		src/MAP/MAP_InventairePersonnage.hpp
-		src/MAP/MAP_VariablesGlobales.hpp
+#		src/MAP/MAP_Personnage.hpp
+#		src/MAP/MAP_Carte.hpp
+#		src/MAP/MAP_Coffre.hpp
+#		src/MAP/MAP_Quete.hpp
+#		src/MAP/MAP_ObjetInventaire.hpp
+#		src/MAP/MAP_InventairePersonnage.hpp
+#		src/MAP/MAP_VariablesGlobales.hpp
+		src/MAP/MAP.h
+		src/MAP/MAP.hpp
 
-		src/FIGHT/FIGHT_Carte.hpp
-		src/FIGHT/FIGHT_Competence.hpp
-		src/FIGHT/FIGHT_Personnage.hpp
-		src/FIGHT/FIGHT_VariablesGlobales.hpp
+#		src/FIGHT/FIGHT_Carte.hpp
+#		src/FIGHT/FIGHT_Competence.hpp
+#		src/FIGHT/FIGHT_Personnage.hpp
+#		src/FIGHT/FIGHT_VariablesGlobales.hpp
+		src/FIGHT/FIGHT.h
+		src/FIGHT/FIGHT.hpp
 
 #		src/FIGHT/FIGHT.hpp
 
-		src/RENDU/RENDU_VariablesGlobales.hpp
-		src/RENDU/RENDU_Fenetre.hpp
-		src/RENDU/RENDU_ElementGraphique.hpp
-		src/RENDU/RENDU_Sprite.hpp
-		src/RENDU/TileMapnew.hpp
+#		src/RENDU/RENDU_VariablesGlobales.hpp
+#		src/RENDU/RENDU_Fenetre.hpp
+#		src/RENDU/RENDU_ElementGraphique.hpp
+#		src/RENDU/RENDU_Sprite.hpp
+#		src/RENDU/TileMapnew.hpp
+		src/RENDU/RENDU.h
+		src/RENDU/RENDU.hpp
 
 		#src/RENDU/TileMap.hpp
 
-		src/MOTEUR/MOTEUR_Action.hpp
-		src/MOTEUR/MOTEUR_DeplacementPersonnage.hpp
-		src/MOTEUR/MOTEUR_ListeAction.hpp
-		src/MOTEUR/MOTEUR_Regle.hpp
-		src/MOTEUR/MOTEUR_QuitterProgramme.hpp
+#		src/MOTEUR/MOTEUR_Action.hpp
+#		src/MOTEUR/MOTEUR_DeplacementPersonnage.hpp
+#		src/MOTEUR/MOTEUR_ListeAction.hpp
+#		src/MOTEUR/MOTEUR_Regle.hpp
+#		src/MOTEUR/MOTEUR_QuitterProgramme.hpp
+		src/MOTEUR/MOTEUR.h
+		src/MOTEUR/MOTEUR.hpp
 
-		src/IHM/IHM_PersonnageControleur.hpp
+#		src/IHM/IHM_PersonnageControleur.hpp
+		src/IHM/IHM.h
+		src/IHM/IHM.hpp
 
-		src/IA/IA_IASimple.hpp
-		src/IA/IA_DeplacementCase.hpp
-		src/IA/IA_ComplexeDeplacement.hpp
+#		src/IA/IA_IASimple.hpp
+#		src/IA/IA_DeplacementCase.hpp
+#		src/IA/IA_ComplexeDeplacement.hpp
+		src/IA/IA.h
+		src/IA/IA.hpp
 
 		#CPP
 		src/main.cpp
@@ -93,8 +105,8 @@ add_executable(
 	
 	#src/MOTEUR_VariablesGlobales.hpp
 
-		src/MOTEUR/MOTEUR.hpp src/MOTEUR/MOTEUR_QuitterProgramme.cpp src/MOTEUR/MOTEUR_QuitterProgramme.hpp)
-
+#		src/MOTEUR/MOTEUR.hpp src/MOTEUR/MOTEUR_QuitterProgramme.cpp src/MOTEUR/MOTEUR_QuitterProgramme.hpp src/IA/IA.hpp src/RENDU/RENDU.hpp src/IHM/IHM.hpp)
+)
 
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_module" ${CMAKE_MODULE_PATH})

@@ -1,4 +1,8 @@
-#include "MOTEUR_ListeAction.hpp"
+//#include "MOTEUR_ListeAction.hpp"
+
+#include "MOTEUR.hpp"
+using namespace MOTEUR;
+using namespace MAP;
 
 /*
  * Constructeur 

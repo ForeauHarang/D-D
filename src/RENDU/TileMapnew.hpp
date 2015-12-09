@@ -7,6 +7,7 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include "../MAP/MAP_Carte.hpp"
 
+
 class TileMapnew : public RENDU_ElementGraphique // public public sf::Drawable, public sf::Transformable
 {
 	public:

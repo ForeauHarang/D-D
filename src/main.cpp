@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
@@ -24,6 +24,29 @@
 void helloWorld(){
 	std::cout<<"Hello World !"<<std::endl;
 }
+*/
+
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <thread>
+
+#define TAILLEBLOC 32
+
+#include "MAP/MAP.hpp"
+#include "FIGHT/FIGHT.hpp"
+#include "RENDU/RENDU.hpp"
+#include "IA/IA.hpp"
+#include "IHM/IHM.hpp"
+#include "MOTEUR/MOTEUR.hpp"
+
+using namespace MAP;
+using namespace FIGHT;
+using namespace RENDU;
+using namespace IA;
+using namespace IHM;
+using namespace MOTEUR;
+
 
 // on crée la fenêtre
 sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");

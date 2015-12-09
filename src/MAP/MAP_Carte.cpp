@@ -1,5 +1,8 @@
 
-#include "MAP_Carte.hpp"
+//#include "MAP_Carte.hpp"
+
+#include "MAP.hpp"
+using namespace MAP;
 
 /*
 MAP_Personnage[NOMBREPERSOMAX] listePersonnages;

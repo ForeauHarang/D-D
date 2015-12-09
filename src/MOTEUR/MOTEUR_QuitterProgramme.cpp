@@ -2,8 +2,10 @@
 // Created by gabriel on 08/12/15.
 //
 
-#include "MOTEUR_QuitterProgramme.hpp"
+//#include "MOTEUR_QuitterProgramme.hpp"
 
+#include "MOTEUR.hpp"
+using namespace MOTEUR;
 /*
  * Constructeur
  */

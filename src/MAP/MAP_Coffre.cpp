@@ -1,4 +1,7 @@
-#include "MAP_Coffre.hpp"
+//#include "MAP_Coffre.hpp"
+
+#include "MAP.hpp"
+using namespace MAP;
 
 /*
 private :

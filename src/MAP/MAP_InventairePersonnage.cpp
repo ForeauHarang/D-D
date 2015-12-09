@@ -1,4 +1,7 @@
-#include "MAP_InventairePersonnage.hpp"
+//#include "MAP_InventairePersonnage.hpp"
+
+#include "MAP.hpp"
+using namespace MAP;
 
 /*
 private :

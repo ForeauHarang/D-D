@@ -1,6 +1,9 @@
-#include "RENDU_Fenetre.hpp"
+/*#include "RENDU_Fenetre.hpp"
 #include "TileMapnew.hpp"
-
+*/
+#include "RENDU.hpp"
+using namespace MAP;
+using namespace RENDU;
 /*
 * constructeurs
 * */

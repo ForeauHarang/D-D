@@ -2,7 +2,13 @@
 // Created by gabriel on 03/12/15.
 //
 
-#include "IA_DeplacementCase.hpp"
+//#include "IA_DeplacementCase.hpp"
+
+#include "IA.hpp"
+
+using namespace IA;
+using namespace MOTEUR;
+using namespace MAP;
 
 /*
 private :

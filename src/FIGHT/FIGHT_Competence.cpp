@@ -1,4 +1,8 @@
-#include "FIGHT_Competence.hpp"
+//#include "FIGHT_Competence.hpp"
+
+#include "FIGHT.hpp"
+using namespace FIGHT;
+
 /* 
 private :
 int degats;
