@@ -60,7 +60,7 @@ namespace MOTEUR {
   public:
     MOTEUR_DeplacementPersonnage(){}//:MOTEUR_Action(){}// ();
     void initDeplacement(int, int, MAP_Personnage*);// ();
-    virtual ~MOTEUR_DeplacementPersonnage ();
+    ~MOTEUR_DeplacementPersonnage ();
     int  getX ();
     int  getY ();
     int  getDX ();

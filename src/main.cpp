@@ -65,6 +65,7 @@ int main() {
 
 	TileMapnew tilemap;
 	tilemap.setMap(&map1);
+	//std::cout << tilemap.getElemId() << std::endl;
 
 	fenetre.addElementToList(&tilemap);
 
@@ -116,7 +117,9 @@ int main() {
 		fenetre.afficherFenetre();
 		// on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
 		sf::Event event;
+
 		while (window.pollEvent(event)) {
+
 			//Event du clavier pour déplacement d'un joueur
 			ihm.deplacementCommande(event);
 			//Event pour fermer la fenêtre 

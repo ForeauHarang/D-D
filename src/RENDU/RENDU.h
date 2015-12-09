@@ -72,7 +72,7 @@ namespace RENDU {
     MAP_Carte* carte;
     sf::VertexArray  m_vertices;
     sf::Texture  m_tileset;
-    std::string stringId;
+    std::string stringId="TileMap";
     // Operations
   public:
     bool  load ();
