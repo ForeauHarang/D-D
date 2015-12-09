@@ -63,6 +63,8 @@ int main() {
 
 	IA_IASimple ia(&map1, &actions);
 
+
+
 	TileMapnew tilemap;
 	tilemap.setMap(&map1);
 	//std::cout << tilemap.getElemId() << std::endl;
@@ -109,6 +111,8 @@ int main() {
 	std::cout << "Aller en bas : Touche S" << std::endl;
 	std::cout << "Fermer la fenetre : Touche Echap ou la croix" << std::endl;
 
+	IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
+
 	std::thread tMoteurJeu(&MOTEUR_ListeAction::apply, &actions);
 
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
@@ -127,10 +131,10 @@ int main() {
 
 		}
 
-		IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
 
-		IAComplexeDeplacement.reachTarget(map1.getListCharacters()[0]->getX() / TAILLEBLOC,
-										  map1.getListCharacters()[0]->getY() / TAILLEBLOC, 0);
+
+		//IAComplexeDeplacement.reachTarget(map1.getListCharacters()[0]->getX() / TAILLEBLOC,
+		//								  map1.getListCharacters()[0]->getY() / TAILLEBLOC, 0);
 
 		//IA simple
 		//iaSimple(map1, actions);
