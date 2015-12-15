@@ -1,17 +1,14 @@
-//#include "MAP_Personnage.hpp"
 #include "MAP.hpp"
 using namespace MAP;
+
 /*
 private :
 	int[NOMBRECARAC] caracteristiques; 
 	Race race;
 	Profession profession;
 	Groupe groupe;
-	MAP_InventairePersonnage inventaire;
-	
+	MAP_InventairePersonnage inventaire;	
 	string idPersonnage;
-	
-	public :
 */
 		
 /*
@@ -106,6 +103,7 @@ MAP_InventairePersonnage MAP_Personnage::getInventory(){
 	return this->inventaire;
 }
 */
+
 /*
  * setteurs
  * */

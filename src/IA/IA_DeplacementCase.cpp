@@ -1,9 +1,3 @@
-//
-// Created by gabriel on 03/12/15.
-//
-
-//#include "IA_DeplacementCase.hpp"
-
 #include "IA.hpp"
 
 using namespace IA;
@@ -16,9 +10,8 @@ int etage;
 IA_DeplacementCase* pere;
 int x;
 int y;
-
-public :
 */
+
 /*
 * constructeurs
 * */
@@ -98,11 +91,4 @@ MAP_Carte* IA_DeplacementCase::getMap(){
 	return this->carte;
 }
 
-/*
-* setteurs
-* */
-
-/*
-* autres méthodes
-* */
 

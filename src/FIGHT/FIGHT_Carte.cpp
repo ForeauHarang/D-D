@@ -1,6 +1,3 @@
-//#include "FIGHT_Carte.hpp"
-
-
 #include "FIGHT.hpp"
 using namespace FIGHT;
 
@@ -9,11 +6,7 @@ private :
 int nombreGentils;
 int nombreMechants;
 FIGHT_Personnage* listePersonnages[];
-
-
-public :
-* 
-* */
+*/
 
 /*
 * constructeurs
@@ -94,6 +87,3 @@ void FIGHT_Carte::removeCharacter(FIGHT_Personnage personnage){
 	}
 }
 
-/*
-* autres méthodes
-* */

@@ -1,9 +1,7 @@
-/*#include "RENDU_Fenetre.hpp"
-#include "TileMapnew.hpp"
-*/
 #include "RENDU.hpp"
 using namespace MAP;
 using namespace RENDU;
+
 /*
 * constructeurs
 * */
@@ -22,7 +20,7 @@ RENDU_Fenetre::~RENDU_Fenetre() {
 }
 
 /*
-* M�thodes
+* Methodes
 * */
 void RENDU_Fenetre::afficherElementGraphique(){
 	int i;

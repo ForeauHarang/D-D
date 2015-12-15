@@ -1,9 +1,13 @@
-//#include "MOTEUR_DeplacementPersonnage.hpp"
 #include "MOTEUR.hpp"
 using namespace MOTEUR;
 using namespace MAP;
 
 //MOTEUR_DeplacementPersonnage::MOTEUR_DeplacementPersonnage(){}//:MOTEUR_Action(){}
+
+/*
+* Methodes
+*/
+
 void MOTEUR_DeplacementPersonnage::initDeplacement(int dx, int dy, MAP_Personnage* ptrperso){
 	this->dx=dx;
 	this->dy=dy;

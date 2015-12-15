@@ -1,14 +1,12 @@
-//#include "MAP_Quete.hpp"
 #include "MAP.hpp"
 using namespace MAP;
+
 /*
 private :
 int idQuete;
 MAP_Personnage donneur;
 int but;
 EtatQuete etat;
-
-public :
 */
 
 /*
@@ -59,7 +57,3 @@ int MAP_Quete::getQuestId(){
 void MAP_Quete::setState(EtatQuete etat){
 	this->etat=etat;
 }
-
-/*
-* autres méthodes
-* */

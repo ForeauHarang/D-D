@@ -1,4 +1,3 @@
-//#include "MAP_ObjetInventaire.hpp"
 #include "MAP.hpp"
 using namespace MAP;
 /*
@@ -6,8 +5,6 @@ private :
 TypeObjet typeObjet;
 NomObjet nomObjet;
 int slot;
-
-public :
 */
 
 
@@ -58,7 +55,3 @@ NomObjet MAP_ObjetInventaire::getItemName(){
 int MAP_ObjetInventaire::getSlot(){
 	return this->slot;
 }
-
-/*
-* autres méthodes
-* */

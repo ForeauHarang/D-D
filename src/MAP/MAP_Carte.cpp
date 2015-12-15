@@ -1,6 +1,3 @@
-
-//#include "MAP_Carte.hpp"
-
 #include "MAP.hpp"
 using namespace MAP;
 
@@ -15,8 +12,6 @@ int nombreCoffres;
 int nombreElementsInfranchissables;
 std::vector<int> level;
  */
-
-/* C'est ici que se d�finit notre map : donc level doit �tre d�finit ici par exemple ainsi que le passage des coordonn�es du tableau 1D vers 2D*/
 
 // 9 = herbe
 // 54 = arbres

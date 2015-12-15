@@ -54,25 +54,16 @@ sf::RenderWindow window(sf::VideoMode(1350, 800), "Tilemap");
 int main() {
 	int id = 1;
 	MAP_Carte map1(id, 67, 23);
-
 	MOTEUR_ListeAction actions(&map1);
-
 	RENDU_Fenetre fenetre(&window, &map1);
-
 	IHM_PersonnageControleur ihm(&map1, &actions);
-
 	IA_IASimple ia(&map1, &actions);
-
-
-
 	TileMapnew tilemap;
 	tilemap.setMap(&map1);
-	//std::cout << tilemap.getElemId() << std::endl;
 
 	fenetre.addElementToList(&tilemap);
 
 	//Personnage Principal - map1.getListCharacters()[0] - perso
-
 	//MAP_InventairePersonnage inventairePrincipal=MAP_InventairePersonnage();
 	std::string bob = "bob";
 	//Race hum = HUMAIN;
@@ -88,7 +79,6 @@ int main() {
 	fenetre.addElementToList(&sprite1);
 
 	//Personnage 2 - map1.getListCharacters()[1] - perso2
-
 	//MAP_InventairePersonnage inventaire2 = MAP_InventairePersonnage();
 	std::string bobMaman = "bobMaman";
 	//Race hum2 = VAMPIRE;
@@ -110,11 +100,8 @@ int main() {
 	std::cout << "Aller en haut : Touche Z" << std::endl;
 	std::cout << "Aller en bas : Touche S" << std::endl;
 	std::cout << "Fermer la fenetre : Touche Echap ou la croix" << std::endl;
-
-
-	//IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
-
-
+	
+	// Thread pour le moteur de jeu
 	std::thread tMoteurJeu(&MOTEUR_ListeAction::apply, &actions);
 
 	// on fait tourner le programme jusqu'à ce que la fenêtre soit fermée
@@ -123,7 +110,6 @@ int main() {
 		fenetre.afficherFenetre();
 		// on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
 		sf::Event event;
-
 		while (window.pollEvent(event)) {
 
 			//Event du clavier pour déplacement d'un joueur
@@ -133,6 +119,7 @@ int main() {
 
 		}
 
+		// IA
 		IA_ComplexeDeplacement IAComplexeDeplacement(&actions, ptrperso2, &map1);
 		//std::cout<<"x="<<(map1.getListCharacters()[0]->getX()-map1.getListCharacters()[1]->getX())/TAILLEBLOC<<std::endl;
 		IAComplexeDeplacement.reachTarget(map1.getListCharacters()[0]->getX() / TAILLEBLOC,
@@ -140,10 +127,7 @@ int main() {
 
 		//IA simple
 		//iaSimple(map1, actions);
-
 		//ia.reachTarget(&map1, map1.getListCharacters()[0]->getX(), map1.getListCharacters()[0]->getY(), map1.getListCharacters()[1]->getX(), map1.getListCharacters()[1]->getY());
-
-
 
 		//actions.apply();
 

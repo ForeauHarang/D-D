@@ -1,5 +1,3 @@
-//#include "FIGHT_Competence.hpp"
-
 #include "FIGHT.hpp"
 using namespace FIGHT;
 
@@ -10,7 +8,14 @@ int soins;
 int bouclier;
 int coutMana;
 bool utilisatble;
-public :
+*/
+
+/*
+enum NomCompetence { ATTAQUER, BOULEDEFEU, MORSURE, GRIFFE, BOUCLIER, POTION };
+enum NomPotion { PASDENOM, SOIN, MANA, POISON };
+enum Race { HUMAIN, LOUP_GAROU, VAMPIRE, MONSTRE };
+enum Profession { SOLDAT, VOLEUR, SORCIER };
+enum NomArme {  PASDENOM, COUTEAU, PISTOLET, FUSIL };
 */
 
 /*
@@ -96,13 +101,6 @@ FIGHT_Competence::FIGHT_Competence(FIGHT_NomCompetence nomComp,int force, int in
 	}
 
 }
-/*
-enum NomCompetence { ATTAQUER, BOULEDEFEU, MORSURE, GRIFFE, BOUCLIER, POTION };
-enum NomPotion { PASDENOM, SOIN, MANA, POISON };
-enum Race { HUMAIN, LOUP_GAROU, VAMPIRE, MONSTRE };
-enum Profession { SOLDAT, VOLEUR, SORCIER };
-enum NomArme {  PASDENOM, COUTEAU, PISTOLET, FUSIL };
-*/
 
 /*
 * destructeurs
@@ -170,7 +168,3 @@ void FIGHT_Competence::SkillLevelUp(int niveauxAjoutes){
 		this->bouclier=this->bouclier+2*niveauxAjoutes;
 	}
 }
-
-/*
-* autres méthodes
-* */

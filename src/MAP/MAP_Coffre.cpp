@@ -1,5 +1,3 @@
-//#include "MAP_Coffre.hpp"
-
 #include "MAP.hpp"
 using namespace MAP;
 
@@ -9,8 +7,6 @@ int idCoffre;
 NomObjet nomObjetContenu;
 TypeObjet typeObjetContenu;
 MAP_Carte carte;
-
-public :
 */
 
 /*

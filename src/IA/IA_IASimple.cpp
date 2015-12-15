@@ -1,5 +1,3 @@
-//#include "IA_IASimple.hpp"
-
 #include "IA.hpp"
 
 using namespace IA;
@@ -24,7 +22,7 @@ IA_IASimple::IA_IASimple(MAP_Carte* map, MOTEUR_ListeAction* actions):IA_Manager
 }*/
 
 /*
-* M�thodes
+* Methodes
 */
 
 // (x1,y1) : cible / (x2,y2) : objet qui atteint la cible

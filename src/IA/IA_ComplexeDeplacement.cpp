@@ -1,9 +1,3 @@
-//
-// Created by gabriel on 03/12/15.
-//
-
-//#include "IA_ComplexeDeplacement.hpp"
-
 #include "IA.hpp"
 
 using namespace IA;
@@ -50,8 +44,6 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
 
         while(i<1023) {
             int d = liste[i]->getSquareDistance(xCible, yCible, map);
-
-            //std::cout<<d<<std::endl;
             if (d < 0) {
 
             } else {
@@ -79,11 +71,8 @@ void IA_ComplexeDeplacement::reachTarget(int xCible, int yCible, int i){
 
     }
 
-//std::cout<<d<<std::endl;
     if(distanceMin>=0){
-        std::cout<<indiceDistanceMin<<std::endl;
         addAction();
-        //std::cout<<distanceMin<<std::endl;
     }
     int distanceMin=-1;
     int indiceDistanceMin=0;
@@ -97,7 +86,6 @@ void IA_ComplexeDeplacement::addAction(){
     while(temp->getStage()>1){
         temp=temp->getFather();
     }
-    //std::cout<<liste[0]->getY()<<" y et "<< temp->getY()<<std::endl;
     if(temp->getStage()) {
         MOTEUR_DeplacementPersonnage *tempAction = new MOTEUR_DeplacementPersonnage();
                 tempAction->initDeplacement((-liste[0]->getX() + temp->getX()) * TAILLEBLOC, (-liste[0]->getY() + temp->getY()) * TAILLEBLOC, ia);

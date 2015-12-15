@@ -1,4 +1,3 @@
-//#include "MOTEUR_Regle.hpp"
 #include "MOTEUR.hpp"
 using namespace MOTEUR;
 using namespace MAP;

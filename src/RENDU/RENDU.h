@@ -45,7 +45,7 @@ namespace RENDU {
     MAP_Personnage* personnagePtr;
     // Operations
   public:
-    RENDU_Sprite (std::string path, std::string id, MAP_Personnage* personnagePtr);
+	RENDU_Sprite(std::string path, std::string id, MAP_Personnage * personnagePtr);
     ~RENDU_Sprite(){}// ();
     std::string  getElementString ();
     int  getX ();

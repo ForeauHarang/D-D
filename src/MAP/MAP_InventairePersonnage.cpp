@@ -1,15 +1,11 @@
-//#include "MAP_InventairePersonnage.hpp"
-
 #include "MAP.hpp"
 using namespace MAP;
 
 /*
 private :
 MAP_ObjetInventaire[NOMBRESLOTS] tableauSlots;
-//		MAP_ObjetInventaire slotTemporaire; 
+MAP_ObjetInventaire slotTemporaire; 
 bool inventaireOuvert=false;
-
-public :
 */
 
 

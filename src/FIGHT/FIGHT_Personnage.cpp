@@ -1,7 +1,6 @@
-//#include "FIGHT_Personnage.hpp"
-
 #include "FIGHT.hpp"
 using namespace FIGHT;
+
 /*
 private :
 FIGHT_Competence* listeCompetences[]; // cf fin du header
@@ -14,8 +13,6 @@ NomArmure armure;
 NomPotion potion;
 string idPersonnage;
 bool vivant;
-
-public :
 */
 
 /*

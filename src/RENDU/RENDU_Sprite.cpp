@@ -8,20 +8,23 @@ private :
 	int DirectionX;
 	int DirectionY;
 	std::string stringId;
-	
-	
-public :
 */
 
 using namespace MAP;
 using namespace RENDU;
 
-RENDU_Sprite::RENDU_Sprite(std::string path, std::string id, MAP_Personnage* personnagePtr){
-	this->stringId=id;
-	this->elementString=path;
-    this->personnagePtr=personnagePtr;
+/*
+* Constructeurs
+*/
+RENDU_Sprite::RENDU_Sprite(std::string path, std::string id, MAP_Personnage* personnagePtr) {
+	this->stringId = id;
+	this->elementString = path;
+	this->personnagePtr = personnagePtr;
 }
 
+/*
+* Getters 
+*/
 std::string RENDU_Sprite::getElementString(){
 	return this->elementString;
 }
@@ -50,7 +53,9 @@ MAP_Personnage* RENDU_Sprite::getCharacterPtr(){
 	return this->personnagePtr;
 }
 
-
+/*
+* Setters
+*/
 void RENDU_Sprite::setElementString(std::string path){
 	this->elementString=path;
 }
@@ -75,6 +80,9 @@ void RENDU_Sprite::setElementId(std::string stringId){
 	this->stringId=stringId;
 }
 
+/*
+* Methodes
+*/
 void RENDU_Sprite::draw(sf::RenderTarget&, sf::RenderStates) const{
 
 }

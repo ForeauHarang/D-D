@@ -1,6 +1,8 @@
 #include "IHM.hpp"
+
 using namespace IHM;
 using namespace MOTEUR;
+
 /*
 * Contructeur
 */
