@@ -1,31 +1,3 @@
-/*#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-
-#include <thread>
-
-#include "FIGHT/FIGHT_Carte.hpp"
-#include "RENDU/TileMapnew.hpp"
-#include "MAP/MAP_Carte.hpp"
-#include "MAP/MAP_Personnage.hpp"
-#include "MAP/MAP_VariablesGlobales.hpp"
-#include "MOTEUR/MOTEUR_DeplacementPersonnage.hpp"
-#include "MOTEUR/MOTEUR_ListeAction.hpp"
-#include "RENDU/RENDU_Fenetre.hpp"
-#include "RENDU/TileMapnew.hpp"
-#include "IHM/IHM_PersonnageControleur.hpp"
-#include "IA/IA_IASimple.hpp"
-#include "IA/IA_ComplexeDeplacement.hpp"
-
-
-#define TAILLEBLOC 32
-
-
-void helloWorld(){
-	std::cout<<"Hello World !"<<std::endl;
-}
-*/
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>

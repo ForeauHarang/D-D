@@ -1,12 +1,5 @@
-/** 
- * @file UserDB.hpp
- * @author Philippe-Henri Gosselin
- * @date 9 décembre 2015
- * @copyright CNRS
- */
-
-#ifndef __UserDB_hpp__
-#define __UserDB_hpp__
+#ifndef __ActionDB_hpp__
+#define __ActionDB_hpp__
 
 #include <memory>
 #include <map>
@@ -14,8 +7,8 @@
 using std::unique_ptr;
 using std::map;
 
-#include "User.hpp"
-#include "UserDB.h"
+#include "Action.hpp"
+#include "ActionDB.h"
 
 template<class T,typename ... Args>
 std::unique_ptr<T> make_unique(Args ... args) {

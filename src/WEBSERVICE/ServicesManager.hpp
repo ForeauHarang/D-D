@@ -1,10 +1,3 @@
-/** 
- * @file ServicesManager.hpp
- * @author Philippe-Henri Gosselin
- * @date 9 décembre 2015
- * @copyright CNRS
- */
-
 #ifndef __ServicesManager_hpp__
 #define __ServicesManager_hpp__
 
